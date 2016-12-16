@@ -189,7 +189,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\CodeFile1.cs" />
+    <Compile Include="Models\Afbeelding.cs" />
+    <Compile Include="Models\Bestelling.cs" />
+    <Compile Include="Models\BestelRegel.cs" />
+    <Compile Include="Models\CombiDeal.cs" />
+    <Compile Include="Models\Cultuur.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Film.cs" />
+    <Compile Include="Models\Highlight.cs" />
+    <Compile Include="Models\Klant.cs" />
+    <Compile Include="Models\Medewerker.cs" />
+    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Models\Special.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,6 @@ namespace IHFF_V2.Models
     {
         public int Id { get; set; }
         public string type { get; set; }
-
+        //test
     }
 }
