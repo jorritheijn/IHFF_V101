@@ -75,6 +75,5 @@
 \\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\bin\ru\System.Spatial.resources.dll
 \\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\bin\zh-Hans\System.Spatial.resources.dll
 \\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\bin\zh-Hant\System.Spatial.resources.dll
-\\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\obj\Debug\IHFF_V2.csprojResolveAssemblyReference.cache
 \\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\obj\Debug\IHFF_V2.dll
 \\intranet.inholland.nl\Eduhome\haa00\569962\Desktop\IHFF_V2\IHFF_V2\obj\Debug\IHFF_V2.pdb
