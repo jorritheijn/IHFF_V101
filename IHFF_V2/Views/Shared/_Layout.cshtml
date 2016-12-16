@@ -12,20 +12,18 @@
         <header>
             <div>
                 <div>
-                    <p class="logo">@Html.ActionLink("/Images/logo.png", "Index", "Home")</p>
-                </div>
-                <div>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Food", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Film", "About", "Home")</li>
-                            <li>@Html.ActionLink("Cultuur", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Cultuur", "About", "Home")</li>
+                            <li>@Html.ActionLink("IHFF", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Film", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Food", "Contact", "Home")</li>
                         </ul>
                     </nav>
                 </div>
             </div>
-        </header>
+        </header><br />
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
