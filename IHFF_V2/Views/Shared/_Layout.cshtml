@@ -10,18 +10,16 @@
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Home", "Index", "Home")</p>
+            <div>
+                <div>
+                    <p class="logo">@Html.ActionLink("/Images/logo.png", "Index", "Home")</p>
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
+                <div>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Food", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Film", "About", "Home")</li>
+                            <li>@Html.ActionLink("Cultuur", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
                     </nav>
