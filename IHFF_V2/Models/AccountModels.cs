@@ -14,7 +14,7 @@ namespace IHFF_V2.Models
             : base("DefaultConnection")
         {
         }
-
+        //testttestttest
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
