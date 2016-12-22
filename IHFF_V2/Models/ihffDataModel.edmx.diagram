@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="203b547f88c34796954ad2a3b333194e" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Afbeelding" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bestelling" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BestelRegel" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CombiDeal" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cultuur" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Event" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Film" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Klant" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Medewerker" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Restaurant" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Slide" Width="1.5" PointX="7.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Special" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Highlight" Width="1.5" PointX="10" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Event_Afbeelding" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Bestelling_BestelRegel" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Bestelling_Klant" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_BestelRegel_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CombiDeal_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CombiDeal_Event1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Cultuur_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Film_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Restaurant_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Special_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Highlight_Slide" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Highlight_Slide1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Highlight_Slide2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Highlight_Slide3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Highlight_Slide4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

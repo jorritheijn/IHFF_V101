@@ -45,6 +45,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -183,26 +185,73 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Afbeelding.cs" />
-    <Compile Include="Models\Bestelling.cs" />
-    <Compile Include="Models\BestelRegel.cs" />
-    <Compile Include="Models\CombiDeal.cs" />
-    <Compile Include="Models\Cultuur.cs" />
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Film.cs" />
-    <Compile Include="Models\Highlight.cs" />
-    <Compile Include="Models\Klant.cs" />
-    <Compile Include="Models\Medewerker.cs" />
-    <Compile Include="Models\Restaurant.cs" />
-    <Compile Include="Models\Slide.cs" />
-    <Compile Include="Models\Special.cs" />
+    <Compile Include="Models\Afbeelding.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bestelling.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BestelRegel.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CombiDeal.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cultuur.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Film.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Highlight.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ihffContext.cs" />
+    <Compile Include="Models\ihffDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ihffDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ihffDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ihffDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ihffDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Klant.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Medewerker.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Restaurant.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Slide.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Special.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ihffDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DbEventRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -261,8 +310,25 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\ihffDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ihffDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ihffDataModel.edmx.diagram">
+      <DependentUpon>ihffDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\logo.png" />
+    <Content Include="Models\ihffDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ihffDataModel.edmx</DependentUpon>
+      <LastGenOutput>ihffDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ihffDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ihffDataModel.edmx</DependentUpon>
+      <LastGenOutput>ihffDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -316,6 +382,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\FilmOverzicht\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,6 +390,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,18 +12,12 @@ namespace IHFF_V2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Klant
+    public partial class sysdiagram
     {
-        public Klant()
-        {
-            this.Bestellings = new HashSet<Bestelling>();
-        }
-    
-        public int Id { get; set; }
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
-        public string EmailAdres { get; set; }
-    
-        public virtual ICollection<Bestelling> Bestellings { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
