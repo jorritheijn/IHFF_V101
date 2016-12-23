@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Afbeelding">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Afbeelding1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_Afbeelding" FromRole="Afbeelding" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Bestelling">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Betaald" Type="Int32" />
+    <Property Name="BestelRegelId" Type="Int32" Nullable="false" />
+    <Property Name="KlantId" Type="Int32" />
+    <NavigationProperty Name="BestelRegel" Relationship="Self.FK_Bestelling_BestelRegel" FromRole="Bestelling" ToRole="BestelRegel" />
+    <NavigationProperty Name="Klant" Relationship="Self.FK_Bestelling_Klant" FromRole="Bestelling" ToRole="Klant" />
+  </EntityType>
+  <EntityType Name="BestelRegel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bestellings" Relationship="Self.FK_Bestelling_BestelRegel" FromRole="BestelRegel" ToRole="Bestelling" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_BestelRegel_Event" FromRole="BestelRegel" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="CombiDeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Percentage" Type="Int32" />
+    <Property Name="Event2" Type="Int32" Nullable="false" />
+    <Property Name="Event1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_CombiDeal_Event" FromRole="CombiDeal" ToRole="Event" />
+    <NavigationProperty Name="Event3" Relationship="Self.FK_CombiDeal_Event1" FromRole="CombiDeal" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Cultuur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Aantal" Type="Int32" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Cultuur_Event" FromRole="Cultuur" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Locatie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Poster" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Beschrijving" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tijd" Type="DateTime" Precision="3" />
+    <Property Name="Afbeelding" Type="Int32" />
+    <NavigationProperty Name="Afbeelding1" Relationship="Self.FK_Event_Afbeelding" FromRole="Event" ToRole="Afbeelding" />
+    <NavigationProperty Name="BestelRegels" Relationship="Self.FK_BestelRegel_Event" FromRole="Event" ToRole="BestelRegel" />
+    <NavigationProperty Name="CombiDeals" Relationship="Self.FK_CombiDeal_Event" FromRole="Event" ToRole="CombiDeal" />
+    <NavigationProperty Name="CombiDeals1" Relationship="Self.FK_CombiDeal_Event1" FromRole="Event" ToRole="CombiDeal" />
+    <NavigationProperty Name="Cultuurs" Relationship="Self.FK_Cultuur_Event" FromRole="Event" ToRole="Cultuur" />
+    <NavigationProperty Name="Films" Relationship="Self.FK_Film_Event" FromRole="Event" ToRole="Film" />
+    <NavigationProperty Name="Restaurants" Relationship="Self.FK_Restaurant_Event" FromRole="Event" ToRole="Restaurant" />
+    <NavigationProperty Name="Specials" Relationship="Self.FK_Special_Event" FromRole="Event" ToRole="Special" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Regisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Acteur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Jaar" Type="Int32" />
+    <Property Name="Aantal" Type="Int32" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Film_Event" FromRole="Film" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Klant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bestellings" Relationship="Self.FK_Bestelling_Klant" FromRole="Klant" ToRole="Bestelling" />
+  </EntityType>
+  <EntityType Name="Medewerker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gebruikersnaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Wachtwoord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Soort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OpeningsTijd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Restaurant_Event" FromRole="Restaurant" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Beschrijving" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Afbeelding" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ButtonTekst" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Link" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Highlight" Relationship="Self.FK_Highlight_Slide" FromRole="Slide" ToRole="Highlight" />
+    <NavigationProperty Name="Highlights" Relationship="Self.FK_Highlight_Slide1" FromRole="Slide" ToRole="Highlight" />
+    <NavigationProperty Name="Highlights1" Relationship="Self.FK_Highlight_Slide2" FromRole="Slide" ToRole="Highlight" />
+    <NavigationProperty Name="Highlights2" Relationship="Self.FK_Highlight_Slide3" FromRole="Slide" ToRole="Highlight" />
+    <NavigationProperty Name="Highlights3" Relationship="Self.FK_Highlight_Slide4" FromRole="Slide" ToRole="Highlight" />
+  </EntityType>
+  <EntityType Name="Special">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Spreker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Special_Event" FromRole="Special" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Highlight">
+    <Key>
+      <PropertyRef Name="Slide1" />
+    </Key>
+    <Property Name="Id" Type="Int32" />
+    <Property Name="Slide1" Type="Int32" Nullable="false" />
+    <Property Name="Slide2" Type="Int32" />
+    <Property Name="Slide3" Type="Int32" />
+    <Property Name="Slide4" Type="Int32" />
+    <Property Name="Slide5" Type="Int32" />
+    <NavigationProperty Name="Slide" Relationship="Self.FK_Highlight_Slide" FromRole="Highlight" ToRole="Slide" />
+    <NavigationProperty Name="Slide6" Relationship="Self.FK_Highlight_Slide1" FromRole="Highlight" ToRole="Slide" />
+    <NavigationProperty Name="Slide7" Relationship="Self.FK_Highlight_Slide2" FromRole="Highlight" ToRole="Slide" />
+    <NavigationProperty Name="Slide8" Relationship="Self.FK_Highlight_Slide3" FromRole="Highlight" ToRole="Slide" />
+    <NavigationProperty Name="Slide9" Relationship="Self.FK_Highlight_Slide4" FromRole="Highlight" ToRole="Slide" />
+  </EntityType>
+  <Association Name="FK_Event_Afbeelding">
+    <End Role="Afbeelding" Type="Self.Afbeelding" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afbeelding">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Afbeelding" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bestelling_BestelRegel">
+    <End Role="BestelRegel" Type="Self.BestelRegel" Multiplicity="1" />
+    <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BestelRegel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bestelling">
+        <PropertyRef Name="BestelRegelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bestelling_Klant">
+    <End Role="Klant" Type="Self.Klant" Multiplicity="0..1" />
+    <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bestelling">
+        <PropertyRef Name="KlantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BestelRegel_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="BestelRegel" Type="Self.BestelRegel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BestelRegel">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CombiDeal_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="CombiDeal" Type="Self.CombiDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CombiDeal">
+        <PropertyRef Name="Event2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CombiDeal_Event1">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="CombiDeal" Type="Self.CombiDeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CombiDeal">
+        <PropertyRef Name="Event2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cultuur_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Cultuur" Type="Self.Cultuur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cultuur">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Film_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Restaurant_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restaurant">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Special_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Special" Type="Self.Special" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Special">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Highlight_Slide">
+    <End Role="Slide" Type="Self.Slide" Multiplicity="1" />
+    <End Role="Highlight" Type="Self.Highlight" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Highlight">
+        <PropertyRef Name="Slide1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Highlight_Slide1">
+    <End Role="Slide" Type="Self.Slide" Multiplicity="0..1" />
+    <End Role="Highlight" Type="Self.Highlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Highlight">
+        <PropertyRef Name="Slide2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Highlight_Slide2">
+    <End Role="Slide" Type="Self.Slide" Multiplicity="0..1" />
+    <End Role="Highlight" Type="Self.Highlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Highlight">
+        <PropertyRef Name="Slide3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Highlight_Slide3">
+    <End Role="Slide" Type="Self.Slide" Multiplicity="0..1" />
+    <End Role="Highlight" Type="Self.Highlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Highlight">
+        <PropertyRef Name="Slide4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Highlight_Slide4">
+    <End Role="Slide" Type="Self.Slide" Multiplicity="0..1" />
+    <End Role="Highlight" Type="Self.Highlight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Highlight">
+        <PropertyRef Name="Slide5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ihffCon" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Afbeeldings" EntityType="Self.Afbeelding" />
+    <EntitySet Name="Bestellings" EntityType="Self.Bestelling" />
+    <EntitySet Name="BestelRegels" EntityType="Self.BestelRegel" />
+    <EntitySet Name="CombiDeals" EntityType="Self.CombiDeal" />
+    <EntitySet Name="Cultuurs" EntityType="Self.Cultuur" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Films" EntityType="Self.Film" />
+    <EntitySet Name="Klants" EntityType="Self.Klant" />
+    <EntitySet Name="Medewerkers" EntityType="Self.Medewerker" />
+    <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+    <EntitySet Name="Slides" EntityType="Self.Slide" />
+    <EntitySet Name="Specials" EntityType="Self.Special" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Highlights" EntityType="Self.Highlight" />
+    <AssociationSet Name="FK_Event_Afbeelding" Association="Self.FK_Event_Afbeelding">
+      <End Role="Afbeelding" EntitySet="Afbeeldings" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bestelling_BestelRegel" Association="Self.FK_Bestelling_BestelRegel">
+      <End Role="BestelRegel" EntitySet="BestelRegels" />
+      <End Role="Bestelling" EntitySet="Bestellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bestelling_Klant" Association="Self.FK_Bestelling_Klant">
+      <End Role="Klant" EntitySet="Klants" />
+      <End Role="Bestelling" EntitySet="Bestellings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BestelRegel_Event" Association="Self.FK_BestelRegel_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="BestelRegel" EntitySet="BestelRegels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CombiDeal_Event" Association="Self.FK_CombiDeal_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="CombiDeal" EntitySet="CombiDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CombiDeal_Event1" Association="Self.FK_CombiDeal_Event1">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="CombiDeal" EntitySet="CombiDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cultuur_Event" Association="Self.FK_Cultuur_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Cultuur" EntitySet="Cultuurs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Film_Event" Association="Self.FK_Film_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Film" EntitySet="Films" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Restaurant_Event" Association="Self.FK_Restaurant_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Restaurant" EntitySet="Restaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Special_Event" Association="Self.FK_Special_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Special" EntitySet="Specials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Highlight_Slide" Association="Self.FK_Highlight_Slide">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Highlight" EntitySet="Highlights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Highlight_Slide1" Association="Self.FK_Highlight_Slide1">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Highlight" EntitySet="Highlights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Highlight_Slide2" Association="Self.FK_Highlight_Slide2">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Highlight" EntitySet="Highlights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Highlight_Slide3" Association="Self.FK_Highlight_Slide3">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Highlight" EntitySet="Highlights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Highlight_Slide4" Association="Self.FK_Highlight_Slide4">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Highlight" EntitySet="Highlights" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

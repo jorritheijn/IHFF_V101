@@ -15,16 +15,16 @@ namespace IHFF_V2.Controllers
 
         public ActionResult Index(string searchString)
         {
-            IEnumerable<Event> GevilterdeEvents = new DbEventRepository().GetAllEvents();
+            IEnumerable<Event> GefilterdeEvents = new DbEventRepository().GetAllEvents();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                GevilterdeEvents = new DbEventRepository().eventsopnaam(searchString);
+                GefilterdeEvents = new DbEventRepository().eventsopnaam(searchString);
             }
 
             
             
-            return View(GevilterdeEvents);
+            return View(GefilterdeEvents);
         }
 
 

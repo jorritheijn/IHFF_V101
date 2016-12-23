@@ -8,21 +8,36 @@
     padding:0;
      /* For IE, the outcast */
     zoom:1;
-    *display: inline;
+    height:48px;
 }
 #menu li{
     float:left;
     padding:2px 5px;
-    border-right: 1px solid white;
-    border-left:1px solid white;
+
+
+    height:100%;
+    width:120px;
+    line-height:48px;
 }
 #menu li a{
     text-decoration:none;
     color:white;
+    font-family: Calibri;
+    font-size:1.5em;
 }
 nav{
     text-align:center;
+    height: 48px;
 }
 header{
     background-color:#35434C;
+}
+body{
+    margin:0;
+}
+#menu li a:hover{
+    background-color:rgb(91, 102, 109);
+}
+#menu li:hover{
+    background-color:rgb(91, 102, 109);
 }
