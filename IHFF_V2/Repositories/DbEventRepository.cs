@@ -15,5 +15,12 @@ namespace IHFF_V2.Repositories
             IEnumerable<Event> allevents = ctx.Events;
             return allevents; 
         }
+
+        public IEnumerable<Event> eventsopnaam(string zoekwoord) 
+        {
+
+            IEnumerable<Event> gefitlerd = ctx.Events.Where(s => s.Titel.Contains(zoekwoord));
+            return gefitlerd;
+        }
     }
 }

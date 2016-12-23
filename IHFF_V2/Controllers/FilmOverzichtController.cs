@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using IHFF_V2.Models;
+using IHFF_V2.Repositories;
 
 namespace IHFF_V2.Controllers
 {
@@ -11,10 +13,20 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View();
+            IEnumerable<Event> GevilterdeEvents = new DbEventRepository().GetAllEvents();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                GevilterdeEvents = new DbEventRepository().eventsopnaam(searchString);
+            }
+
+            
+            
+            return View(GevilterdeEvents);
         }
+
 
     }
 }
