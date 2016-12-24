@@ -11,5 +11,6 @@ namespace IHFF_V2.Models
     {
         public ihffContext() : base("ihffCon") { }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Film> Films { get; set; }
     }
 }

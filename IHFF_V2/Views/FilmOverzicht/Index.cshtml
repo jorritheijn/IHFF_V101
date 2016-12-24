@@ -1,5 +1,82 @@
-﻿@{
+﻿@using IHFF_V2.Models;
+@{
     ViewBag.Title = "Index";
 }
 
+
+
 <h2>Index</h2>
+@model  IEnumerable<Event>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+
+    @Html.ActionLink(linkText: "maandag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "maandag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "dinsdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "dinsdag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "woensdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "woensdag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "donderdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "donderdag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "vrijdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "vrijdag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "zaterdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "zaterdag" }, htmlAttributes: null)
+
+    <&nbsp;> </&nbsp;>
+
+    @Html.ActionLink(linkText: "zondag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "zondag" }, htmlAttributes: null)
+
+    foreach (var film in Model)
+    {
+        <p>
+            @film.Titel
+            @film.Locatie
+            @film.Tijd.Value.DayOfWeek
+            @film.Type
+        </p>
+    }
+
+
+}

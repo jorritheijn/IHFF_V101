@@ -13,20 +13,24 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
-        public ActionResult Index(string searchString)
+        
+
+        public ActionResult Index(string searchString, string dag)
         {
-            IEnumerable<Event> GefilterdeEvents = new DbEventRepository().GetAllEvents();
+            IEnumerable<Event> GefilterdeEvents = new FilmRepository().AlleFilms;
+
+            if (dag != null)
+            {
+                GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
+            }
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                GefilterdeEvents = new DbEventRepository().eventsopnaam(searchString);
+                GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString,GefilterdeEvents);                     
             }
 
-            
-            
             return View(GefilterdeEvents);
         }
-
 
     }
 }
