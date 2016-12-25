@@ -13,15 +13,14 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
-        
 
         public ActionResult Index(string searchString, string dag)
         {
-            IEnumerable<Event> GefilterdeEvents = new FilmRepository().AlleFilms;
+            IEnumerable<Event> GefilterdeEvents = new FilmRepository().AlleFilmsEnkel;
 
             if (dag != null)
             {
-                GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
+                return RedirectToAction("DagProgramma", new { dag = dag });
             }
 
             if (!String.IsNullOrEmpty(searchString))
@@ -32,5 +31,19 @@ namespace IHFF_V2.Controllers
             return View(GefilterdeEvents);
         }
 
+        public ActionResult DagProgramma(string dag, string searchString)
+        {
+            IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, GefilterdeEvents);
+            }
+
+            ViewBag.Dag = dag; 
+
+            return View(GefilterdeEvents);
+
+        }
     }
 }

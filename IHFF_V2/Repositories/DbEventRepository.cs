@@ -12,9 +12,22 @@ namespace IHFF_V2.Repositories
 
         public IEnumerable<Event> AlleFilms
         {
-            get { return ctx.Events.Where(film => film.Type.Equals("Film")); }
+            get
+            {
+
+                IEnumerable<Event> allefilms = ctx.Events.Where(film => film.Type.Equals("Film"));
+                return allefilms;
+            }
         }
-        
+
+        public IEnumerable<Event> AlleFilmsEnkel
+        {
+            get
+            {
+               return AlleFilms.GroupBy(p => p.Titel).Select(g => g.First());
+            }
+        }
+
 
         /*returned alle events van het type film die een zoekwoord bevatten*/ 
         public IEnumerable<Event> FilmsOpZoekWoord(string zoekwoord) 
