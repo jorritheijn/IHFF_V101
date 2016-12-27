@@ -70,12 +70,36 @@
 
     foreach (var film in Model)
     {
-        <p>
-            @film.Titel
-            @film.Locatie
-            @film.Tijd.Value.DayOfWeek
-            @film.Type
-        </p>
+
+        <h1> @film.Titel </h1>
+
+        if (film.Poster != null)
+        {
+            var base64 = Convert.ToBase64String(film.Poster);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <table>
+                <tr><td><img src="@imgSrc" width="200" height="200" /> </td></tr>
+                <tr><td>@film.Locatie</td></tr>                
+                <tr><td>@film.Tijd.Value.DayOfWeek</tr>
+               <tr><td>@film.Type</td></tr>
+               
+            </table>
+
+        }
+
+        else
+        {
+            <br />
+           <p> <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png", width="200", height="200" /></p>
+        }
+
+        @Html.ActionLink(linkText: "Add image",
+            actionName: "AddImage",
+            controllerName: "FilmOverzicht",
+            routeValues: new
+            { Id = film.Id },
+            htmlAttributes: null)
     }
 
 

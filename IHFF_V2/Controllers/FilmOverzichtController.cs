@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using IHFF_V2.Models;
 using IHFF_V2.Repositories;
+using System.IO;
+
 
 namespace IHFF_V2.Controllers
 {
@@ -13,24 +15,33 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
-
+            
         public ActionResult Index(string searchString, string dag)
         {
-            IEnumerable<Event> GefilterdeEvents = new FilmRepository().AlleFilmsEnkel;
+            
+            //Default
+            //Geselecteerde events zijn de events die we in de view willen weergeven
+            IEnumerable<Event> geselecteerdeEvents = new FilmRepository().AlleFilmsEnkel;
 
+            //Als er op een dagfilter geklikt is.
             if (dag != null)
             {
+                //verwijst door naar ActionResult DagProgramma hieronder. 
                 return RedirectToAction("DagProgramma", new { dag = dag });
             }
-
+            
+            // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
-                GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString,GefilterdeEvents);                     
+                //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
+                geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString,geselecteerdeEvents);                     
             }
 
-            return View(GefilterdeEvents);
+            return View(geselecteerdeEvents);
         }
 
+        //Als er op een DagProgramma
+     
         public ActionResult DagProgramma(string dag, string searchString)
         {
             IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
@@ -45,5 +56,37 @@ namespace IHFF_V2.Controllers
             return View(GefilterdeEvents);
 
         }
+
+        public ActionResult AddImage(int Id)
+        {
+            ViewBag.id = Id;
+            ViewBag.Message = "not clicked";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int Id, HttpPostedFileBase uploadImages)
+        {
+            if (uploadImages == null)
+            {
+                ViewBag.Message = "Knaker";
+            }
+
+            FilmRepository filmrepo = new FilmRepository(); 
+            ViewBag.id = Id;
+            ViewBag.Message = "clicked";
+            byte[] imageData = null;
+
+                using (var binaryReader = new BinaryReader(uploadImages.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
+                    filmrepo.AddPicture(imageData,Id);
+
+                }
+
+
+            return View();
+        }
+
     }
 }

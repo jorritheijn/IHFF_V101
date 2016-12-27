@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "AddImage";
+}
+
+<h2>AddImage @ViewBag.Id @ViewBag.Message</h2>
+
+
+@using (Html.BeginForm("AddImage", "FilmOverzicht", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+    <div class="row">
+        <span class="span4">
+            <input type="file" name="uploadImages" class="input-files" />
+        </span>
+        <span class="span2">
+            <input type="submit" name="button" value="Upload" class="btn btn-upload" />
+        </span>
+    </div>
+    
+}
