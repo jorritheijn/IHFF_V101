@@ -388,6 +388,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\App_LocalResources\" />
     <Folder Include="Images\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
