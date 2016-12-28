@@ -12,9 +12,6 @@
 }
 #menu li{
     float:left;
-    padding:2px 5px;
-
-
     height:100%;
     width:120px;
     line-height:48px;
@@ -23,7 +20,15 @@
     text-decoration:none;
     color:white;
     font-family: Calibri;
-    font-size:1.5em;
+    font-size:1.7em;
+    display:block;
+    border-width:1px;
+    border-left-style:solid;
+    border-color:white;
+}
+#menu li a:hover{
+    background-color:#8d0104;
+    transition:1s;
 }
 nav{
     text-align:center;
@@ -35,9 +40,46 @@ header{
 body{
     margin:0;
 }
-#menu li a:hover{
-    background-color:rgb(91, 102, 109);
+footer{
+    background-color:#35434C;
+    color:white;
+    font-family:Calibri;
+    text-align:center;
+    height:60px;
 }
-#menu li:hover{
-    background-color:rgb(91, 102, 109);
+#footer{
+     display: inline-block;
+    margin:0;
+    padding:0;
+     /* For IE, the outcast */
+    zoom:1;
+    height:60px;
+}
+#footer div{
+    line-height:22px;
+    float:left;
+    height:100%;
+    width:200px;
+    padding-top:5px;
+}
+#footer div a{
+    color:white;
+    font-size:1.2em;
+    text-decoration:none;
+}
+#slideshow {
+  margin: 80px auto;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+#slideshow > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
 }

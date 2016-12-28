@@ -14,11 +14,12 @@
                 <div>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Contact", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Cultuur", "About", "Home")</li>
+                            <li>@Html.ActionLink("Food", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Film", "About", "Home")</li>
                             <li>@Html.ActionLink("IHFF", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Film", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Food", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Culture", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Specials", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Winkelw", "Contact", "Home")</li>
                         </ul>
                     </nav>
                 </div>
@@ -31,11 +32,11 @@
             </section>
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+            <div id="footer" >
+                <div>
+                    <div>@Html.ActionLink("Contact", "Contact", "Home") <br /> &copy; @DateTime.Now.Year - Copyright Groep 5 </div>
                 </div>
-            </div>
+            </divid="footer">
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
