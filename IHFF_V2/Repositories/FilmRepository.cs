@@ -28,7 +28,7 @@ namespace IHFF_V2.Repositories
         {
             get
             {
-               return AlleFilms.GroupBy(p => p.Titel).Select(g => g.First());
+                return ctx.Events.Where(film => film.Type.Equals("Film")).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
             }
         }
 
