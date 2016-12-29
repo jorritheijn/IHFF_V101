@@ -6,6 +6,9 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+
+            @RenderSection("Styles", required: false)
+
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -15,7 +18,7 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Food", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Film", "About", "Home")</li>
+                            <li>@Html.ActionLink("Film", "Index", "FilmOverzicht")</li>
                             <li>@Html.ActionLink("IHFF", "Index", "Home")</li>
                             <li>@Html.ActionLink("Culture", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Specials", "Contact", "Home")</li>
@@ -36,7 +39,7 @@
                 <div>
                     <div>@Html.ActionLink("Contact", "Contact", "Home") <br /> &copy; @DateTime.Now.Year - Copyright Groep 5 </div>
                 </div>
-            </divid="footer">
+            </div id="footer">
         </footer>
 
         @Scripts.Render("~/bundles/jquery")

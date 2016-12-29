@@ -1,0 +1,66 @@
+﻿body {
+    margin: 0 auto;
+    width: 1000px;
+    }
+
+.Filminfo {
+    display: block;
+    float: left;
+    margin-right: 30px;
+    border-style: solid;
+    margin-bottom: 10px;  
+    height: 400px;
+    overflow:hidden; 
+    border-radius:10px;
+    }
+
+.Filminfo a 
+{
+    background-color:black;
+    width:100%;
+    display: block;
+    font-family: Calibri;
+    color:white;
+    font-size:1.3em;
+    padding:10px;
+    text-align:center;
+    position:relative;
+    bottom:20px;
+    right:13px;   
+    }
+
+#Filters
+{
+    position:fixed;
+    background:white;
+    border:solid;
+    width:150px; 
+    left: 0px;
+     
+}
+
+#Filters a
+{
+    display:list-item;
+    padding:10px;
+    list-style:none;
+}
+
+ul 
+{
+    height:100px;
+    list-style:none;
+    padding:0px;  
+}
+li {
+    /* overflow: hidden; */
+    width: 136px;
+    margin-bottom:1
+}
+
+
+
+
+footer {
+  clear:both;
+}
