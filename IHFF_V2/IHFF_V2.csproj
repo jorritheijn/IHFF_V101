@@ -184,6 +184,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Blobmanager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Repositories\FilmRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Dagoverzicht.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\Js\Slider.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -345,7 +347,6 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\FilmOverzicht\IndexStyle.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -378,9 +379,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\FilmOverzicht\Home\About.cshtml" />
+    <Content Include="Views\FilmOverzicht\Home\Contact.cshtml" />
+    <Content Include="Views\FilmOverzicht\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
