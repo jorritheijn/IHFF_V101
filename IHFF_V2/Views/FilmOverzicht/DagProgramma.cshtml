@@ -2,25 +2,44 @@
     ViewBag.Title = "DagProgramma:"; 
 }
 
+@section Styles {
+    <link href="@Url.Content("~/Content/dagoverzicht.css")" rel="stylesheet" />
+}
+
+
+
+
 <h2>DagProgramma: @ViewBag.Dag</h2>
 
 @using IHFF_V2.Models
+@using IHFF_V2;
+
+
+
 @model  IEnumerable<Event>
 @using (Html.BeginForm())
 {
     <p>
         Find by name: @Html.TextBox("SearchString")
+        
         <input type="submit" value="Search" />
     </p>
 }
     
        @foreach (var film in Model)
     {
-        <p>
-            @film.Titel
-            @film.Locatie
-            @film.Type
-        </p>
+        <section id="filminfo">
+
+                      
+            @if (film.Poster != null)
+            {              
+                <img src="@Blobmanager.ImageSource(film.Poster)" height="240" width="163" /> 
+            }
+            <p class="titel">@film.Titel</p> 
+            <p class="locatie">@film.Locatie</p>
+            <p class="tijd">@film.Tijd</p>
+            <p class="beschrijving">  @film.Beschrijving </p>
+        </section>
     }
 
 

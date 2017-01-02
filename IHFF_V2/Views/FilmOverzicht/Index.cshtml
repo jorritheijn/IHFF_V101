@@ -1,4 +1,6 @@
 ﻿@using IHFF_V2.Models;
+@using IHFF_V2;
+
 @{
     ViewBag.Title = "Index";
 }
@@ -17,7 +19,7 @@
     </p>
 
 
-    <section id="Filters">
+    <nav id="Filters">
         @Html.ActionLink(linkText: "maandag",
     actionName: "Index",
     controllerName: "FilmOverzicht",
@@ -66,43 +68,42 @@
     routeValues: new
     { Dag = "zondag" }, htmlAttributes: null)
 
-    </section>
+    </nav>
 
 
-    foreach (var film in Model)
-    {
+    <section class="catalogus">
+        @foreach (var film in Model)
+        {
 
-            <section class="Filminfo">
-               @if (film.Poster != null)
-                {
-                var base64 = Convert.ToBase64String(film.Poster);
-                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                <img src="@imgSrc" width="170" height="242" />
-                }
+        <section class="Filminfo">
+            @if (film.Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(film.Poster)" width="170" height="242" />
+            }
 
-                else
-                {
+            else
+            {
                 <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="170" , height="242" />
-                }
-           
-                <ul>
-                    <li>
-                        @film.Titel
-                    </li>
-                    <li>
-                        @film.Locatie
-                    </li>
-                    <li>
-                        @film.Tijd.Value.DayOfWeek
-                    </li>
-                </ul>
+            }
 
-                            
-                          
+            <ul>
+                <li>
+                    @film.Titel
+                </li>
+                <li>
+                    @film.Locatie
+                </li>
+                <li>
+                    @film.Tijd.Value.DayOfWeek
+                </li>
+            </ul>
 
 
 
-                @Html.ActionLink(linkText: "Add image",
+
+
+
+            @Html.ActionLink(linkText: "Add image",
                             actionName: "AddImage",
                              controllerName: "FilmOverzicht",
                             routeValues: new
@@ -110,10 +111,11 @@
                                 Id = film.Id
                             },
             htmlAttributes: null)
-            </section>
+        </section>
 
 
 
         }
+    </section>
 
 }

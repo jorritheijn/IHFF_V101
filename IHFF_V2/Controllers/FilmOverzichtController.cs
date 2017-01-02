@@ -50,11 +50,8 @@ namespace IHFF_V2.Controllers
             {
                 GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, GefilterdeEvents);
             }
-
             ViewBag.Dag = dag; 
-
             return View(GefilterdeEvents);
-
         }
 
         public ActionResult AddImage(int Id)
@@ -69,24 +66,38 @@ namespace IHFF_V2.Controllers
         {
             if (uploadImages == null)
             {
-                ViewBag.Message = "Knaker";
+                ViewBag.Message = "Selecteer een bestand";
             }
 
-            FilmRepository filmrepo = new FilmRepository(); 
-            ViewBag.id = Id;
-            ViewBag.Message = "clicked";
-            byte[] imageData = null;
+            else if (uploadImages.ContentType != "image/png")
+            {
+                ViewBag.Message = "Alleen afbeeldingen worden geaccepteerd ";
+            }
 
+            else
+            {
+                FilmRepository filmrepo = new FilmRepository();
+                ViewBag.id = Id;
+                ViewBag.Message = "clicked";
+                byte[] imageData = null;
                 using (var binaryReader = new BinaryReader(uploadImages.InputStream))
                 {
                     imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
-                    filmrepo.AddPicture(imageData,Id);
-
-                }
-
-
+                    filmrepo.AddPicture(imageData, Id);
+                }                
+            }
             return View();
-        }
 
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

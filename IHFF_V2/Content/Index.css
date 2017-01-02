@@ -6,8 +6,9 @@
 .Filminfo {
     display: block;
     float: left;
-    margin-right: 30px;
+    margin-right: 20px;
     border-style: solid;
+    border-color:#35434C;
     margin-bottom: 10px;  
     height: 400px;
     overflow:hidden; 
@@ -16,34 +17,77 @@
 
 .Filminfo a 
 {
-    background-color:black;
+    background-color:#35434C;
     width:100%;
     display: block;
     font-family: Calibri;
+    text-decoration:none;
     color:white;
     font-size:1.3em;
     padding:10px;
     text-align:center;
     position:relative;
     bottom:20px;
-    right:13px;   
+    right:13px;       
     }
+
+.Filminfo a:hover
+{
+    background-color:#8D0104;
+}
+
+h2 {
+    margin-top:30px;  
+}
 
 #Filters
 {
     position:fixed;
-    background:white;
-    border:solid;
     width:150px; 
-    left: 0px;
-     
+    left:0px;     
+}
+
+
+@media screen and (max-width: 900px) {
+    #Filters {
+      position:absolute;
+      top:50px;
+      left:0px;
+      width:100%;
+      height:40px;
+      margin-bottom: 10px;
+      overflow:hidden;
+    }
+
+    #Filters a {
+        float:left;
+        display:inline-block;
+        height:70px;
+        margin-left:1px
+    }
+}
+
+#Catalogus
+{
+    float:right;
 }
 
 #Filters a
 {
-    display:list-item;
+    display:inline-block;
+    font-family:Calibri;
+    color:white;
+    background-color:#35434C;
     padding:10px;
     list-style:none;
+    text-decoration:none;
+    border-color:white;
+    width:100px;  
+}
+
+#Filters a:hover
+{
+    background-color:#8D0104;
 }
 
 ul 
@@ -55,11 +99,7 @@ ul
 li {
     /* overflow: hidden; */
     width: 136px;
-    margin-bottom:1
 }
-
-
-
 
 footer {
   clear:both;
