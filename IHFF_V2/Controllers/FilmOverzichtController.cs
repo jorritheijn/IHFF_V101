@@ -88,5 +88,13 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
+        public ActionResult detailpage()
+        {
+            // laad film
+            //IEnumerable<DetailFilmViewModel> Film = 
+
+            return View();
+        }
+
     }
 }
