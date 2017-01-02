@@ -286,7 +286,6 @@ C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\System.Web.Razor.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\System.Web.WebPages.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\System.Web.WebPages.Razor.xml
-C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\WebMatrix.Data.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\Microsoft.Web.WebPages.OAuth.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\WebMatrix.WebData.xml
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\DotNetOpenAuth.AspNet.xml
