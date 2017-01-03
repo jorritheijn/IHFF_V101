@@ -6,15 +6,46 @@
 }
 @{ var e = Model.Event; var f = Model.Film; } <!-- twee model variabele aangemaakt -->
 
-<h2>@e.Titel</h2>
- 
-@if (e.Poster != null)
-{
-    <img src="@Blobmanager.ImageSource(e.Poster)" height="240" width="163" />
+@section Styles {
+    <link href="@Url.Content("~/Content/FilmDetail.css")" rel="stylesheet" />
 }
+ 
 
-@e.Beschrijving
-@f.Acteur
-@f.Regisseur
-@f.Jaar
-@e.Locatie
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-4">
+
+        @if (e.Poster != null)
+            {
+            <img src="@Blobmanager.ImageSource(e.Poster)" width="170" height="242" />
+        }
+
+        else
+        {
+            <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="170" , height="242" />
+        }
+
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+        <h2>@e.Titel</h2>
+
+        @e.Beschrijving
+
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+
+        @f.Acteur
+        @f.Regisseur
+        @f.Jaar
+        @e.Locatie
+
+    </div>
+
+</div>
