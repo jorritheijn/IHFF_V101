@@ -94,8 +94,9 @@ namespace IHFF_V2.Repositories
             //get a specific filmevent with given id from filmoverviewe
             DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
+
             //get a specific film with eventid
-            DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.Id == DetailedFilmModel.Event.Id);
+            DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
 
             //return a model with two models within it
             return DetailedFilmModel;

@@ -17,7 +17,7 @@ namespace IHFF_V2.Repositories
             DetailedSpecialModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
             //get a specific film with eventid
-            DetailedSpecialModel.Special = ctx.Specials.SingleOrDefault(a => a.Id == DetailedSpecialModel.Special.Id);
+            DetailedSpecialModel.Special = ctx.Specials.SingleOrDefault(a => a.EventId == Id);
 
             //return a model with two models within it
             return DetailedSpecialModel;
