@@ -1,0 +1,21 @@
+﻿@model IHFF_V2.Models.DetailRestaurantViewModel
+@using IHFF_V2
+@{ var e = Model.Event; var r = Model.Restaurant; } <!-- twee model variabele aangemaakt -->
+
+@{
+    ViewBag.Title = "DetailRestaurantpage";
+}
+
+<h2>@e.Titel</h2>
+
+
+
+@if (e.Poster != null)
+{
+    <img src="@Blobmanager.ImageSource(e.Poster)" height="240" width="163" />
+}
+
+@e.Beschrijving
+@r.Soort
+@r.OpeningsTijd
+@e.Locatie

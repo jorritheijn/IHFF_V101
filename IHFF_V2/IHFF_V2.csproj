@@ -399,7 +399,9 @@
     <Content Include="Views\FilmOverzicht\Index.cshtml" />
     <Content Include="Views\FilmOverzicht\DagProgramma.cshtml" />
     <Content Include="Views\FilmOverzicht\AddImage.cshtml" />
-    <Content Include="Views\FilmOverzicht\DetailFimpage.cshtml" />
+    <Content Include="Views\FilmOverzicht\DetailFilmpage.cshtml" />
+    <Content Include="Views\Restaurant\DetailRestaurantpage.cshtml" />
+    <Content Include="Views\Special\DetailRestaurantpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
