@@ -11,7 +11,7 @@ using System.Web.UI;
 
 namespace IHFF_V2.Repositories
 {
-    public class FilmRepository
+    public class FilmRepository : IFilmRepository
     {
         private ihffContext ctx = new ihffContext();
 
@@ -84,6 +84,11 @@ namespace IHFF_V2.Repositories
             ctx.Entry(WaarHetPlaatjeMoet).State = EntityState.Modified;
             ctx.SaveChanges();
 
+        }
+
+        public Event GetFilm(int Id)
+        {
+                return ctx.Events.SingleOrDefault(a => a.Id == Id);
         }
     }
 }
