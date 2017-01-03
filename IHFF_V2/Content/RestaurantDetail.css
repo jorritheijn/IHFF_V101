@@ -2,7 +2,7 @@
     float: right;
     }
 
-#filminfo {
+#Restaurantinfo {
     list-style-type: none;
     margin-top: 20px;
     padding: 0;
@@ -28,6 +28,3 @@ input {
   margin: 4px;
   color: salmon;
 }
-
-
-

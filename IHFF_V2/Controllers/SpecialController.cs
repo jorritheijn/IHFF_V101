@@ -21,7 +21,7 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
-        public ActionResult DetailRestaurantpage(int Id = 3)
+        public ActionResult DetailSpecialpage(int Id = 3)
         {
             DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpecial(Id);
 
