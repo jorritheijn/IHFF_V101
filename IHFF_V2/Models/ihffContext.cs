@@ -12,5 +12,11 @@ namespace IHFF_V2.Models
         public ihffContext() : base("ihffCon") { }
         public DbSet<Event> Events { get; set; }
         public DbSet<Film> Films { get; set; }
+
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Special> Specials { get; set; }
+        public DbSet<Cultuur> Cultuur { get; set; }
+
+
     }
 }

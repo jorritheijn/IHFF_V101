@@ -15,6 +15,8 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
+        //all actions with films are done via a FilmRepository
+        private IFilmRepository filmrepository = new FilmRepository();
 
         public ActionResult Index(string searchString, string dag)
         {
@@ -90,9 +92,11 @@ namespace IHFF_V2.Controllers
         }
 
 
-        public ActionResult DetailFimpage()
+        public ActionResult DetailFimpage(int Id = 3)
         {
-            return View();
+            DetailFilmViewModel FilmDetail = filmrepository.GetFilm(Id);
+
+            return View(FilmDetail);
         }
 
 

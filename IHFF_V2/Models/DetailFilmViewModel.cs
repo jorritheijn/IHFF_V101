@@ -7,7 +7,12 @@ namespace IHFF_V2.Models
 {
     public class DetailFilmViewModel
     {
-        public string Titel { get; set; }
+        //A model that combines two models in one to pass it to one view.
+        public Event Event { get; set; }
+        public Film Film { get; set; }
+
+
+       /* public string Titel { get; set; }
         public Byte[] Poster { get; set; }
         public string Omschrijving { get; set; }
         public DateTime Tijd { get; set; }
@@ -23,6 +28,6 @@ namespace IHFF_V2.Models
             this.Tijd = Tijd;
             this.Cast = Cast;
             this.Director = Director;
-        }
+        }*/
     }
 }

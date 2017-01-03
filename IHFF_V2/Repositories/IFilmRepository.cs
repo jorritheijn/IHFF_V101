@@ -12,6 +12,6 @@ namespace IHFF_V2.Repositories
         IEnumerable<Event> FilmsOpZoekWoord(string zoekwoord, IEnumerable<Event> HuidgeSelectie);
         IEnumerable<Event> FilmsOpDag(string dag);
         void AddPicture(byte[] imageData, int Id);
-        Event GetFilm(int Id);
+        DetailFilmViewModel GetFilm(int Id);
     }
 }

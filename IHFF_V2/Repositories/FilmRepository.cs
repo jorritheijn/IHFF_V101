@@ -86,9 +86,19 @@ namespace IHFF_V2.Repositories
 
         }
 
-        public Event GetFilm(int Id)
+        //method that gives one film from two tablel/models
+        public DetailFilmViewModel GetFilm(int Id)
         {
-                return ctx.Events.SingleOrDefault(a => a.Id == Id);
+            DetailFilmViewModel DetailedFilmModel = new DetailFilmViewModel();
+
+            //get a specific filmevent with given id from filmoverviewe
+            DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
+
+            //get a specific film with eventid
+            DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.Id == DetailedFilmModel.Event.Id);
+
+            //return a model with two models within it
+            return DetailedFilmModel;
         }
     }
 }

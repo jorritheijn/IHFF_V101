@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using IHFF_V2.Models;
 using System.Web.Mvc;
+using IHFF_V2.Repositories;
 
 namespace IHFF_V2.Controllers
 {
@@ -11,6 +12,8 @@ namespace IHFF_V2.Controllers
     {
         //
         // GET: /Special/
+        //all actions with films are done via a FilmRepository
+        private IspecialRepository SpecialRepository = new SpecialRepository();
 
         public ActionResult Index(int Id)
         {
@@ -18,12 +21,11 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
-        public ActionResult detailpage()
+        public ActionResult DetailRestaurantpage(int Id = 3)
         {
-            // laad Special
-            //IEnumerable<DetailSpecialViewModel> Special = 
+            DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpecial(Id);
 
-            return View();
+            return View(SpecialDetail);
         }
 
     }

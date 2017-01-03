@@ -1,12 +1,13 @@
-﻿using System;
+﻿using IHFF_V2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace IHFF_V2.Repositories
 {
-    interface ISpecialRepository
+    interface IspecialRepository
     {
-        //Film GetSpecial(int id);
+        DetailSpecialViewModel GetSpecial(int Id);
     }
 }
