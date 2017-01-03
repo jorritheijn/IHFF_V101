@@ -12,22 +12,24 @@ namespace IHFF_V2.Models
         public Film Film { get; set; }
 
 
+
        /* public string Titel { get; set; }
         public Byte[] Poster { get; set; }
         public string Omschrijving { get; set; }
         public DateTime Tijd { get; set; }
         public string Cast { get; set; }
         public string Director { get; set; }
+        */
 
         //constructor
-        public DetailFilmViewModel(string Titel, Byte[] Poster, string Omschrijving, DateTime Tijd, string Cast, string Director)
+        public DetailFilmViewModel(Event Event, Film Film)
         {
-            this.Titel = Titel;
-            this.Poster = Poster;
-            this.Omschrijving = Omschrijving;
-            this.Tijd = Tijd;
-            this.Cast = Cast;
-            this.Director = Director;
-        }*/
+            this.Event = Event;
+            this.Film = Film;
+        }
+
+        public DetailFilmViewModel()
+        {
+        }
     }
 }

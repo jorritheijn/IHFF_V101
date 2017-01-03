@@ -92,7 +92,7 @@ namespace IHFF_V2.Controllers
         }
 
 
-        public ActionResult DetailFimpage(int Id = 3)
+        public ActionResult DetailFilmpage(int Id)
         {
             DetailFilmViewModel FilmDetail = filmrepository.GetFilm(Id);
 
