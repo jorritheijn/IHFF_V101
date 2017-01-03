@@ -48,7 +48,7 @@ h2 {
 }
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1050px) {
     #Filters {
       position:absolute;
       top:50px;

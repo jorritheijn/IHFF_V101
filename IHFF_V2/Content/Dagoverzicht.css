@@ -4,20 +4,33 @@
 }
 
 #filminfo {
-    background-color:green;
-    height:300px;
-
+    background-color:#35434C;
+    height:240px;
+    border-radius:20px;
+    color:white;
+    
 }
 
 #filminfo img {
     float:left;
+    margin-right:20px;
+    border-radius:20px 0px 0px 20px;
     }
 
-#fil
-
-
-#filminfo .titel {font-size:25px;
-                  
+    #filminfo .locatie {
+        font-style:italic;
     }
 
+#filminfo .titel {
+    font-size:25px;                  
+    }
+
+#filminfo p {
+    font-family:Calibri;
+    width:800px;
+    position:relative;
+    top:20px;
+    
+    
+}
 
