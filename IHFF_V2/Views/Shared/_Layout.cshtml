@@ -5,6 +5,8 @@
         <title>@ViewBag.Title - IHFF</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="~/Content/Js/PlusMinus.js"></script>
+
         @Styles.Render("~/Content/css")
 
             @RenderSection("Styles", required: false)
@@ -43,6 +45,7 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
     </body>
 </html>

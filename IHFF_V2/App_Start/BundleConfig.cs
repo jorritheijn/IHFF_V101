@@ -38,8 +38,10 @@ namespace IHFF_V2
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Content/Js/Slider.js"));
+                "~/Content/Js/Slider.js",
+                "~/Content/Js/PlusMinus.js"));
         }
     }
 }
