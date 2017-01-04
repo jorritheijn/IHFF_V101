@@ -8,7 +8,6 @@ namespace IHFF_V2.Repositories
 {
     interface IRestaurantRepository
     {
-        //getrestaurant
-        Restaurant GetRestaurant(int Id);
+        DetailRestaurantViewModel GetRestaurant(int Id);
     }
 }

@@ -188,6 +188,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Controllers\SpecialController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,6 +210,9 @@
     <Compile Include="Models\Cultuur.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DetailFilmViewModel.cs" />
+    <Compile Include="Models\DetailRestaurantViewModel.cs" />
+    <Compile Include="Models\DetailSpecialViewModel.cs" />
     <Compile Include="Models\Event.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
@@ -253,10 +258,22 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
+    <Compile Include="Repositories\IFilmRepository.cs" />
+    <Compile Include="Repositories\IRestaurantRepository.cs" />
+    <Compile Include="Repositories\ISpecialRepository.cs" />
+    <Compile Include="Repositories\RestaurantRepository.cs" />
+    <Compile Include="Repositories\SpecialRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dagoverzicht.css" />
+    <Content Include="Content\DetailSpecial.css" />
+    <Content Include="Content\FilmDetail.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\Js\PlusMinus.js" />
     <Content Include="Content\Js\Slider.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -312,7 +329,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\RestaurantDetail.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\ihffDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -321,7 +340,6 @@
     <Content Include="Models\ihffDataModel.edmx.diagram">
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\logo.png" />
     <Content Include="Models\ihffDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -333,8 +351,20 @@
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
       <LastGenOutput>ihffDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
@@ -389,6 +419,9 @@
     <Content Include="Views\FilmOverzicht\Index.cshtml" />
     <Content Include="Views\FilmOverzicht\DagProgramma.cshtml" />
     <Content Include="Views\FilmOverzicht\AddImage.cshtml" />
+    <Content Include="Views\FilmOverzicht\DetailFilmpage.cshtml" />
+    <Content Include="Views\Restaurant\DetailRestaurantpage.cshtml" />
+    <Content Include="Views\Special\DetailSpecialpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

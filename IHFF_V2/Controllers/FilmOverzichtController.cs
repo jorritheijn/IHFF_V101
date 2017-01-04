@@ -15,10 +15,12 @@ namespace IHFF_V2.Controllers
         //
         // GET: /FilmOverzicht/
 
-            
+        //all actions with films are done via a FilmRepository
+        private IFilmRepository filmrepository = new FilmRepository();
+
         public ActionResult Index(string searchString, string dag)
         {
-            
+
             //Default
             //Geselecteerde events zijn de events die we in de view willen weergeven
             IEnumerable<Event> geselecteerdeEvents = new FilmRepository().AlleFilmsEnkel;
@@ -29,19 +31,19 @@ namespace IHFF_V2.Controllers
                 //verwijst door naar ActionResult DagProgramma hieronder. 
                 return RedirectToAction("DagProgramma", new { dag = dag });
             }
-            
+
             // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
-                geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString,geselecteerdeEvents);                     
+                geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, geselecteerdeEvents);
             }
 
             return View(geselecteerdeEvents);
         }
 
         //Als er op een DagProgramma
-     
+
         public ActionResult DagProgramma(string dag, string searchString)
         {
             IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
@@ -50,7 +52,7 @@ namespace IHFF_V2.Controllers
             {
                 GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, GefilterdeEvents);
             }
-            ViewBag.Dag = dag; 
+            ViewBag.Dag = dag;
             return View(GefilterdeEvents);
         }
 
@@ -84,20 +86,25 @@ namespace IHFF_V2.Controllers
                 {
                     imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
                     filmrepo.AddPicture(imageData, Id);
-                }                
+                }
             }
             return View();
-
-
-
-
-
-
-
-
-
-
-
         }
+
+
+        public ActionResult DetailFilmpage(int Id)
+        {
+            DetailFilmViewModel FilmDetail = filmrepository.GetFilm(Id);
+
+            return View(FilmDetail);
+        }
+
+
+
+
+
+
+
     }
 }
+

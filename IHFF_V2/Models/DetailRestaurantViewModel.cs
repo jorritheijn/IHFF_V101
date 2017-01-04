@@ -7,18 +7,8 @@ namespace IHFF_V2.Models
 {
     public class DetailRestaurantViewModel
     {
-        public string Titel { get; set; }
-        public string Poster { get; set; }
-        public string Omschrijving { get; set; }
-        public DateTime OpeningsTijd { get; set; }
-
-
-        public DetailRestaurantViewModel(string Titel, string Poster, string Omschrijving, DateTime OpeningsTijd)
-        {
-            this.Titel = Titel;
-            this.Poster = Poster;
-            this.Omschrijving = Omschrijving;
-            this.OpeningsTijd = OpeningsTijd;
-        }
+        //A model that combines two models in one to pass it to one view.
+        public Event Event { get; set; }
+        public Restaurant Restaurant { get; set; }
     }
 }

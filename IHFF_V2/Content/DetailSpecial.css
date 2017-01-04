@@ -1,0 +1,33 @@
+﻿img {
+    float: right;
+    }
+
+#Specialinfo {
+    list-style-type: none;
+    margin-top: 20px;
+    padding: 0;
+    overflow: hidden;
+}
+
+h2 {
+    margin-top: 0;
+
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+button {
+  margin: 4px;
+  cursor: pointer;
+}
+input {
+  text-align: center;
+  width: 40px;
+  margin: 4px;
+  color: salmon;
+}
+
+
+

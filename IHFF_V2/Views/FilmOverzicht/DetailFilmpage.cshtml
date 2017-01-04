@@ -1,0 +1,91 @@
+﻿@model IHFF_V2.Models.DetailFilmViewModel
+@using IHFF_V2
+
+@{
+    ViewBag.Title = "DetailFilmpage";
+}
+@{ var e = Model.Event; var f = Model.Film; } <!-- twee model variabele aangemaakt -->
+
+@section Styles {
+    <link href="@Url.Content("~/Content/FilmDetail.css")" rel="stylesheet" />
+}
+ 
+<environment names="Development">
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/FilmDetail.css"/>
+</environment>
+<environment names="Staging,Production">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
+
+<div class="fill">
+
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-md-4">
+        
+        @if (e.Poster != null)
+            {
+        <img src="@Blobmanager.ImageSource(e.Poster)" width="340" height="484"/>
+    }
+
+    else
+    {
+        <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="340" , height="484"/>
+    }
+    
+  </div>
+
+    <div class="col-xs-6 col-md-4">
+    <h2>@e.Titel</h2>
+
+    @e.Beschrijving
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#plus').click(function () {
+                    $('#waarde').val($('#waarde').val() + 1);
+                });
+
+                $('#min').click(function () {
+                    $('#waarde').val($('#waarde').val() - 1);
+                });
+            });
+        </script>
+
+        
+        <script src="~/Content/Js/PlusMinus.js"></script>
+        <div id=field1>
+            <button type="button" id="sub" class=sub>-</button>
+            <input type="text" id="1" value=0 class=field>
+            <button type="button" id="add" class=add>+</button>
+        </div>
+
+        <input type="submit" value="Reserveer" />
+        
+    
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+    
+        <ul id="filminfo">
+            <li>Acteurs : @f.Acteur</li>
+            <li>Regisseur: @f.Regisseur</li>
+            <li>Gemaakt in: @f.Jaar</li>
+            <li>Locatie: @e.Locatie</li>
+        </ul>
+
+
+    
+    
+    
+    
+    
+    </div>
+
+</div>

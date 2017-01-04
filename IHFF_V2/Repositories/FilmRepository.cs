@@ -11,7 +11,7 @@ using System.Web.UI;
 
 namespace IHFF_V2.Repositories
 {
-    public class FilmRepository
+    public class FilmRepository : IFilmRepository
     {
         private ihffContext ctx = new ihffContext();
 
@@ -84,6 +84,22 @@ namespace IHFF_V2.Repositories
             ctx.Entry(WaarHetPlaatjeMoet).State = EntityState.Modified;
             ctx.SaveChanges();
 
+        }
+
+        //method that gives one film from two tablel/models
+        public DetailFilmViewModel GetFilm(int Id)
+        {
+            DetailFilmViewModel DetailedFilmModel = new DetailFilmViewModel();
+
+            //get a specific filmevent with given id from filmoverviewe
+            DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
+
+
+            //get a specific film with eventid
+            DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
+
+            //return a model with two models within it
+            return DetailedFilmModel;
         }
     }
 }
