@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Afbeelding">
           <Key>
             <PropertyRef Name="Id" />
@@ -59,6 +59,7 @@
           <Property Name="Type" Type="varchar" MaxLength="50" />
           <Property Name="Tijd" Type="datetime" />
           <Property Name="Afbeelding" Type="int" />
+          <Property Name="Prijs" Type="float" />
         </EntityType>
         <EntityType Name="Film">
           <Key>
@@ -107,7 +108,9 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Soort" Type="varchar" MaxLength="50" />
-          <Property Name="OpeningsTijd" Type="varchar" MaxLength="200" />
+          <Property Name="OpeningsTijd" Type="time" Precision="7" />
+          <Property Name="SluitingsTijd" Type="time" Precision="7" />
+          <Property Name="Aantal" Type="int" />
           <Property Name="EventId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Slide">
@@ -126,6 +129,7 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Spreker" Type="varchar" MaxLength="50" />
+          <Property Name="Aantal" Type="int" />
           <Property Name="EventId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -403,8 +407,7 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
             <End Role="Special" EntitySet="Special" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -478,6 +481,7 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <NavigationProperty Name="Films" Relationship="Self.FK_Film_Event" FromRole="Event" ToRole="Film" />
           <NavigationProperty Name="Restaurants" Relationship="Self.FK_Restaurant_Event" FromRole="Event" ToRole="Restaurant" />
           <NavigationProperty Name="Specials" Relationship="Self.FK_Special_Event" FromRole="Event" ToRole="Special" />
+          <Property Name="Prijs" Type="Double" />
         </EntityType>
         <EntityType Name="Film">
           <Key>
@@ -515,9 +519,11 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Soort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OpeningsTijd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningsTijd" Type="String" />
           <Property Name="EventId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Restaurant_Event" FromRole="Restaurant" ToRole="Event" />
+          <Property Name="SluitingsTijd" Type="Time" Precision="7" />
+          <Property Name="Aantal" Type="Int32" />
         </EntityType>
         <EntityType Name="Slide">
           <Key>
@@ -542,6 +548,7 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <Property Name="Spreker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EventId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Special_Event" FromRole="Special" ToRole="Event" />
+          <Property Name="Aantal" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -881,6 +888,7 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="Model.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Prijs" ColumnName="Prijs" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Titel" ColumnName="Titel" />
                 <ScalarProperty Name="Locatie" ColumnName="Locatie" />
@@ -926,6 +934,8 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <EntitySetMapping Name="Restaurants">
             <EntityTypeMapping TypeName="Model.Restaurant">
               <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="Aantal" ColumnName="Aantal" />
+                <ScalarProperty Name="SluitingsTijd" ColumnName="SluitingsTijd" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Soort" ColumnName="Soort" />
                 <ScalarProperty Name="OpeningsTijd" ColumnName="OpeningsTijd" />
@@ -947,6 +957,7 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <EntitySetMapping Name="Specials">
             <EntityTypeMapping TypeName="Model.Special">
               <MappingFragment StoreEntitySet="Special">
+                <ScalarProperty Name="Aantal" ColumnName="Aantal" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Spreker" ColumnName="Spreker" />
                 <ScalarProperty Name="EventId" ColumnName="EventId" />

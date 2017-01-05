@@ -33,6 +33,7 @@ namespace IHFF_V2.Models
         public string Type { get; set; }
         public Nullable<System.DateTime> Tijd { get; set; }
         public Nullable<int> Afbeelding { get; set; }
+        public Nullable<double> Prijs { get; set; }
     
         public virtual Afbeelding Afbeelding1 { get; set; }
         public virtual ICollection<BestelRegel> BestelRegels { get; set; }
