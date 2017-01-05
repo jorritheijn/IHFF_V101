@@ -186,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Blobmanager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Models\BestelRegel.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CombiDeal.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
@@ -422,6 +424,7 @@
     <Content Include="Views\FilmOverzicht\DetailFilmpage.cshtml" />
     <Content Include="Views\Restaurant\DetailRestaurantpage.cshtml" />
     <Content Include="Views\Special\DetailSpecialpage.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
