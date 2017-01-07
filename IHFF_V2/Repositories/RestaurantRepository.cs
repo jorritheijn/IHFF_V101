@@ -23,5 +23,13 @@ namespace IHFF_V2.Repositories
             //return a model with two models within it
             return DetailedRestaurantModel;
         }
+        public IEnumerable<Event> AlleRestaurants
+        {
+            get
+            {
+                IEnumerable<Event> allerestaurants = ctx.Events.Where(restaurant => restaurant.Type.Equals("Restaurant"));
+                return allerestaurants;
+            }
+        }
     }
 }

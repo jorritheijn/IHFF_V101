@@ -1,4 +1,6 @@
 ﻿@using IHFF_V2.Models;
+@using IHFF_V2;
+@model  List<Event>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -22,6 +24,25 @@
     <div class="genre-block">
         <div class="genre">
             <div>Food</div>
+            @Model[0].Titel
+            @Model[0].Poster
+            @Model[1].Titel
+            @Model[1].Poster
+            
+        </div>
+        <div class="genre">
+            <div>Film</div>
+            @Model[2].Titel
+            @Model[2].Poster
+            @Model[3].Titel
+            @Model[3].Poster
+        </div>
+        <div class="genre">
+            <div>Culture</div>
+            @Model[4].Titel
+            @Model[4].Poster
+            @Model[5].Titel
+            @Model[5].Poster
         </div>
     </div>
 </div>
