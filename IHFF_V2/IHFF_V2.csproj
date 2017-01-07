@@ -186,10 +186,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Blobmanager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\SpecialController.cs" />
+    <Compile Include="Controllers\SpecialOverzichtController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -204,6 +208,7 @@
     <Compile Include="Models\BestelRegel.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CombiDeal.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
@@ -422,6 +427,9 @@
     <Content Include="Views\FilmOverzicht\DetailFilmpage.cshtml" />
     <Content Include="Views\Restaurant\DetailRestaurantpage.cshtml" />
     <Content Include="Views\Special\DetailSpecialpage.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\SpecialOverzicht\Index.cshtml" />
+    <Content Include="Views\Food\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,26 @@
+﻿@model IHFF_V2.Models.CartItem
+
+@using IHFF_V2.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Shopping Cart</h2>
+
+<!--Display all items in the cart-->
+@foreach (CartItem ci in (List<CartItem>)Session["cart"])
+{
+    //TODO: Proper formatting
+    <tr>
+        <td>@ci.Name</td>
+        <td>@ci.Time</td>
+        <td>@ci.Location</td>
+        <td>€@(ci.Price * ci.Quantity)</td>
+        <td>@ci.Quantity</td>
+        <td>@Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)</td>
+        <td>@Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)</td>
+        <td>@Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)</td>
+    </tr>
+    <br />
+}
