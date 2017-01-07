@@ -325,7 +325,6 @@ C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\ko\System.Spatial.resources.d
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\ru\System.Spatial.resources.dll
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\obj\Debug\IHFF_V2.csprojResolveAssemblyReference.cache
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\obj\Debug\IHFF_V2.dll
 C:\Users\Jorrit\Source\Repos\IHFF_V101\IHFF_V2\obj\Debug\IHFF_V2.pdb
 C:\Users\tim 4\Desktop\GitHub\IHFF_V101\IHFF_V2\bin\IHFF_V2.dll.config

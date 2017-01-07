@@ -54,6 +54,7 @@
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Tijd" Type="datetime" />
     <Property Name="Afbeelding" Type="int" />
+    <Property Name="Prijs" Type="float" />
   </EntityType>
   <EntityType Name="Film">
     <Key>
@@ -102,7 +103,9 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Soort" Type="varchar" MaxLength="50" />
-    <Property Name="OpeningsTijd" Type="varchar" MaxLength="200" />
+    <Property Name="OpeningsTijd" Type="time" Precision="7" />
+    <Property Name="SluitingsTijd" Type="time" Precision="7" />
+    <Property Name="Aantal" Type="int" />
     <Property Name="EventId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Slide">
@@ -121,6 +124,7 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Spreker" Type="varchar" MaxLength="50" />
+    <Property Name="Aantal" Type="int" />
     <Property Name="EventId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">

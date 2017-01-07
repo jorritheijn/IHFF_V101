@@ -51,6 +51,7 @@
     <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="Model.Event">
         <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Titel" ColumnName="Titel" />
           <ScalarProperty Name="Locatie" ColumnName="Locatie" />
@@ -96,6 +97,8 @@
     <EntitySetMapping Name="Restaurants">
       <EntityTypeMapping TypeName="Model.Restaurant">
         <MappingFragment StoreEntitySet="Restaurant">
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
+          <ScalarProperty Name="SluitingsTijd" ColumnName="SluitingsTijd" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Soort" ColumnName="Soort" />
           <ScalarProperty Name="OpeningsTijd" ColumnName="OpeningsTijd" />
@@ -117,6 +120,7 @@
     <EntitySetMapping Name="Specials">
       <EntityTypeMapping TypeName="Model.Special">
         <MappingFragment StoreEntitySet="Special">
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Spreker" ColumnName="Spreker" />
           <ScalarProperty Name="EventId" ColumnName="EventId" />
