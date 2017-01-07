@@ -108,7 +108,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Soort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OpeningsTijd" Type="String" />
+    <Property Name="OpeningsTijd" Type="Time" />
     <Property Name="EventId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Event" Relationship="Self.FK_Restaurant_Event" FromRole="Restaurant" ToRole="Event" />
     <Property Name="SluitingsTijd" Type="Time" Precision="7" />

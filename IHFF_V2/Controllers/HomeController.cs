@@ -33,7 +33,7 @@ namespace IHFF_V2.Controllers
             getoondeEvents.Add(allefilms[rnd.Next(0, allefilms.Count)]);
             while (getoondeEvents[2] == getoondeEvents[3])
             {
-                getoondeEvents[1] = allefilms[rnd.Next(0, allefilms.Count)];
+                getoondeEvents[3] = allefilms[rnd.Next(0, allefilms.Count)];
             }
             getoondeEvents.Add(allespecials[rnd.Next(0, allespecials.Count)]);
             getoondeEvents.Add(allespecials[rnd.Next(0, allespecials.Count)]);

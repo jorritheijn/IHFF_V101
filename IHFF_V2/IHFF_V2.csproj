@@ -342,6 +342,10 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ihffDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\film-128.png" />
+    <Content Include="Images\icon-arts.png" />
+    <Content Include="Images\icon-nutrition-hi.png" />
+    <Content Include="Images\Movie_icon.svg.png" />
     <Content Include="Models\ihffDataModel.edmx.diagram">
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
     </Content>

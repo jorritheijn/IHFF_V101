@@ -23,26 +23,74 @@
 <div class="genre-wrapper">
     <div class="genre-block">
         <div class="genre">
-            <div>Food</div>
-            @Model[0].Titel
-            @Model[0].Poster
-            @Model[1].Titel
-            @Model[1].Poster
+            <div class="genre-header">Food</div>
+            <img src="~/Images/icon-nutrition-hi.png" alt="food icon" height="75" width="75" />
+            <div class="event-titel">@Html.ActionLink(Model[0].Titel, "DetailRestaurantpage", "Restaurant")</div><br />
+            @if (Model[0].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[0].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
+            }
+            <br /><br />
+            <div class="event-titel">@Html.ActionLink(Model[1].Titel, "DetailRestaurantpage", "Restaurant")</div><br />
+            @if (Model[1].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[1].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
+            }
             
         </div>
         <div class="genre">
-            <div>Film</div>
-            @Model[2].Titel
-            @Model[2].Poster
-            @Model[3].Titel
-            @Model[3].Poster
+            <div class="genre-header">Film</div>
+            <img src="~/Images/film-128.png" alt="film icon" height="75" width="75"/>
+            <div class="event-titel">@Html.ActionLink(Model[2].Titel, "DetailFilmpage", "FilmOverzicht")</div><br />
+            @if (Model[2].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[2].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
+            }
+            <br /><br />
+            <div class="event-titel">@Html.ActionLink(Model[3].Titel, "DetailFilmpage", "FilmOverzicht")</div><br />
+            @if (Model[3].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[3].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170"  height="242" />
+            }
         </div>
         <div class="genre">
-            <div>Culture</div>
-            @Model[4].Titel
-            @Model[4].Poster
-            @Model[5].Titel
-            @Model[5].Poster
+            <div class="genre-header">Specials</div>
+            <img src="~/Images/icon-arts.png" alt="culture icon" height="75" width="75" />
+            <div class="event-titel">@Html.ActionLink(Model[4].Titel, "DetailSpecialpage", "Special")</div><br />
+            @if (Model[4].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[4].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
+            }
+            <br /><br />
+            <div class="event-titel">@Html.ActionLink(Model[5].Titel, "DetailSpecialpage", "Special")</div><br />
+            @if (Model[5].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[5].Poster)" width="170" height="242" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
+            }
         </div>
     </div>
 </div>
