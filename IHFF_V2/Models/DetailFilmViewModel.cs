@@ -10,22 +10,14 @@ namespace IHFF_V2.Models
         //A model that combines two models in one to pass it to one view.
         public Event Event { get; set; }
         public Film Film { get; set; }
-
-
-
-       /* public string Titel { get; set; }
-        public Byte[] Poster { get; set; }
-        public string Omschrijving { get; set; }
-        public DateTime Tijd { get; set; }
-        public string Cast { get; set; }
-        public string Director { get; set; }
-        */
+        public List<string> Tijd { get; set; }
 
         //constructor
-        public DetailFilmViewModel(Event Event, Film Film)
+        public DetailFilmViewModel(Event Event, Film Film, List<string> Tijd)
         {
             this.Event = Event;
             this.Film = Film;
+            this.Tijd = Tijd;
         }
 
         public DetailFilmViewModel()
