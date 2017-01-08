@@ -74,24 +74,21 @@ footer{
             background-color: #2b343a;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 0px;
             text-align: center;
             overflow: hidden;
-            padding-top:20px;
         }
         
         .image-holder
         {
             width: 2400px;
-            background-color: red;
             height: 400px;
             clear: both;
             position: relative;
-            
             -webkit-transition: left 2s;
             -moz-transition: left 2s;
             -o-transition: left 2s;
-            transition: left 2s;
+            transition: left 2s;          
+            padding-top:20px;
         }
         
         .slider-image
@@ -120,7 +117,7 @@ footer{
         .button-holder
         {
             position: relative;
-            top: -20px;
+            top: -40px;
         }
         
         .slider-change
@@ -169,4 +166,15 @@ footer{
 }
 .genre-icon{
     padding-bottom:10px;
+}
+.winkelwagen a{
+    background: url(../Images/basket-icon.png) no-repeat top left;
+     display: block;
+     text-indent: -9999px; /* hides the link text */
+}
+.winkelwagen-container{
+     width:50px !important;
+}
+.invisible-straightener{
+    width:50px !important;
 }
