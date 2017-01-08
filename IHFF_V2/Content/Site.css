@@ -41,7 +41,7 @@ body{
     margin:0;
 }
 footer{
-    background-color:#35434C;
+    background-color:#2b343a;
     color:white;
     font-family:Calibri;
     text-align:center;
@@ -129,7 +129,7 @@ footer{
             height: 10px;
             width: 10px;
             border-radius: 5px;
-            background-color: brown;
+            background-color: darkgrey;
         }
 .genre-wrapper{
     width:100%;
@@ -157,10 +157,16 @@ footer{
 }
 .event-titel{
     height:20px;
-    color: white; 
-    text-decoration:none;
-    font-family:Calibri;
 }
 .content-wrapper{
     background-color:#2b343a;
+}
+.event-titel a{
+    color: white; 
+    text-decoration:none;
+    font-family:Calibri;
+    border-bottom:1px solid white;
+}
+.genre-icon{
+    padding-bottom:10px;
 }
