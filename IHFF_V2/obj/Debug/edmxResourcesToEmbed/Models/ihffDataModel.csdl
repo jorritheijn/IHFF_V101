@@ -70,6 +70,7 @@
     <NavigationProperty Name="Films" Relationship="Self.FK_Film_Event" FromRole="Event" ToRole="Film" />
     <NavigationProperty Name="Restaurants" Relationship="Self.FK_Restaurant_Event" FromRole="Event" ToRole="Restaurant" />
     <NavigationProperty Name="Specials" Relationship="Self.FK_Special_Event" FromRole="Event" ToRole="Special" />
+    <Property Name="Prijs" Type="Double" />
   </EntityType>
   <EntityType Name="Film">
     <Key>
@@ -107,9 +108,11 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Soort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="OpeningsTijd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OpeningsTijd" Type="Time" />
     <Property Name="EventId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Event" Relationship="Self.FK_Restaurant_Event" FromRole="Restaurant" ToRole="Event" />
+    <Property Name="SluitingsTijd" Type="Time" Precision="7" />
+    <Property Name="Aantal" Type="Int32" />
   </EntityType>
   <EntityType Name="Slide">
     <Key>
@@ -134,6 +137,7 @@
     <Property Name="Spreker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EventId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Event" Relationship="Self.FK_Special_Event" FromRole="Special" ToRole="Event" />
+    <Property Name="Aantal" Type="Int32" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

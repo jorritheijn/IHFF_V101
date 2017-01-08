@@ -87,19 +87,47 @@ namespace IHFF_V2.Repositories
         }
 
         //method that gives one film from two tablel/models
-        public DetailFilmViewModel GetFilm(int Id)
+        public DetailFilmViewModel GetDetailedFilm(int Id)
         {
             DetailFilmViewModel DetailedFilmModel = new DetailFilmViewModel();
 
             //get a specific filmevent with given id from filmoverviewe
             DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
-
             //get a specific film with eventid
             DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
 
+            //get all the times from one movie
+            DetailedFilmModel.Tijd = (GetFilmTijd(DetailedFilmModel));
+
             //return a model with two models within it
             return DetailedFilmModel;
+        }
+
+        public List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
+        {
+            IEnumerable<Event> allspecificevents = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel);
+            List<string> tijden = new List<string>();
+
+            foreach (var specificevent in allspecificevents)
+            {
+                if (specificevent.Tijd != null)//add nothing if there is no date
+                {
+                    string tijd = DateTimeToStringStime(specificevent.Tijd);
+                    tijden.Add(tijd);
+                   
+                }
+            }
+            return tijden;
+        }
+
+        //returns date coverted to string time/day
+        public string DateTimeToStringStime(DateTime? tijd)
+        {
+            var shortStringTime = tijd.Value.ToShortTimeString();
+            var shortStringDay = tijd.Value.DayOfWeek.ToString();
+            string tijDag = shortStringTime + " " + shortStringDay;
+            return tijDag;
         }
     }
 }
