@@ -12,10 +12,18 @@ namespace IHFF_V2.Controllers
     {
         public ActionResult Index()
         {
+            List<Event> getoondeEvents = GetRandomEvents();
+            return View(getoondeEvents);
+        }
+
+        private static List<Event> GetRandomEvents()
+        {
+            //get all events
             IEnumerable<Event> films = new FilmRepository().AlleFilms;
             IEnumerable<Event> restaurants = new RestaurantRepository().AlleRestaurants;
             IEnumerable<Event> specials = new SpecialRepository().AlleSpecials;
 
+            //zet alle events om in lists voor indexing
             List<Event> allefilms = films.ToList();
             List<Event> allerestaurants = restaurants.ToList();
             List<Event> allespecials = specials.ToList();
@@ -23,6 +31,7 @@ namespace IHFF_V2.Controllers
             List<Event> getoondeEvents = new List<Event>();
             Random rnd = new Random();
 
+            //random events selecteren
             getoondeEvents.Add(allerestaurants[rnd.Next(0, allerestaurants.Count)]);
             getoondeEvents.Add(allerestaurants[rnd.Next(0, allerestaurants.Count)]);
             while (getoondeEvents[0] == getoondeEvents[1])
@@ -41,7 +50,8 @@ namespace IHFF_V2.Controllers
             {
                 getoondeEvents[5] = allespecials[rnd.Next(0, allespecials.Count)];
             }
-            return View(getoondeEvents);
+
+            return getoondeEvents;
         }
 
         public ActionResult About()
