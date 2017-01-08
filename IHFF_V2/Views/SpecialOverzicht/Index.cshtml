@@ -1,0 +1,121 @@
+﻿@using IHFF_V2;
+@using IHFF_V2.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" />
+}
+
+<h2>Index</h2>
+@model  IEnumerable<Event>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+
+
+    <nav id="Filters">
+        @Html.ActionLink(linkText: "maandag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "maandag" }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "dinsdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "dinsdag" }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "woensdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "woensdag" }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "donderdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "donderdag" }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "vrijdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "vrijdag", }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "zaterdag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "zaterdag" }, htmlAttributes: null)
+
+
+        @Html.ActionLink(linkText: "zondag",
+    actionName: "Index",
+    controllerName: "FilmOverzicht",
+    routeValues: new
+    { Dag = "zondag" }, htmlAttributes: null)
+
+    </nav>
+
+
+    <section class="catalogus">
+        @foreach (var special in Model)
+        {
+
+            <section class="Filminfo">
+                @if (special.Poster != null)
+                {
+                    <img src="@Blobmanager.ImageSource(special.Poster)" width="170" height="242" />
+                }
+
+                else
+                {
+                    <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="170" , height="242" />
+                }
+
+                <ul>
+                    <li>
+                        @special.Titel
+                    </li>
+                    <li>
+                        @special.Locatie
+                    </li>
+                    <li>
+                        @special.Tijd.Value.DayOfWeek
+                    </li>
+                </ul>
+
+
+
+
+
+
+                @Html.ActionLink(linkText: "Meer Info",
+                                 actionName: "DetailSpecialpage",
+                             controllerName: "SpecialOverzicht",
+                            routeValues: new
+                            {
+                                Id = special.Id
+                            },
+            htmlAttributes: null)
+            </section>
+
+
+
+        }
+    </section>
+
+}
