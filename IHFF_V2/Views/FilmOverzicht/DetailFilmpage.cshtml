@@ -21,31 +21,29 @@
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </environment>
 
-<div class="fill">
-
-</div>
+<div class="fill">&nbsp;</div>
 
 <div class="row">
     <div class="col-xs-6 col-md-4">
 
         @if (e.Poster != null)
             {
-            <img src="@Blobmanager.ImageSource(e.Poster)" width="340" height="484" />
+            <img src="@Blobmanager.ImageSource(e.Poster)" width="272" height="387" />
         }
 
         else
         {
-            <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="340" , height="484" />
+            <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="272" , height="387" />
         }
 
     </div>
 
     <div class="col-xs-6 col-md-4">
-        <h2>@e.Titel</h2>
+        <h2 class="text-titel">@e.Titel</h2>
 
-        @e.Beschrijving
+        <p>@e.Beschrijving</p>
 
-        <select>
+        <select class="selectbox">
             @foreach (var tijd in Model.Tijd)
             {
                 <option value="@tijd">@tijd</option>
@@ -57,10 +55,10 @@
             <button type="button" id="sub" class=sub>-</button>
             <input type="text" id="1" value=0 class=field>
             <button type="button" id="add" class=add>+</button>
+            <input type="submit" value="Reserveer" class="reserveer" />
         </div>
 
-        <input type="submit" value="Reserveer" />
-
+        
 
     </div>
 
@@ -74,5 +72,15 @@
         </ul>
 
     </div>
+</div>
 
+
+<div class="recommend">
+    <h2 class="text-titel">Wat andere aanraden: </h2>
+</div>
+
+<div class="row">
+    <div class="col-md-4"><img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="200" , height="200" id="lostimg"/></div>
+    <div class="col-md-4"><img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="200" , height="200" id="lostimg"/></div>
+    <div class="col-md-4"><img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="200" , height="200" id="lostimg"/></div>
 </div>
