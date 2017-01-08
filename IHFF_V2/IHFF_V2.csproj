@@ -262,6 +262,7 @@
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
     <Compile Include="Repositories\IFilmRepository.cs" />
     <Compile Include="Repositories\IRestaurantRepository.cs" />
@@ -434,6 +435,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\SpecialOverzicht\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
+    <Content Include="Views\Cart\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

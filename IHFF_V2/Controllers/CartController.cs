@@ -45,7 +45,14 @@ namespace IHFF_V2.Controllers
         public ActionResult Delete(int id)
         {
             List<CartItem> cart = (List<CartItem>)Session["cart"];
-            cart.Remove(cart.First(c => c.Id == id));
+            try
+            {
+                cart.Remove(cart.First(c => c.Id == id));
+            }
+            catch(Exception e)
+            {
+                return View("Error");
+            }
             Session["cart"] = cart;
             return View("Index");
         }
@@ -70,6 +77,11 @@ namespace IHFF_V2.Controllers
                 Session["cart"] = cart;
             }
             return View("Index");
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }
