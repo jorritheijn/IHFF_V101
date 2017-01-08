@@ -11,12 +11,18 @@
 
 h2 {
     margin-top: 0;
-
+    color: white;
 }
 
 li{
     margin-bottom: 10px;
+    color: white;
 }
+
+p {
+    color: white;
+}
+
 
 button {
   margin: 4px;
@@ -28,3 +34,8 @@ input {
   margin: 4px;
   color: salmon;
 }
+
+fill {
+    background-color: #222C31;
+}
+

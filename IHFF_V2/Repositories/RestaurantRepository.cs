@@ -18,7 +18,7 @@ namespace IHFF_V2.Repositories
             DetailedRestaurantModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
             //get a specific film with eventid
-            DetailedRestaurantModel.Restaurant = ctx.Restaurants.SingleOrDefault(a => a.EventId == Id);
+            DetailedRestaurantModel.Restaurant = ctx.Restaurants.First(a => a.EventId == Id);
 
             //return a model with two models within it
             return DetailedRestaurantModel;
