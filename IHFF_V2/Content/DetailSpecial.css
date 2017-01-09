@@ -1,27 +1,39 @@
-﻿img {
+﻿img.Poster {
     float: right;
     }
 
-#Specialinfo {
+.actionlink{
+    color:white;
+}
+
+img.display {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    background-color: #999;
+    
+ }
+
+#filminfo {
     list-style-type: none;
     margin-top: 20px;
     padding: 0;
     overflow: hidden;
-}
-
-h2 {
-    margin-top: 0;
-
+    color: white;
 }
 
 li{
     margin-bottom: 10px;
+    color: white;
 }
 
 button {
   margin: 4px;
   cursor: pointer;
 }
+
 input {
   text-align: center;
   width: 40px;
@@ -29,5 +41,77 @@ input {
   color: salmon;
 }
 
+p{
+    color: white;
+}
+
+.fill{
+    background: #222C31;
+    height: 60px;
+}
+
+.recommend
+{
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+}
+
+.sub {
+  background: #a30000;
+  border-color: white;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 2.5px 10px 2.5px 10px;
+  text-decoration: none;
+}
+
+.sub:hover {
+  background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}
+
+.add {
+  background: #a30000;
+  border-color: white;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 2.5px 10px 2.5px 10px;
+  text-decoration: none;
+}
+
+.add:hover {
+  background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}
+
+.reserveer
+{
+    background: #a30000;
+  border-color: white;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 2.5px 70px 2.5px 2px;
+}
+
+.reserveer:hover {
+  background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}
+
+.selectbox{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 
 

@@ -187,6 +187,7 @@
     <Compile Include="Blobmanager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CultuurController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -262,8 +263,10 @@
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CultuurRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\FilmRepository.cs" />
+    <Compile Include="Repositories\ICultuurRepository.cs" />
     <Compile Include="Repositories\IFilmRepository.cs" />
     <Compile Include="Repositories\IRestaurantRepository.cs" />
     <Compile Include="Repositories\ISpecialRepository.cs" />
@@ -275,6 +278,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cultuur.css" />
     <Content Include="Content\Dagoverzicht.css" />
     <Content Include="Content\DetailSpecial.css" />
     <Content Include="Content\FilmDetail.css" />
@@ -440,6 +444,8 @@
     <Content Include="Views\SpecialOverzicht\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Cart\Error.cshtml" />
+    <Content Include="Views\Cultuur\Index.cshtml" />
+    <Content Include="Views\Cultuur\DetailedCultuurPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

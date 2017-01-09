@@ -1,0 +1,59 @@
+﻿img.Poster {
+    float: left;
+    }
+
+.actionlink{
+    color:white;
+}
+
+#musea.row 
+{
+    margin-bottom: 10px;
+}
+
+button {
+  margin: 4px;
+  cursor: pointer;
+}
+
+input {
+  text-align: center;
+  width: 40px;
+  margin: 4px;
+  color: salmon;
+}
+
+p{
+    color: white;
+}
+
+.fill{
+    background: #222C31;
+    height: 60px;
+}
+
+.recommend
+{
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+}
+
+.sub {
+  background: #a30000;
+  border-color: white;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 2.5px 10px 2.5px 10px;
+  text-decoration: none;
+}
+
+.sub:hover {
+  background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}
+
+

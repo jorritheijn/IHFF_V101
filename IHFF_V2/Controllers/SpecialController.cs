@@ -23,7 +23,7 @@ namespace IHFF_V2.Controllers
 
         public ActionResult DetailSpecialpage(int Id = 3)
         {
-            DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpecial(Id);
+            DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpesificSpecial(Id);
 
             return View(SpecialDetail);
         }

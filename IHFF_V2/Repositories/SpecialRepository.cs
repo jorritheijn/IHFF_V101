@@ -9,7 +9,7 @@ namespace IHFF_V2.Repositories
     public class SpecialRepository : IspecialRepository
     {
         private ihffContext ctx = new ihffContext();
-        public DetailSpecialViewModel GetSpecial(int Id)
+        public DetailSpecialViewModel GetSpesificSpecial(int Id)
         {
             DetailSpecialViewModel DetailedSpecialModel = new DetailSpecialViewModel();
 
@@ -19,8 +19,19 @@ namespace IHFF_V2.Repositories
             //get a specific film with eventid
             DetailedSpecialModel.Special = ctx.Specials.SingleOrDefault(a => a.EventId == Id);
 
+            //get RandomEvent
+            DetailedSpecialModel.RandomEvents = GetRandomEvents();
+
             //return a model with two models within it
             return DetailedSpecialModel;
+        }
+
+        //gets three random events from database
+        public IEnumerable<Event> GetRandomEvents()
+        {
+            IEnumerable<Event> RandomEvents = ctx.Events.Where(x => x.Type != "Special").OrderBy(r => Guid.NewGuid()).Take(3);
+
+            return RandomEvents;
         }
 
         public IEnumerable<Event> AlleSpecialsEnkel
