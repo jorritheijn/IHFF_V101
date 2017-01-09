@@ -2,7 +2,16 @@
     float: right;
     }
 
-img:
+img.display {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+    background-color: #999;
+    
+ }
+
 #filminfo {
     list-style-type: none;
     margin-top: 20px;
