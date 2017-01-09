@@ -1,6 +1,10 @@
-﻿img {
+﻿img.Poster {
     float: right;
     }
+
+.actionlink{
+    color:white;
+}
 
 img.display {
     display: table-cell;

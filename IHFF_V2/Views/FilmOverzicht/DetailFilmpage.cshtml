@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "DetailFilmpage";
 }
-@{ var e = Model.Event; var f = Model.Film; } <!-- twee model variabele aangemaakt -->
+@{ var e = Model.Event; var f = Model.Film;} <!-- twee model variabele aangemaakt -->
 
 @section Styles {
     <link href="@Url.Content("~/Content/FilmDetail.css")" rel="stylesheet" />
@@ -28,7 +28,7 @@
 
         @if (e.Poster != null)
             {
-            <img src="@Blobmanager.ImageSource(e.Poster)" width="272" height="387" />
+            <img class="Poster" src="@Blobmanager.ImageSource(e.Poster)" width="272" height="387" />
         }
 
         else
@@ -81,24 +81,41 @@
 
 <div class="row">
 
+    @foreach (var r in Model.RandomEvent)
+    {
     <div class="col-md-4">
     
 
 
-        <div class="center-blocker"><img class="center-block" src="http://placehold.it/350x150" /></div>
-    
-    </div>
+        <div class="center-blocker">
+        
+            <div class="actionlink">
+                @if (r.Type == "Restaurant")
+            {
+                @Html.ActionLink(r.Titel, "DetailRestaurantpage", "Restaurant", routeValues: new { Id = r.Id }, htmlAttributes: null)
+            }
+        </div>
 
-    <div class="col-md-4">
-    
-        <div class="center-blocker"><img class="center-block" src="http://placehold.it/350x150" /></div>
-    
-    </div>
+            <div class="actionlink">
+                @if (r.Type == "Special")
+                {
+                    @Html.ActionLink(r.Titel, "DetailSpecialpage", "Special", routeValues: new { Id = r.Id },  htmlAttributes: null)
+                }
+            </div>
 
-    <div class="col-md-4">
-    
-        <div class="center-blocker"><img class="center-block" src="http://placehold.it/350x150" /></div>
+            @if (r.Poster != null)
+            {
+
+            <img class="center-blocker" src="@Blobmanager.ImageSource(r.Poster)" width="200" height="200" />
+            }
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="200" , height="200" />
+            }
+
+        </div>
     
     </div>
+    }
 
 </div>

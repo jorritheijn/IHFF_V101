@@ -98,7 +98,9 @@ namespace IHFF_V2.Repositories
             DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
 
             //get all the times from one movie
-            DetailedFilmModel.Tijd = (GetFilmTijd(DetailedFilmModel));
+            DetailedFilmModel.Tijd = GetFilmTijd(DetailedFilmModel);
+
+            DetailedFilmModel.RandomEvent = GetRandomEvents();
 
             //return a model with two models within it
             return DetailedFilmModel;
@@ -128,6 +130,13 @@ namespace IHFF_V2.Repositories
             var shortStringDay = tijd.Value.DayOfWeek.ToString();
             string tijDag = shortStringTime + " " + shortStringDay;
             return tijDag;
+        }
+
+        public IEnumerable<Event> GetRandomEvents()
+        {
+            IEnumerable<Event> RandomEvents =  ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);
+
+            return RandomEvents;
         }
     }
 }

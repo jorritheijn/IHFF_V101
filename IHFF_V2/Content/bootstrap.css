@@ -1372,6 +1372,11 @@ a.text-warning:focus {
     color: white;
 }
 
+.text-titelrestaurant{
+    color: white;
+    float: left;
+}
+
 a.text-danger:hover,
 a.text-danger:focus {
   color: #843534;

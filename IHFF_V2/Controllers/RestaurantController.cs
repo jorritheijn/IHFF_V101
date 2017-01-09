@@ -23,7 +23,7 @@ namespace IHFF_V2.Controllers
 
         public ActionResult DetailRestaurantpage(int Id = 3)
         {
-            DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetRestaurant(Id);
+            DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetSpecificRestaurant(Id);
 
             return View(RestaurantDetail);
         }
