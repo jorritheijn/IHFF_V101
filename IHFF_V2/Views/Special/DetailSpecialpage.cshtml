@@ -80,14 +80,14 @@
 
 
             <div class="center-blocker">
-
+                <!--if state to choose wich actionlink there should be-->
                 <div class="actionlink">
                     @if (r.Type == "Restaurant")
                     {
                         @Html.ActionLink(r.Titel, "DetailRestaurantpage", "Restaurant", routeValues: new { Id = r.Id }, htmlAttributes: null)
                     }
                 </div>
-
+                <!--if state to choose wich actionlink there should be-->
                 <div class="actionlink">
                     @if (r.Type == "Special")
                 {
