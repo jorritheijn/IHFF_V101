@@ -99,6 +99,12 @@ namespace IHFF_V2.Controllers
             return View(FilmDetail);
         }
 
+        [HttpPost]
+        public ActionResult DetailFilmpage(int id, int aantal)
+        {
+            return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+        }
+
 
 
 

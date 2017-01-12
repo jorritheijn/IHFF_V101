@@ -9,6 +9,6 @@ namespace IHFF_V2.Repositories
     interface ICultuurRepository
     {
          IEnumerable<Event> GetAllCultuurEvents();
-        IEnumerable<Event> GetSingleCultuurEvent(int Id);
+        Event GetSingleCultuurEvent(int Id);
     }
 }

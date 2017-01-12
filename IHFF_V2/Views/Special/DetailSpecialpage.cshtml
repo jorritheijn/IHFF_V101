@@ -24,12 +24,12 @@
 
         @if (e.Poster != null)
             {
-            <img class="Poster" src="@Blobmanager.ImageSource(e.Poster)" width="272" height="387" />
+            <img class="Poster" src="@Blobmanager.ImageSource(e.Poster)" width="272" height="400" />
         }
 
         else
         {
-            <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="272" , height="387" />
+            <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="272" , height="400" />
         }
 
     </div>
@@ -39,14 +39,16 @@
 
         <p>@e.Beschrijving</p>
 
+@using (Html.BeginForm())
+{
         <script src="~/Content/Js/PlusMinus.js"></script>
         <div id=field1>
             <button type="button" id="sub" class=sub>-</button>
-            <input type="text" id="1" value=0 class=field>
+            <input type="text" id="1" value=0 class=field name="aantal">
             <button type="button" id="add" class=add>+</button>
             <input type="submit" value="Reserveer" class="reserveer" />
         </div>
-
+}
 
 
     </div>

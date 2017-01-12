@@ -21,11 +21,17 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
-        public ActionResult DetailRestaurantpage(int Id = 3)
+        public ActionResult DetailRestaurantpage(int Id)
         {
             DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetSpecificRestaurant(Id);
 
             return View(RestaurantDetail);
+        }
+
+        [HttpPost]
+        public ActionResult DetailRestaurantpage(int id, int aantal)
+        {
+            return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
         }
 
     }

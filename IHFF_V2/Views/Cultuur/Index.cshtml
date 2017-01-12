@@ -22,7 +22,7 @@
 @foreach (var musea in Model)
 {
     <div class="row" id="musea">
-        <div class="col-md-6">
+        <div class="col-md-4">
             @if(musea.Poster != null)
             {
                 <img class="center-blocker" src="@Blobmanager.ImageSource(e.Poster)" width="600" height="200" />
@@ -38,8 +38,6 @@
             <h2 class="text-titel">@musea.Titel</h2>
             <p>@musea.Beschrijving</p>
             @Html.ActionLink(linkText: "Meer Info", actionName: "Cultuur", controllerName: "DetailedCultuurPage", routeValues: new {Id = musea.Id},
-            htmlAttributes: null)
-            @Html.ActionLink(linkText: "Meer Info", actionName: "AddImage", controllerName: "FilmOverzicht", routeValues: new { Id = musea.Id },
             htmlAttributes: null)
 
         </div>

@@ -56,4 +56,20 @@ p{
   text-decoration: none;
 }
 
+.col-md-6 a {
+  background: #a30000;
+  border-color: white;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 2.5px 70px 2.5px 2px;
+}
+
+.col-md-6 a:hover {
+  background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}
 

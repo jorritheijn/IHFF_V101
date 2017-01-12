@@ -28,7 +28,7 @@ namespace IHFF_V2.Controllers
 
         public ActionResult DetailedCultuurPage(int Id)
         {
-            IEnumerable<Event> SpecificEvent = cultuurRepository.GetSingleCultuurEvent(Id);
+            Event SpecificEvent = cultuurRepository.GetSingleCultuurEvent(Id);
 
             return View(SpecificEvent);
         }

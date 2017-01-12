@@ -43,6 +43,8 @@
 
         <p>@e.Beschrijving</p>
 
+@using (Html.BeginForm())
+{
         <select class="selectbox">
             @foreach (var tijd in Model.Tijd)
             {
@@ -53,11 +55,12 @@
         <script src="~/Content/Js/PlusMinus.js"></script>
         <div id=field1>
             <button type="button" id="sub" class=sub>-</button>
-            <input type="text" id="1" value=0 class=field>
+            <input type="text" id="aantal" value=0 class=field name="aantal">
             <button type="button" id="add" class=add>+</button>
+
             <input type="submit" value="Reserveer" class="reserveer" />
         </div>
-
+}
         
 
     </div>
