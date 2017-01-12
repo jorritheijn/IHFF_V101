@@ -109,6 +109,11 @@ namespace IHFF_V2.Repositories
         public List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
         {
             IEnumerable<Event> allspecificevents = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel);
+
+            /*var times = (from c in ctx.Events
+                         where c.Titel == DetailedFilmModel.Event.Titel
+                         select c.Tijd.HasValue ? c.Tijd.Value.ToString() : "").ToList();*/
+
             List<string> tijden = new List<string>();
 
             foreach (var specificevent in allspecificevents)

@@ -71,10 +71,10 @@ namespace IHFF_V2.Controllers
                 ViewBag.Message = "Selecteer een bestand";
             }
 
-            else if (uploadImages.ContentType != "image/png")
+            /*else if (uploadImages.ContentType != "image/png")
             {
                 ViewBag.Message = "Alleen afbeeldingen worden geaccepteerd ";
-            }
+            }*/
 
             else
             {

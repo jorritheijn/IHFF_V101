@@ -39,6 +39,8 @@
             <p>@musea.Beschrijving</p>
             @Html.ActionLink(linkText: "Meer Info", actionName: "Cultuur", controllerName: "DetailedCultuurPage", routeValues: new {Id = musea.Id},
             htmlAttributes: null)
+            @Html.ActionLink(linkText: "Meer Info", actionName: "AddImage", controllerName: "FilmOverzicht", routeValues: new { Id = musea.Id },
+            htmlAttributes: null)
 
         </div>
     </div>
