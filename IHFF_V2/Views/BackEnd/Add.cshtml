@@ -1,0 +1,45 @@
+﻿@model IHFF_V2.Models.Event
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="backend">
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.Titel)
+        @Html.TextBoxFor(m => m.Titel)
+        @Html.ValidationMessageFor(m => m.Titel)
+        <br /><br />
+        @Html.LabelFor(m => m.Locatie)
+        @Html.TextBoxFor(m => m.Locatie)
+        @Html.ValidationMessageFor(m => m.Locatie)
+        <br /><br />
+        @Html.LabelFor(m => m.Beschrijving)
+        @Html.TextBoxFor(m => m.Beschrijving)
+        @Html.ValidationMessageFor(m => m.Beschrijving)
+        <br /><br />
+        @Html.LabelFor(m => m.Type)
+        @Html.TextBoxFor(m => m.Type)
+        @Html.ValidationMessageFor(m => m.Type)
+        <br /><br />
+        @Html.LabelFor(m => m.Tijd)
+        @Html.TextBoxFor(m => m.Tijd)
+        @Html.ValidationMessageFor(m => m.Tijd)
+        <br /><br />
+        @Html.LabelFor(m => m.Prijs)
+        @Html.TextBoxFor(m => m.Prijs)
+        @Html.ValidationMessageFor(m => m.Prijs)
+        <br /><br />
+
+        <div class="row">
+            <span class="span4">
+                <input type="file" name="uploadImages" class="input-files" />
+            </span>
+            <span class="span2">
+                <input type="submit" name="button" value="Upload" class="btn btn-upload" />
+            </span>
+        </div>
+
+        <input type="submit" value="Voeg evenement toe" />
+    }
+</div>
