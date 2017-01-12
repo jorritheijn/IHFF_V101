@@ -9,7 +9,7 @@ using System.IO;
 
 
 namespace IHFF_V2.Controllers
-{
+{//linkjes werken
     public class FilmOverzichtController : Controller
     {
         //
@@ -97,6 +97,18 @@ namespace IHFF_V2.Controllers
             DetailFilmViewModel FilmDetail = filmrepository.GetDetailedFilm(Id);
 
             return View(FilmDetail);
+        }
+
+        // gets event id and aantal from form, returns action to cartcontroller
+        [HttpPost]
+        public ActionResult DetailFilmpage(int id, int aantal)
+        {
+            if (aantal > 0)
+            {
+                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            }
+
+            return View("ErrorInvoerOnjuist");
         }
 
 

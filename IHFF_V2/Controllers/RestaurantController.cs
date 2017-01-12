@@ -14,18 +14,29 @@ namespace IHFF_V2.Controllers
         // GET: /Restaurant/
 
         //all actions with films are done via a FilmRepository
-        private IRestaurantRepository RestaurantRepository = new RestaurantRepository();
+        private RestaurantRepository RestaurantRepository = new RestaurantRepository();
 
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Event> restaurants = RestaurantRepository.AlleResetaurants;
+            return View(restaurants);
         }
 
-        public ActionResult DetailRestaurantpage(int Id = 3)
+        public ActionResult DetailRestaurantpage(int Id)
         {
             DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetSpecificRestaurant(Id);
-
             return View(RestaurantDetail);
+        }
+              
+        //gets event id and aantal, returns action to cartcontroller
+        [HttpPost]
+        public ActionResult DetailRestaurantpage(int id, int aantal)
+        {
+            if (aantal > 0)
+            {
+                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            }
+            return View("ErrorInvoerOnjuist");
         }
 
     }

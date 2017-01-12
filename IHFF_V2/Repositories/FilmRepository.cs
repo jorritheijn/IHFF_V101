@@ -106,13 +106,10 @@ namespace IHFF_V2.Repositories
             return DetailedFilmModel;
         }
 
+        //gives all datetimes converted in a string list
         public List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
         {
             IEnumerable<Event> allspecificevents = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel);
-
-            /*var times = (from c in ctx.Events
-                         where c.Titel == DetailedFilmModel.Event.Titel
-                         select c.Tijd.HasValue ? c.Tijd.Value.ToString() : "").ToList();*/
 
             List<string> tijden = new List<string>();
 
@@ -120,7 +117,7 @@ namespace IHFF_V2.Repositories
             {
                 if (specificevent.Tijd != null)//add nothing if there is no date
                 {
-                    string tijd = DateTimeToStringStime(specificevent.Tijd);
+                    string tijd = DateTimeToStringStime(specificevent.Tijd); // converts a time to a time/day string
                     tijden.Add(tijd);
                    
                 }
@@ -128,7 +125,7 @@ namespace IHFF_V2.Repositories
             return tijden;
         }
 
-        //returns date coverted to string time/day
+        //returns date converted to string time/day
         public string DateTimeToStringStime(DateTime? tijd)
         {
             var shortStringTime = tijd.Value.ToShortTimeString();
@@ -137,6 +134,7 @@ namespace IHFF_V2.Repositories
             return tijDag;
         }
 
+        //gets 3 random events from the database thats not a film
         public IEnumerable<Event> GetRandomEvents()
         {
             IEnumerable<Event> RandomEvents =  ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);

@@ -15,11 +15,13 @@ namespace IHFF_V2.Repositories
            return GetAllCultuurEvents;
         }
 
-        public IEnumerable<Event> GetSingleCultuurEvent(int Id)
+        public Event GetSingleCultuurEvent(int Id)
         {
             IEnumerable<Event> GetSpecificCultuur = ctx.Events.Where(e => e.Id == Id);
-            
-            return GetSpecificCultuur;
+
+            Event singelculture = GetSpecificCultuur.First(); 
+
+            return singelculture;
         }
     }
 }

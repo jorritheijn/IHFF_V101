@@ -21,11 +21,23 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
-        public ActionResult DetailSpecialpage(int Id = 3)
+        public ActionResult DetailSpecialpage(int Id)
         {
             DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpesificSpecial(Id);
 
             return View(SpecialDetail);
+        }
+
+        //gets eventid and aantal, and returns action to cartcontroller
+        [HttpPost]
+        public ActionResult DetailSpecialpage(int id , int aantal)
+        {
+            if (aantal > 0)
+            {
+                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            }
+
+            return View("ErrorInvoerOnjuist");
         }
 
     }

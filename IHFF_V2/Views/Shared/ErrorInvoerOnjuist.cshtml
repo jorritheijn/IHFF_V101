@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "ErrorInvoerOnjuist";
+}
+
+<hgroup class="title">
+    <h1 class="error">Error.</h1>
+    <h2 class="error">Er kan geen negatief aantal ingevoerd worden</h2>
+</hgroup>
+
+<button onclick="goBack()">Probeer Opnieuw</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

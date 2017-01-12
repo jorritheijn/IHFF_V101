@@ -10,13 +10,6 @@ namespace IHFF_V2.Controllers
 {
     public class CultuurController : Controller
     {
-        //
-        // GET: /Cultuur/
-        /// <summary>
-        /// All code marked with B are done by Brian
-        /// </summary>
-        /// <returns></returns>
-
         private ICultuurRepository cultuurRepository = new CultuurRepository();
 
         public ActionResult Index()
@@ -28,7 +21,7 @@ namespace IHFF_V2.Controllers
 
         public ActionResult DetailedCultuurPage(int Id)
         {
-            IEnumerable<Event> SpecificEvent = cultuurRepository.GetSingleCultuurEvent(Id);
+            Event SpecificEvent = cultuurRepository.GetSingleCultuurEvent(Id);
 
             return View(SpecificEvent);
         }

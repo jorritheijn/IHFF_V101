@@ -10,6 +10,16 @@ namespace IHFF_V2.Repositories
     public class RestaurantRepository : IRestaurantRepository
     {
         private ihffContext ctx = new ihffContext();
+        public IEnumerable<Event> AlleResetaurants
+        {
+            get
+            {
+                IEnumerable<Event> allefilms = ctx.Events.Where(film => film.Type.Equals("Restaurant"));
+                return allefilms;
+            }
+        }
+
+
         public DetailRestaurantViewModel GetSpecificRestaurant(int Id)
         {
             DetailRestaurantViewModel DetailedRestaurantModel = new DetailRestaurantViewModel();
@@ -30,6 +40,7 @@ namespace IHFF_V2.Repositories
             return DetailedRestaurantModel;
         }
 
+        //method that converts all timespans to a list string
         public List<string> GetRestaurantdagdeel(DetailRestaurantViewModel DetailedRestaurantModel)
         {
             IEnumerable<Restaurant> allspecificRestaurants = ctx.Restaurants.Where(b => b.EventId == DetailedRestaurantModel.Event.Id); //get all restaurant times
