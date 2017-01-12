@@ -9,12 +9,13 @@ namespace IHFF_V2.Controllers
 {
     public class CartController : Controller
     {
+        //Shows all items currently in the cart
         public ActionResult Index()
         {
             return View();
         }
         
-        //Shows all items currently in the cart
+        //Change the cart to one with two dummy items
         public ActionResult TestCart()
         {
             //Test values for the cart (they work)
@@ -84,6 +85,14 @@ namespace IHFF_V2.Controllers
             return View("Index");
         }
 
+        public ActionResult FinalizeOrder()
+        {
+
+
+            return View();
+        }
+
+        //Something went wrong
         public ActionResult Error()
         {
             return View();

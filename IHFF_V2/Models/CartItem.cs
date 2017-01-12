@@ -21,6 +21,7 @@ namespace IHFF_V2.Models
         public CartItem(int id, int quantity)
         {
             Event e = new EventRepository().GetEvent(id);
+
             this.Id = id;
             this.Quantity = quantity;
 
