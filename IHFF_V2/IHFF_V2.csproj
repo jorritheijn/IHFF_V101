@@ -207,6 +207,7 @@
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BestellingContext.cs" />
+    <Compile Include="Models\BestellingMetaData.cs" />
     <Compile Include="Models\BestelRegel.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
@@ -260,6 +261,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\_BestelRegel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BestellingRepository.cs" />
     <Compile Include="Repositories\CultuurRepository.cs" />
