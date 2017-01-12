@@ -9,15 +9,20 @@ namespace IHFF_V2.Controllers
 {
     public class CartController : Controller
     {
-        //Shows all items currently in the cart
         public ActionResult Index()
+        {
+            return View();
+        }
+        
+        //Shows all items currently in the cart
+        public ActionResult TestCart()
         {
             //Test values for the cart (they work)
             List<CartItem> cart = new List<CartItem>();
             cart.Add(new Models.CartItem(1, "test", "here", DateTime.Now, 13.37F, 3));
             cart.Add(new Models.CartItem(2, "testest", "there", DateTime.Now, 11F, 4));
             Session["cart"] = cart;
-            return View();
+            return View("Index");
         }
 
         //Increments the quantity of a cart item
