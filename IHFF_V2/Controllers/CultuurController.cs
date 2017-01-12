@@ -10,13 +10,6 @@ namespace IHFF_V2.Controllers
 {
     public class CultuurController : Controller
     {
-        //
-        // GET: /Cultuur/
-        /// <summary>
-        /// All code marked with B are done by Brian
-        /// </summary>
-        /// <returns></returns>
-
         private ICultuurRepository cultuurRepository = new CultuurRepository();
 
         public ActionResult Index()

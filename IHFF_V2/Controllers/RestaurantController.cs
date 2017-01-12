@@ -28,10 +28,16 @@ namespace IHFF_V2.Controllers
             return View(RestaurantDetail);
         }
 
+        //gets event id and aantal, returns action to cartcontroller
         [HttpPost]
         public ActionResult DetailRestaurantpage(int id, int aantal)
         {
-            return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            if (aantal > 0)
+            {
+                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            }
+
+            return View("ErrorInvoerOnjuist");
         }
 
     }

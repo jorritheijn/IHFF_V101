@@ -30,6 +30,7 @@ namespace IHFF_V2.Repositories
             return DetailedRestaurantModel;
         }
 
+        //method that converts all timespans to a list string
         public List<string> GetRestaurantdagdeel(DetailRestaurantViewModel DetailedRestaurantModel)
         {
             IEnumerable<Restaurant> allspecificRestaurants = ctx.Restaurants.Where(b => b.EventId == DetailedRestaurantModel.Event.Id); //get all restaurant times

@@ -8,7 +8,7 @@ namespace IHFF_V2.Models
     public class DetailSpecialViewModel
     {
 
-        //A model that combines two models in one to pass it to one view.
+        //A model that combines two models and a IENUM for random events in one to pass it to one view.
         public Event Event { get; set; }
         public Special Special { get; set; }
         public IEnumerable<Event> RandomEvents { get; set; }
