@@ -16,10 +16,10 @@ namespace IHFF_V2.Models
     {
         public Event()
         {
-            this.BestelRegels = new HashSet<BestelRegel>();
             this.CombiDeals = new HashSet<CombiDeal>();
             this.CombiDeals1 = new HashSet<CombiDeal>();
             this.Cultuurs = new HashSet<Cultuur>();
+            this.BestelRegels = new HashSet<BestelRegel>();
             this.Films = new HashSet<Film>();
             this.Restaurants = new HashSet<Restaurant>();
             this.Specials = new HashSet<Special>();
@@ -36,10 +36,10 @@ namespace IHFF_V2.Models
         public Nullable<double> Prijs { get; set; }
     
         public virtual Afbeelding Afbeelding1 { get; set; }
-        public virtual ICollection<BestelRegel> BestelRegels { get; set; }
         public virtual ICollection<CombiDeal> CombiDeals { get; set; }
         public virtual ICollection<CombiDeal> CombiDeals1 { get; set; }
         public virtual ICollection<Cultuur> Cultuurs { get; set; }
+        public virtual ICollection<BestelRegel> BestelRegels { get; set; }
         public virtual ICollection<Film> Films { get; set; }
         public virtual ICollection<Restaurant> Restaurants { get; set; }
         public virtual ICollection<Special> Specials { get; set; }

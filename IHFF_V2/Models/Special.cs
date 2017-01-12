@@ -16,8 +16,8 @@ namespace IHFF_V2.Models
     {
         public int Id { get; set; }
         public string Spreker { get; set; }
-        public int EventId { get; set; }
         public Nullable<int> Aantal { get; set; }
+        public int EventId { get; set; }
     
         public virtual Event Event { get; set; }
     }

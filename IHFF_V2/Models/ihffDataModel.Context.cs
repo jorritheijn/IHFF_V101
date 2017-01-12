@@ -13,10 +13,10 @@ namespace IHFF_V2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ihffCon : DbContext
+    public partial class iHFF1617S_B5Entities : DbContext
     {
-        public ihffCon()
-            : base("name=ihffCon")
+        public iHFF1617S_B5Entities()
+            : base("name=iHFF1617S_B5Entities")
         {
         }
     
@@ -27,17 +27,16 @@ namespace IHFF_V2.Models
     
         public DbSet<Afbeelding> Afbeeldings { get; set; }
         public DbSet<Bestelling> Bestellings { get; set; }
-        public DbSet<BestelRegel> BestelRegels { get; set; }
         public DbSet<CombiDeal> CombiDeals { get; set; }
         public DbSet<Cultuur> Cultuurs { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Film> Films { get; set; }
-        public DbSet<Klant> Klants { get; set; }
         public DbSet<Medewerker> Medewerkers { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Slide> Slides { get; set; }
         public DbSet<Special> Specials { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<BestelRegel> BestelRegels { get; set; }
         public DbSet<Highlight> Highlights { get; set; }
     }
 }

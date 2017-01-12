@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ihffCon">
+  <EntityContainerMapping StorageEntityContainer="iHFF1617S_B5ModelStoreContainer" CdmEntityContainer="iHFF1617S_B5Entities">
     <EntitySetMapping Name="Afbeeldings">
-      <EntityTypeMapping TypeName="Model.Afbeelding">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Afbeelding">
         <MappingFragment StoreEntitySet="Afbeelding">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Afbeelding1" ColumnName="Afbeelding" />
@@ -11,26 +11,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bestellings">
-      <EntityTypeMapping TypeName="Model.Bestelling">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Bestelling">
         <MappingFragment StoreEntitySet="Bestelling">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Betaald" ColumnName="Betaald" />
-          <ScalarProperty Name="BestelRegelId" ColumnName="BestelRegelId" />
-          <ScalarProperty Name="KlantId" ColumnName="KlantId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BestelRegels">
-      <EntityTypeMapping TypeName="Model.BestelRegel">
-        <MappingFragment StoreEntitySet="BestelRegel">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="TotaalPrijs" ColumnName="TotaalPrijs" />
+          <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+          <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+          <ScalarProperty Name="EmailAdres" ColumnName="EmailAdres" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CombiDeals">
-      <EntityTypeMapping TypeName="Model.CombiDeal">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.CombiDeal">
         <MappingFragment StoreEntitySet="CombiDeal">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Percentage" ColumnName="Percentage" />
@@ -40,7 +34,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cultuurs">
-      <EntityTypeMapping TypeName="Model.Cultuur">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Cultuur">
         <MappingFragment StoreEntitySet="Cultuur">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Aantal" ColumnName="Aantal" />
@@ -49,9 +43,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="Model.Event">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Event">
         <MappingFragment StoreEntitySet="Event">
-          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Titel" ColumnName="Titel" />
           <ScalarProperty Name="Locatie" ColumnName="Locatie" />
@@ -60,11 +53,12 @@
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Tijd" ColumnName="Tijd" />
           <ScalarProperty Name="Afbeelding" ColumnName="Afbeelding" />
+          <ScalarProperty Name="Prijs" ColumnName="Prijs" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Films">
-      <EntityTypeMapping TypeName="Model.Film">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Film">
         <MappingFragment StoreEntitySet="Film">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Regisseur" ColumnName="Regisseur" />
@@ -75,18 +69,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Klants">
-      <EntityTypeMapping TypeName="Model.Klant">
-        <MappingFragment StoreEntitySet="Klant">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
-          <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
-          <ScalarProperty Name="EmailAdres" ColumnName="EmailAdres" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Medewerkers">
-      <EntityTypeMapping TypeName="Model.Medewerker">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Medewerker">
         <MappingFragment StoreEntitySet="Medewerker">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Gebruikersnaam" ColumnName="Gebruikersnaam" />
@@ -95,19 +79,19 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Restaurants">
-      <EntityTypeMapping TypeName="Model.Restaurant">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Restaurant">
         <MappingFragment StoreEntitySet="Restaurant">
-          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
-          <ScalarProperty Name="SluitingsTijd" ColumnName="SluitingsTijd" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Soort" ColumnName="Soort" />
           <ScalarProperty Name="OpeningsTijd" ColumnName="OpeningsTijd" />
+          <ScalarProperty Name="SluitingsTijd" ColumnName="SluitingsTijd" />
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
           <ScalarProperty Name="EventId" ColumnName="EventId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Slides">
-      <EntityTypeMapping TypeName="Model.Slide">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Slide">
         <MappingFragment StoreEntitySet="Slide">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Beschrijving" ColumnName="Beschrijving" />
@@ -118,17 +102,17 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Specials">
-      <EntityTypeMapping TypeName="Model.Special">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Special">
         <MappingFragment StoreEntitySet="Special">
-          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Spreker" ColumnName="Spreker" />
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
           <ScalarProperty Name="EventId" ColumnName="EventId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="Model.sysdiagram">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -138,8 +122,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BestelRegels">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.BestelRegel">
+        <MappingFragment StoreEntitySet="BestelRegel">
+          <ScalarProperty Name="BestellingId" ColumnName="BestellingId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Highlights">
-      <EntityTypeMapping TypeName="Model.Highlight">
+      <EntityTypeMapping TypeName="iHFF1617S_B5Model.Highlight">
         <MappingFragment StoreEntitySet="Highlight">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Slide1" ColumnName="Slide1" />

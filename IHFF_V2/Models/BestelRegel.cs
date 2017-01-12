@@ -14,15 +14,11 @@ namespace IHFF_V2.Models
     
     public partial class BestelRegel
     {
-        public BestelRegel()
-        {
-            this.Bestellings = new HashSet<Bestelling>();
-        }
-    
-        public int Id { get; set; }
+        public int BestellingId { get; set; }
         public int EventId { get; set; }
+        public int Quantity { get; set; }
     
-        public virtual ICollection<Bestelling> Bestellings { get; set; }
+        public virtual Bestelling Bestelling { get; set; }
         public virtual Event Event { get; set; }
     }
 }
