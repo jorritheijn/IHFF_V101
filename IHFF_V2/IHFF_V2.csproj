@@ -449,6 +449,7 @@
     <Content Include="Views\Cultuur\Index.cshtml" />
     <Content Include="Views\Cultuur\DetailedCultuurPage.cshtml" />
     <Content Include="Views\Shared\ErrorInvoerOnjuist.cshtml" />
+    <Content Include="Views\Restaurant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

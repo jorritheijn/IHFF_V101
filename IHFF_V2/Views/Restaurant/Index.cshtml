@@ -1,0 +1,50 @@
+﻿@using IHFF_V2;
+@using IHFF_V2.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" />
+}
+
+<h2>Index</h2>
+@model  IEnumerable<Event>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+
+
+<section class="catalogus">
+    @foreach (var restaurant in Model)
+    {
+        <section class="restinfo">
+            @if (restaurant.Poster != null)
+                {
+                <img src="@Blobmanager.ImageSource(restaurant.Poster)" />
+            }
+
+            else
+            {
+                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="170" , height="242" />
+            }
+            <p class="titel"> @restaurant.Titel</p>
+
+
+            @Html.ActionLink(linkText: "Meer Info",
+                                 actionName: "AddImage",
+                             controllerName: "FilmOverzicht",
+                            routeValues: new
+                            {
+                                Id = restaurant.Id
+                            },
+            htmlAttributes: null)
+        </section>
+    }
+</section>
