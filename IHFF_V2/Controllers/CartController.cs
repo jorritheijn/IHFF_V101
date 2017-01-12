@@ -12,12 +12,18 @@ namespace IHFF_V2.Controllers
         //Shows all items currently in the cart
         public ActionResult Index()
         {
+            return View();
+        }
+        
+        //Change the cart to one with two dummy items
+        public ActionResult TestCart()
+        {
             //Test values for the cart (they work)
             List<CartItem> cart = new List<CartItem>();
             cart.Add(new Models.CartItem(1, "test", "here", DateTime.Now, 13.37F, 3));
             cart.Add(new Models.CartItem(2, "testest", "there", DateTime.Now, 11F, 4));
             Session["cart"] = cart;
-            return View();
+            return View("Index");
         }
 
         //Increments the quantity of a cart item
@@ -79,6 +85,14 @@ namespace IHFF_V2.Controllers
             return View("Index");
         }
 
+        public ActionResult FinalizeOrder()
+        {
+
+
+            return View();
+        }
+
+        //Something went wrong
         public ActionResult Error()
         {
             return View();
