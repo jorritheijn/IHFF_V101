@@ -17,9 +17,9 @@ namespace IHFF_V2.Models
         public int Id { get; set; }
         public string Soort { get; set; }
         public Nullable<System.TimeSpan> OpeningsTijd { get; set; }
-        public int EventId { get; set; }
         public Nullable<System.TimeSpan> SluitingsTijd { get; set; }
         public Nullable<int> Aantal { get; set; }
+        public int EventId { get; set; }
     
         public virtual Event Event { get; set; }
     }

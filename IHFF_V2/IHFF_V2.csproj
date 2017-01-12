@@ -246,9 +246,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Klant.cs">
-      <DependentUpon>ihffDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Medewerker.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
@@ -346,10 +343,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\ihffDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ihffDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Images\basket-icon.png" />
     <Content Include="Images\film-128.png" />
     <Content Include="Images\filmsbanner.png" />
@@ -358,10 +351,23 @@
     <Content Include="Images\icon-nutrition-hi.png" />
     <Content Include="Images\Movie_icon.svg.png" />
     <Content Include="Images\shopping-basket-xxl.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\ihffDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ihffDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <Content Include="Models\ihffDataModel.edmx.diagram">
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Images\logo.png" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Models\ihffDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
@@ -372,15 +378,6 @@
       <DependentUpon>ihffDataModel.edmx</DependentUpon>
       <LastGenOutput>ihffDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="iHFF1617S_B5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Afbeelding">
     <Key>
       <PropertyRef Name="Id" />
@@ -15,15 +15,22 @@
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Code" Type="nchar" MaxLength="10" />
     <Property Name="Betaald" Type="int" />
-    <Property Name="BestelRegelId" Type="int" Nullable="false" />
-    <Property Name="KlantId" Type="int" />
+    <Property Name="TotaalPrijs" Type="float" />
+    <Property Name="Voornaam" Type="varchar" MaxLength="50" />
+    <Property Name="Achternaam" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAdres" Type="varchar" MaxLength="50" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'iHFF1617S_B5.dbo.BestelRegel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="BestelRegel">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="BestellingId" />
+      <PropertyRef Name="EventId" />
+      <PropertyRef Name="Quantity" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BestellingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CombiDeal">
     <Key>
@@ -50,7 +57,7 @@
     <Property Name="Titel" Type="varchar" MaxLength="100" />
     <Property Name="Locatie" Type="varchar" MaxLength="50" />
     <Property Name="Poster" Type="image" />
-    <Property Name="Beschrijving" Type="varchar" MaxLength="500" />
+    <Property Name="Beschrijving" Type="varchar" MaxLength="1000" />
     <Property Name="Type" Type="varchar" MaxLength="50" />
     <Property Name="Tijd" Type="datetime" />
     <Property Name="Afbeelding" Type="int" />
@@ -79,15 +86,6 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
     <Property Name="Slide3" Type="int" />
     <Property Name="Slide4" Type="int" />
     <Property Name="Slide5" Type="int" />
-  </EntityType>
-  <EntityType Name="Klant">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Voornaam" Type="varchar" MaxLength="50" />
-    <Property Name="Achternaam" Type="varchar" MaxLength="50" />
-    <Property Name="EmailAdres" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Medewerker">
     <Key>
@@ -137,31 +135,19 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_Bestelling_BestelRegel">
-    <End Role="BestelRegel" Type="Self.BestelRegel" Multiplicity="1" />
-    <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="*" />
+  <Association Name="FK_BestelRegel_Bestelling">
+    <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="1" />
+    <End Role="BestelRegel" Type="Self.BestelRegel" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="BestelRegel">
+      <Principal Role="Bestelling">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Bestelling">
-        <PropertyRef Name="BestelRegelId" />
+      <Dependent Role="BestelRegel">
+        <PropertyRef Name="BestellingId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Bestelling_Klant">
-    <End Role="Klant" Type="Self.Klant" Multiplicity="0..1" />
-    <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Klant">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Bestelling">
-        <PropertyRef Name="KlantId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BestelRegel_Event">
+  <Association Name="FK_BestelRegel_Event1">
     <End Role="Event" Type="Self.Event" Multiplicity="1" />
     <End Role="BestelRegel" Type="Self.BestelRegel" Multiplicity="*" />
     <ReferentialConstraint>
@@ -317,20 +303,25 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ModelStoreContainer">
+  <EntityContainer Name="iHFF1617S_B5ModelStoreContainer">
     <EntitySet Name="Afbeelding" EntityType="Self.Afbeelding" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bestelling" EntityType="Self.Bestelling" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BestelRegel" EntityType="Self.BestelRegel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CombiDeal" EntityType="Self.CombiDeal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cultuur" EntityType="Self.Cultuur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Klant" EntityType="Self.Klant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medewerker" EntityType="Self.Medewerker" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BestelRegel" EntityType="Self.BestelRegel" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[BestelRegel].[BestellingId] AS [BestellingId], 
+[BestelRegel].[EventId] AS [EventId], 
+[BestelRegel].[Quantity] AS [Quantity]
+FROM [dbo].[BestelRegel] AS [BestelRegel]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Highlight" EntityType="Self.Highlight" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [Highlight].[Id] AS [Id], 
@@ -341,15 +332,11 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
 [Highlight].[Slide5] AS [Slide5]
 FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_Bestelling_BestelRegel" Association="Self.FK_Bestelling_BestelRegel">
+    <AssociationSet Name="FK_BestelRegel_Bestelling" Association="Self.FK_BestelRegel_Bestelling">
+      <End Role="Bestelling" EntitySet="Bestelling" />
       <End Role="BestelRegel" EntitySet="BestelRegel" />
-      <End Role="Bestelling" EntitySet="Bestelling" />
     </AssociationSet>
-    <AssociationSet Name="FK_Bestelling_Klant" Association="Self.FK_Bestelling_Klant">
-      <End Role="Klant" EntitySet="Klant" />
-      <End Role="Bestelling" EntitySet="Bestelling" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BestelRegel_Event" Association="Self.FK_BestelRegel_Event">
+    <AssociationSet Name="FK_BestelRegel_Event1" Association="Self.FK_BestelRegel_Event1">
       <End Role="Event" EntitySet="Event" />
       <End Role="BestelRegel" EntitySet="BestelRegel" />
     </AssociationSet>
