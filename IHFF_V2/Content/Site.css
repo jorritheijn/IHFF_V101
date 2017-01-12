@@ -178,3 +178,12 @@ footer{
 .invisible-straightener{
     width:50px !important;
 }
+.backend{
+    color:white;
+    font-family:Calibri;
+    margin-left:900px;
+}
+.backend a{
+    color:#b7b7b7;
+    font-family:Calibri;
+}
