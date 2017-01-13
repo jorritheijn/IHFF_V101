@@ -75,7 +75,6 @@ namespace IHFF_V2.Repositories
         public IEnumerable<Event> GetRandomEvents()
         {
             IEnumerable<Event> RandomEvents = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
-
             return RandomEvents;
         }
 
