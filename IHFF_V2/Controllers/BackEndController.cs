@@ -14,28 +14,34 @@ namespace IHFF_V2.Controllers
         // GET: /BackEnd/
 
         private EventRepository repos = new EventRepository();
+        private IBackEndRepository BackEndrepository = new BackEndRepository();
 
+        [Authorize]
         public ActionResult Index()
         {
             IEnumerable<Event> events = repos.GetAllEvents();
             return View(events);
         }
+
+        [Authorize]
         public ActionResult Delete(int id = 0)
         {
             repos.DeleteEvent(id);
             return RedirectToAction("Index");
         }
+        [Authorize]
         public ActionResult Add()
         {
             return View();
         }
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Event eventItem = new Event();
             eventItem = repos.GetEvent(id);
             return View(eventItem);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Add(Event eventItem)
         {
@@ -45,6 +51,7 @@ namespace IHFF_V2.Controllers
             }           
             return RedirectToAction("Index");
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(Event eventItem)
         {
@@ -53,6 +60,29 @@ namespace IHFF_V2.Controllers
                 repos.EditEvent(eventItem);
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogIn(Medewerker medewerker)
+        {
+            if (ModelState.IsValid)
+            {
+                medewerker = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
+
+                if (medewerker != null)
+                {
+                    return RedirectToAction("Index");// goes to backend index if from is filled correctly
+                }
+                
+            }
+
+            return View(medewerker);//there was a error, go back to login page
+            
         }
 
     }

@@ -22,6 +22,7 @@ namespace IHFF_V2.Controllers
             return View(restaurants);
         }
 
+        //haalt restaurantpagina op
         public ActionResult DetailRestaurantpage(int Id)
         {
             DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetSpecificRestaurant(Id);

@@ -187,3 +187,49 @@ footer{
     color:#b7b7b7;
     font-family:Calibri;
 }
+
+.login{
+    height: 250px;
+    width: 400px;
+    border-style: solid;
+    border-color:white;
+    color: white;
+    background-color: #35434D;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+
+.login h2{
+    text-align: center;
+}
+
+.inhetmidden {
+    text-align: center;
+}
+
+.login label {
+    padding-left: 31%;
+}
+
+input#submit{
+    float:right;
+    margin-right: 1%;
+    background: #a30000;
+    border-color: white;
+    border-radius: 5px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 2.5px 10px 2.5px 10px;
+    text-decoration: none;
+}
+
+input#submit:hover{
+    background: #ffffff;
+  color: #a30000;
+  text-decoration: none;
+}

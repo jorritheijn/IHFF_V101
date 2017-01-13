@@ -83,7 +83,6 @@ namespace IHFF_V2.Repositories
             WaarHetPlaatjeMoet.Poster = imageData;
             ctx.Entry(WaarHetPlaatjeMoet).State = EntityState.Modified;
             ctx.SaveChanges();
-
         }
 
         //method that gives one film from two tablel/models
