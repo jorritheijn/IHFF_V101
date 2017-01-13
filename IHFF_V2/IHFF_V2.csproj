@@ -190,7 +190,6 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CultuurController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
-    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
