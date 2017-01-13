@@ -190,7 +190,6 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CultuurController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
-    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
@@ -272,6 +271,7 @@
     <Compile Include="Repositories\IFilmRepository.cs" />
     <Compile Include="Repositories\IRestaurantRepository.cs" />
     <Compile Include="Repositories\ISpecialRepository.cs" />
+    <Compile Include="Repositories\PictureRepository.cs" />
     <Compile Include="Repositories\RestaurantRepository.cs" />
     <Compile Include="Repositories\SpecialRepository.cs" />
   </ItemGroup>

@@ -54,41 +54,6 @@ namespace IHFF_V2.Controllers
             return View(GefilterdeEvents);
         }
 
-        public ActionResult AddImage(int Id)
-        {
-            ViewBag.id = Id;
-            ViewBag.Message = "not clicked";
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddImage(int Id, HttpPostedFileBase uploadImages)
-        {
-            if (uploadImages == null)
-            {
-                ViewBag.Message = "Selecteer een bestand";
-            }
-
-            else if (uploadImages.ContentType != "image/png")
-            {
-                ViewBag.Message = "Alleen afbeeldingen worden geaccepteerd ";
-            }
-
-            else
-            {
-                FilmRepository filmrepo = new FilmRepository();
-                ViewBag.id = Id;
-                ViewBag.Message = "clicked";
-                byte[] imageData = null;
-                using (var binaryReader = new BinaryReader(uploadImages.InputStream))
-                {
-                    imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
-                    filmrepo.AddPicture(imageData, Id);
-                }
-            }
-            return View();
-        }
-
 
         public ActionResult DetailSpecialpage(int Id)
         {
