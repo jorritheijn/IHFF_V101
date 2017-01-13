@@ -9,19 +9,13 @@ using System.IO;
 
 
 namespace IHFF_V2.Controllers
-{//linkjes werken
+{
     public class FilmOverzichtController : Controller
     {
-        //
-        // GET: /FilmOverzicht/
-
-        //all actions with films are done via a FilmRepository
         private IFilmRepository filmrepository = new FilmRepository();
 
         public ActionResult Index(string searchString, string dag)
         {
-
-            //Default
             //Geselecteerde events zijn de events die we in de view willen weergeven
             IEnumerable<Event> geselecteerdeEvents = new FilmRepository().AlleFilmsEnkel;
 
@@ -31,19 +25,16 @@ namespace IHFF_V2.Controllers
                 //verwijst door naar ActionResult DagProgramma hieronder. 
                 return RedirectToAction("DagProgramma", new { dag = dag });
             }
-
             // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
                 geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, geselecteerdeEvents);
             }
-
             return View(geselecteerdeEvents);
         }
 
-        //Als er op een DagProgramma
-
+        //Als er op een DagProgramma is gelklikt
         public ActionResult DagProgramma(string dag, string searchString)
         {
             IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
@@ -56,42 +47,42 @@ namespace IHFF_V2.Controllers
             return View(GefilterdeEvents);
         }
 
-        public ActionResult AddImage(int Id)
-        {
-            ViewBag.id = Id;
-            ViewBag.Message = "not clicked";
-            return View();
-        }
+        //public ActionResult AddImage(int Id)
+        //{
+        //    ViewBag.id = Id;
+        //    ViewBag.Message = "not clicked";
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult AddImage(int Id, HttpPostedFileBase uploadImages)
-        {
-            if (uploadImages == null)
-            {
-                ViewBag.Message = "Selecteer een bestand";
-            }
+        //[HttpPost]
+        //public ActionResult AddImage(int Id, HttpPostedFileBase uploadImages)
+        //{
+        //    if (uploadImages == null)
+        //    {
+        //        ViewBag.Message = "Selecteer een bestand";
+        //    }
 
-            /*else if (uploadImages.ContentType != "image/png")
-            {
-                ViewBag.Message = "Alleen afbeeldingen worden geaccepteerd ";
-            }*/
+        //    /*else if (uploadImages.ContentType != "image/png")
+        //    {
+        //        ViewBag.Message = "Alleen afbeeldingen worden geaccepteerd ";
+        //    }*/
 
-            else
-            {
-                FilmRepository filmrepo = new FilmRepository();
-                ViewBag.id = Id;
-                ViewBag.Message = "clicked";
-                byte[] imageData = null;
-                using (var binaryReader = new BinaryReader(uploadImages.InputStream))
-                {
-                    imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
-                    filmrepo.AddPicture(imageData, Id);
-                }
-            }
-            return View();
-        }
+        //    else
+        //    {
+        //        FilmRepository filmrepo = new FilmRepository();
+        //        ViewBag.id = Id;
+        //        ViewBag.Message = "clicked";
+        //        byte[] imageData = null;
+        //        using (var binaryReader = new BinaryReader(uploadImages.InputStream))
+        //        {
+        //            imageData = binaryReader.ReadBytes(uploadImages.ContentLength);
+        //            filmrepo.AddPicture(imageData, Id);
+        //        }
+        //    }
+        //    return View();
+        //}
 
-
+        //Haalt detailpagina op 
         public ActionResult DetailFilmpage(int Id)
         {
             DetailFilmViewModel FilmDetail = filmrepository.GetDetailedFilm(Id);
@@ -110,13 +101,6 @@ namespace IHFF_V2.Controllers
 
             return View("ErrorInvoerOnjuist");
         }
-
-
-
-
-
-
-
     }
 }
 

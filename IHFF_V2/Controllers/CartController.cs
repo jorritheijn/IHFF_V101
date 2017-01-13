@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IHFF_V2.Models;
+using IHFF_V2.Repositories;
 
 namespace IHFF_V2.Controllers
 {
@@ -85,10 +86,29 @@ namespace IHFF_V2.Controllers
             return View("Index");
         }
 
-        public ActionResult FinalizeOrder()
+        public ActionResult EnterDetails()
         {
+            ViewBag.Total = CalculateCartValue();
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult EnterDetails(Bestelling bestelling)
+        {
+            BestellingRepository repo = new BestellingRepository();
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
 
+            if (ModelState.IsValid)
+            {
+                repo.CreateOrder(cart, bestelling);
+                return View("OrderCompleted");
+            }
+
+            return View("Index");
+        } 
+
+        public ActionResult OrderCompleted()
+        {
             return View();
         }
 
@@ -96,6 +116,18 @@ namespace IHFF_V2.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        //Calculate and return the price of the cart
+        private float CalculateCartValue()
+        {
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+
+            float totaal = 0;
+            foreach (CartItem item in cart)
+                totaal += item.Price * item.Quantity;
+
+            return totaal;
         }
     }
 }
