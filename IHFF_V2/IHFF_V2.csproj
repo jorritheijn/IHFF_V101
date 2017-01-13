@@ -347,6 +347,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\BannerCulture.png" />
+    <Content Include="Images\BannerFilm.png" />
+    <Content Include="Images\BannerFood.png" />
     <Content Include="Images\basket-icon.png" />
     <Content Include="Images\film-128.png" />
     <Content Include="Images\filmsbanner.png" />
