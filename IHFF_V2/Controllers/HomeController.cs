@@ -34,19 +34,19 @@ namespace IHFF_V2.Controllers
             //random events selecteren
             getoondeEvents.Add(allerestaurants[rnd.Next(0, allerestaurants.Count)]);
             getoondeEvents.Add(allerestaurants[rnd.Next(0, allerestaurants.Count)]);
-            while (getoondeEvents[0] == getoondeEvents[1])
+            while (getoondeEvents[0].Titel == getoondeEvents[1].Titel)
             {
                 getoondeEvents[1] = allerestaurants[rnd.Next(0, allerestaurants.Count)];
             }
             getoondeEvents.Add(allefilms[rnd.Next(0, allefilms.Count)]);
             getoondeEvents.Add(allefilms[rnd.Next(0, allefilms.Count)]);
-            while (getoondeEvents[2] == getoondeEvents[3])
+            while (getoondeEvents[2].Titel == getoondeEvents[3].Titel)
             {
                 getoondeEvents[3] = allefilms[rnd.Next(0, allefilms.Count)];
             }
             getoondeEvents.Add(allespecials[rnd.Next(0, allespecials.Count)]);
             getoondeEvents.Add(allespecials[rnd.Next(0, allespecials.Count)]);
-            while (getoondeEvents[4] == getoondeEvents[5])
+            while (getoondeEvents[4].Titel == getoondeEvents[5].Titel)
             {
                 getoondeEvents[5] = allespecials[rnd.Next(0, allespecials.Count)];
             }
