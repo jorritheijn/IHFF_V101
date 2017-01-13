@@ -192,15 +192,10 @@ footer{
     height: 250px;
     width: 400px;
     border-style: solid;
-    border-color:white;
+    border-color: white;
     color: white;
     background-color: #35434D;
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -200px;
+    margin-left: 550px;
 }
 
 .login h2{
