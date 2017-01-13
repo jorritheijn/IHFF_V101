@@ -109,6 +109,13 @@
                     }
                 </div>
 
+                <div class="actionlink">
+                    @if (rndEvent.Type == "Cultuur")
+                {
+                        @Html.ActionLink(rndEvent.Titel, "DetailedCultuurPage", "Cultuur", routeValues: new { Id = r.Id }, htmlAttributes: null)
+                    }
+                </div>
+
                 @if (rndEvent.Poster != null)
                 {
 
