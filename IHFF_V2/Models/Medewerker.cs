@@ -11,16 +11,11 @@ namespace IHFF_V2.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Medewerker
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Gebruikersnaam is nodig!")]
-        [Display(Name = "Gebruikers Naam")]
         public string Gebruikersnaam { get; set; }
-        [Required(ErrorMessage = "Wachtwoord is nodig!")]
-        [Display(Name = "Wachtwoord")]
         public string Wachtwoord { get; set; }
     }
 }

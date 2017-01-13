@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="nchar" MaxLength="10" />
     <Property Name="Betaald" Type="int" />
     <Property Name="TotaalPrijs" Type="float" />
