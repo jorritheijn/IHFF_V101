@@ -95,6 +95,7 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult EnterDetails(Bestelling bestelling)
         {
+            bestelling.TotaalPrijs = CalculateCartValue();
             BestellingRepository repo = new BestellingRepository();
             List<CartItem> cart = (List<CartItem>)Session["cart"];
 
