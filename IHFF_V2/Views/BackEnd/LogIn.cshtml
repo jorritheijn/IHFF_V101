@@ -1,0 +1,41 @@
+﻿@model IHFF_V2.Models.Medewerker
+
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+}
+
+    <div class="login">
+        <h2>Log in Voor Medewerkers</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(m => m.Gebruikersnaam)
+                <br />
+                <div class="inhetmidden">
+                    @Html.TextBoxFor(m => m.Gebruikersnaam)
+                    <br />
+                    @Html.ValidationMessageFor(m => m.Gebruikersnaam)
+                </div>
+            </div>
+            <br /><br />
+            <div>
+                @Html.LabelFor(m => m.Wachtwoord)
+                <br />
+                <div class="inhetmidden">
+                    @Html.PasswordFor(m => m.Wachtwoord)
+                    <br />
+                    @Html.ValidationMessageFor(m => m.Wachtwoord)
+                </div>
+            </div>
+            <br /><br />
+            <input type="submit" value="Log in" id="submit" />
+
+        }
+    </div>
+

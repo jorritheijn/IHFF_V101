@@ -16,6 +16,7 @@ namespace IHFF_V2.Models
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Special> Specials { get; set; }
         public DbSet<Cultuur> Cultuur { get; set; }
+        public DbSet<Medewerker> Medewerker { get; set; }
 
 
     }
