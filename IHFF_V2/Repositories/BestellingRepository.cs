@@ -17,11 +17,9 @@ namespace IHFF_V2.Repositories
 
         public void CreateOrder(List<CartItem> cart, Bestelling bestelling)
         {
-            //Formulier moet een Bestelling object aanmaken en meegeven
-
-            //Maak nieuwe bestelling aan
-            //Pak de ID
-            //Gebruik de ID om de BestelRegels aan te maken
+            bestelling.Code = GenerateCode();
+            int id = MaakBestelling(bestelling);
+            MaakBestelRegels(cart, id);
         }
 
         //Gooi de bestelling in de database en geef 't ID terug
@@ -38,7 +36,11 @@ namespace IHFF_V2.Repositories
         {
             foreach (CartItem item in cart)
             {
-                BestelRegel bestelRegel = new BestelRegel(id, item.Id, item.Quantity);
+                //BestelRegel bestelRegel = new BestelRegel(id, item.Id, item.Quantity);
+                BestelRegel bestelRegel = new BestelRegel();
+                bestelRegel.BestellingId = id;
+                bestelRegel.EventId = item.Id;
+                bestelRegel.Quantity = item.Quantity;
 
                 ctx.BestelRegels.Add(bestelRegel);
                 ctx.SaveChanges();
