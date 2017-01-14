@@ -21,5 +21,8 @@ namespace IHFF_V2.Models
 
         [Required(ErrorMessage = "Dit veld is verplicht")]
         public string EmailAdres { get; set; }
+
+        [Required(ErrorMessage = "Dit veld is verplicht")]
+        public int Betaald { get; set; }
     }
 }

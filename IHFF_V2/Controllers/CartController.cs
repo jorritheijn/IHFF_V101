@@ -16,51 +16,66 @@ namespace IHFF_V2.Controllers
             return View();
         }
         
-        //Change the cart to one with two dummy items
-        public ActionResult TestCart()
-        {
-            //Test values for the cart (they work)
-            List<CartItem> cart = new List<CartItem>();
-            cart.Add(new Models.CartItem(1, "test", "here", DateTime.Now, 13.37F, 3));
-            cart.Add(new Models.CartItem(2, "testest", "there", DateTime.Now, 11F, 4));
-            Session["cart"] = cart;
-            return View("Index");
-        }
+        ////Change the cart to one with two dummy items
+        //public ActionResult TestCart()
+        //{
+        //    //Test values for the cart (they work)
+        //    List<CartItem> cart = new List<CartItem>();
+        //    cart.Add(new Models.CartItem(1, "test", "here", DateTime.Now, 13.37F, 3));
+        //    cart.Add(new Models.CartItem(2, "testest", "there", DateTime.Now, 11F, 4));
+        //    Session["cart"] = cart;
+        //    return View("Index");
+        //}
 
         //Increments the quantity of a cart item
         public ActionResult Increment(int id)
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            CartItem ci = cart.First(c => c.Id == id);
-            ci.Quantity++;
+            try
+            {
+                List<CartItem> cart = GetCartFromSession();
+                CartItem ci = cart.First(c => c.Id == id);
+                ci.Quantity++;
+            }
+            catch(Exception e)
+            {
+                return View("Error");
+            }
             return View("Index");
         }
 
         //Decrements the quantity of a cart item. Deletes if there's too few items in the cart
         public ActionResult Decrement(int id)
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-            CartItem ci = cart.First(c => c.Id == id);
-            if (ci.Quantity > 1)
-                ci.Quantity--;
-            else
-                Delete(id);
+            try
+            {
+                List<CartItem> cart = GetCartFromSession();
+                CartItem ci = cart.First(c => c.Id == id);
+                if (ci.Quantity > 1)
+                    ci.Quantity--;
+                else
+                    Delete(id);
+            }
+            catch(Exception e)
+            {
+                return View("Error");
+            }
             return View("Index");
         }
 
         //Removes an item from the cart
         public ActionResult Delete(int id)
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
             try
             {
+                List<CartItem> cart = GetCartFromSession();
                 cart.Remove(cart.First(c => c.Id == id));
             }
             catch(Exception e)
             {
+                //TODO: Replace error screen with a little popup message
                 return View("Error");
             }
-            Session["cart"] = cart;
+            //Session["cart"] = cart; //Is niet nodig?
             return View("Index");
         }
 
@@ -117,6 +132,11 @@ namespace IHFF_V2.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        private List<CartItem> GetCartFromSession()
+        {
+            return (List<CartItem>)Session["cart"];
         }
 
         //Calculate and return the price of the cart
