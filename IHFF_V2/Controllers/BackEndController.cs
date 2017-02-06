@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace IHFF_V2.Controllers
 {
@@ -72,14 +73,25 @@ namespace IHFF_V2.Controllers
         {
             if (ModelState.IsValid)
             {
+                //get account with credentials
                 medewerker = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
 
                 if (medewerker != null)
                 {
+                    FormsAuthentication.SetAuthCookie(medewerker.Gebruikersnaam, false);
+
+                    //remember account
+                    Session["loggedin_medewerker"] = medewerker;
+
                     return RedirectToAction("Index");// goes to backend index if from is filled correctly
                 }
-                
+
             }
+            else
+            {
+                ModelState.AddModelError("login-error","De gebruikersnaaam of wachtwoord is incorrect ingevoerd");
+            }
+
 
             return View(medewerker);//there was a error, go back to login page
             
