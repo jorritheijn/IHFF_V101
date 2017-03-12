@@ -27,11 +27,15 @@ namespace IHFF_V2.Repositories
             IEnumerable<Event> restaurants = ctx.Events.Where(restaurant => restaurant.Type.Equals("Restaurant"));
             IEnumerable<Event> cultuurevents = ctx.Events.Where(cultuurevent => cultuurevent.Type.Equals("Cultuur"));
             IEnumerable<Event> specials = ctx.Events.Where(special => special.Type.Equals("Special"));
-
             IEnumerable<Event> events = films.Concat(restaurants).Concat(cultuurevents).Concat(specials);
             return events;
-
         }
+
+        public IEnumerable<Event> GetEventsOfType(string type)
+        {
+                    return ctx.Events.Where(film => film.Type.Equals(type)).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
+        }
+
 
         internal void AddEvent(Event eventItem)
         {

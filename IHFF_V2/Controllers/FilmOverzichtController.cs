@@ -13,39 +13,66 @@ namespace IHFF_V2.Controllers
     public class FilmOverzichtController : Controller
     {
         private IFilmRepository filmrepository = new FilmRepository();
+        private EventRepository eventrepository = new EventRepository();
+        private IEnumerable<Event> films = new EventRepository().GetEventsOfType("film");
 
         public ActionResult Index(string searchString, string dag)
         {
-            //Geselecteerde events zijn de events die we in de view willen weergeven
-            IEnumerable<Event> geselecteerdeEvents = new FilmRepository().AlleFilmsEnkel;
-
-            //Als er op een dagfilter geklikt is.
-            if (dag != null)
-            {
-                //verwijst door naar ActionResult DagProgramma hieronder. 
-                return RedirectToAction("DagProgramma", new { dag = dag });
-            }
             // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
-                geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, geselecteerdeEvents);
+                films = films.Where(s => s.Titel.Contains(searchString));
             }
-            return View(geselecteerdeEvents);
+            return View(films);
         }
 
         //Als er op een DagProgramma is gelklikt
         public ActionResult DagProgramma(string dag, string searchString)
         {
-            IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
+            films = FilmsOpDag(dag, films);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, GefilterdeEvents);
+                films = films.Where(s => s.Titel.Contains(searchString));
             }
             ViewBag.Dag = dag;
-            return View(GefilterdeEvents);
+            return View(films);
         }
+
+        public IEnumerable<Event> FilmsOpDag(string dag, IEnumerable<Event> film)
+        {
+            DayOfWeek AangeklikteDag = DayOfWeek.Monday;
+            switch (dag)
+            {
+                case "maandag": AangeklikteDag = DayOfWeek.Monday;
+                    break;
+
+                case "dinsdag": AangeklikteDag = DayOfWeek.Tuesday;
+                    break;
+
+                case "woensdag": AangeklikteDag = DayOfWeek.Wednesday;
+                    break;
+
+                case "donderdag": AangeklikteDag = DayOfWeek.Thursday;
+                    break;
+
+                case "vrijdag": AangeklikteDag = DayOfWeek.Friday;
+                    break;
+
+                case "zaterdag": AangeklikteDag = DayOfWeek.Saturday;
+                    break;
+
+                case "zondag": AangeklikteDag = DayOfWeek.Sunday;
+                    break;
+
+            }
+            return film.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
+        }
+
+
+
+
 
         //public ActionResult AddImage(int Id)
         //{

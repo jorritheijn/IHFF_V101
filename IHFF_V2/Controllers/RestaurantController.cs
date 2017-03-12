@@ -15,10 +15,11 @@ namespace IHFF_V2.Controllers
 
         //all actions with films are done via a FilmRepository
         private RestaurantRepository RestaurantRepository = new RestaurantRepository();
+        private EventRepository evenement = new EventRepository();
 
         public ActionResult Index()
         {
-            IEnumerable<Event> restaurants = RestaurantRepository.AlleResetaurants;
+            IEnumerable<Event> restaurants = evenement.GetEventsOfType("Restaurant"); 
             return View(restaurants);
         }
 

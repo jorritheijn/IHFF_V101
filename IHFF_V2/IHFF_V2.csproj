@@ -189,6 +189,7 @@
     <Compile Include="Controllers\BackEndController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CultuurController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\FilmOverzichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -462,6 +463,7 @@
     <Content Include="Views\BackEnd\Add.cshtml" />
     <Content Include="Views\BackEnd\Edit.cshtml" />
     <Content Include="Views\BackEnd\LogIn.cshtml" />
+    <Content Include="Views\SpecialOverzicht\DagProgramma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
