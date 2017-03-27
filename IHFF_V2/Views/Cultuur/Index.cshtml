@@ -23,15 +23,15 @@
 {
     <div class="row" id="musea">
         <div class="col-md-4">
-            @if(musea.Poster != null)
-            {
-                <img class="center-blocker" src="@Blobmanager.ImageSource(e.Poster)" width="600" height="200" />
-            }
+                @if (musea.Poster != null)
+                {
+                    <img class="Poster" src="@Blobmanager.ImageSource(musea.Poster)" width="272" height="387" />
+                }
 
-            else
-            {
-                <img class="center-blocker" src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="600" , height="200" />
-            }
+                else
+                {
+                    <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="272" , height="387" />
+                }
         </div>
 
         <div class="col-md-6">

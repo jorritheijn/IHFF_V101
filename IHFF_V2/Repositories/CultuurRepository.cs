@@ -9,19 +9,17 @@ namespace IHFF_V2.Repositories
     public class CultuurRepository : ICultuurRepository
     {
         private ihffContext ctx = new ihffContext();
-        public IEnumerable<Event> GetAllCultuurEvents()
+        public IEnumerable<Event> GetAllCultuurEvents() //tabel cultuur gebruiken
         {
            IEnumerable<Event> GetAllCultuurEvents = ctx.Events.Where(e => e.Type == "Cultuur");
            return GetAllCultuurEvents;
         }
 
-        public Event GetSingleCultuurEvent(int Id)
+        public Event GetSingleCultuurEvent(int Id) //cultuur tabel gebruiken indien mogelijk 
         {
-            IEnumerable<Event> GetSpecificCultuur = ctx.Events.Where(e => e.Id == Id);
+            Event GetSpecificCultuur = ctx.Events.Where(e => e.Id == Id).SingleOrDefault();
 
-            Event singelculture = GetSpecificCultuur.First(); 
-
-            return singelculture;
+            return GetSpecificCultuur;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace IHFF_V2.Repositories
     public class BackEndRepository : IBackEndRepository
     {
         private ihffContext ctx = new ihffContext();
-        public Medewerker GetAccount(string gebruikersnaam, string wachtwoord)
+        public Medewerker GetAccount(string gebruikersnaam, string wachtwoord) //wactwoordbeveiliging
         {
             Medewerker account = ctx.Medewerker.Where(x => x.Gebruikersnaam == gebruikersnaam && x.Wachtwoord == wachtwoord).SingleOrDefault();
 

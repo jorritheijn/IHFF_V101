@@ -42,6 +42,7 @@ namespace IHFF_V2.Controllers
             eventItem = repos.GetEvent(id);
             return View(eventItem);
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult Add(Event eventItem)
@@ -52,6 +53,7 @@ namespace IHFF_V2.Controllers
             }           
             return RedirectToAction("Index");
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult Edit(Event eventItem)
@@ -74,14 +76,14 @@ namespace IHFF_V2.Controllers
             if (ModelState.IsValid)
             {
                 //get account with credentials
-                medewerker = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
+                Medewerker medewerkeraccount = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
 
                 if (medewerker != null)
                 {
-                    FormsAuthentication.SetAuthCookie(medewerker.Gebruikersnaam, false);
+                    FormsAuthentication.SetAuthCookie(medewerkeraccount.Gebruikersnaam, false);
 
                     //remember account
-                    Session["loggedin_medewerker"] = medewerker;
+                    Session["loggedin_medewerker"] = medewerkeraccount;
 
                     return RedirectToAction("Index");// goes to backend index if from is filled correctly
                 }

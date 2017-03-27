@@ -3,25 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using IHFF_V2.Repositories;
 using IHFF_V2.Models;
+using IHFF_V2.Repositories;
 using System.IO;
+
 
 namespace IHFF_V2.Controllers
 {
-    public class SpecialOverzichtController : Controller
+    public class FilmController : Controller
     {
-        //
-        // GET: /SpecialOverzicht/
-
-        private IspecialRepository SpecialRepository = new SpecialRepository();
+        private IFilmRepository filmrepository = new FilmRepository();
 
         public ActionResult Index(string searchString, string dag)
         {
-
-            //Default
             //Geselecteerde events zijn de events die we in de view willen weergeven
-            IEnumerable<Event> geselecteerdeEvents = new SpecialRepository().AlleSpecialsEnkel;
+            IEnumerable<Event> geselecteerdeEvents = new FilmRepository().AlleFilmsEnkel;
 
             //Als er op een dagfilter geklikt is.
             if (dag != null)
@@ -29,38 +25,49 @@ namespace IHFF_V2.Controllers
                 //verwijst door naar ActionResult DagProgramma hieronder. 
                 return RedirectToAction("DagProgramma", new { dag = dag });
             }
-
             // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
-                geselecteerdeEvents = new SpecialRepository().SpecailsOpZoekWoord(searchString, geselecteerdeEvents);
+                geselecteerdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, geselecteerdeEvents);
             }
-
             return View(geselecteerdeEvents);
         }
 
-        //Als er op een DagProgramma
-
+        //Als er op een DagProgramma is gelklikt
         public ActionResult DagProgramma(string dag, string searchString)
         {
-            IEnumerable<Event> GefilterdeEvents = new SpecialRepository().SpecialsOpDag(dag);
+            IEnumerable<Event> GefilterdeEvents = new FilmRepository().FilmsOpDag(dag);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                GefilterdeEvents = new SpecialRepository().SpecailsOpZoekWoord(searchString, GefilterdeEvents);
+                GefilterdeEvents = new FilmRepository().FilmsOpZoekWoord(searchString, GefilterdeEvents);
             }
             ViewBag.Dag = dag;
             return View(GefilterdeEvents);
         }
 
+        
 
-        public ActionResult DetailSpecialpage(int Id)
+        //Haalt detailpagina op 
+        public ActionResult DetailFilmpage(int Id)
         {
-            DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpesificSpecial(Id);
+            DetailFilmViewModel FilmDetail = filmrepository.GetDetailedFilm(Id);
 
-            return View(SpecialDetail);
+            return View(FilmDetail);
         }
 
+        // gets event id and aantal from form, returns action to cartcontroller
+        [HttpPost]
+        public ActionResult DetailFilmpage(int id, int aantal)
+        {
+            if (aantal > 0)
+            {
+                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+            }
+
+            return View("ErrorInvoerOnjuist");
+        }
     }
 }
+

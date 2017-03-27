@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "DagProgramma:"; 
+    ViewBag.Title = "DagProgramma:";
 }
 
 @section Styles {
@@ -21,26 +21,26 @@
 {
     <p>
         Find by name: @Html.TextBox("SearchString")
-        
+
         <input type="submit" value="Search" />
     </p>
 }
-    
-       @foreach (var film in Model)
-    {
-        <section id="filminfo">
 
-                      
-            @if (film.Poster != null)
-            {              
-                <img src="@Blobmanager.ImageSource(film.Poster)" height="240" width="163" /> 
-            }
-            <p class="titel">@film.Titel</p> 
-            <p class="locatie">@film.Locatie</p>
-            <p class="tijd">@film.Tijd</p>
-            <p class="beschrijving">  @film.Beschrijving </p>
-        </section>
-    }
+@foreach (var film in Model)
+{
+    <section id="filminfo">
+
+
+        @if (film.Poster != null)
+        {
+            <img src="@Blobmanager.ImageSource(film.Poster)" height="240" width="163" />
+        }
+        <p class="titel">@film.Titel</p>
+        <p class="locatie">@film.Locatie</p>
+        <p class="tijd">@film.Tijd</p>
+        <p class="beschrijving">  @film.Beschrijving </p>
+    </section>
+}
 
 
 

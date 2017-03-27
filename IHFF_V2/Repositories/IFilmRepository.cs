@@ -13,7 +13,7 @@ namespace IHFF_V2.Repositories
         IEnumerable<Event> FilmsOpDag(string dag);
         void AddPicture(byte[] imageData, int Id);
         DetailFilmViewModel GetDetailedFilm(int Id);
-        string DateTimeToStringStime(DateTime? tijd);
-        List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel);
+        //string DateTimeToStringStime(DateTime? tijd);
+        //List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel);
     }
 }

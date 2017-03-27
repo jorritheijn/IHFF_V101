@@ -34,7 +34,7 @@ namespace IHFF_V2.Repositories
             DetailedRestaurantModel.Dagdeel = GetRestaurantdagdeel(DetailedRestaurantModel);
 
             //get RandomEvent
-            DetailedRestaurantModel.RandomEvent = GetRandomEvents();
+            DetailedRestaurantModel.RandomEvent = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
 
             //return a model with multiple models within it
             return DetailedRestaurantModel;
@@ -52,30 +52,24 @@ namespace IHFF_V2.Repositories
 
             foreach (var specificevent in allspecificRestaurants)
             {
+                string tijd;
+
                 if (specificevent.SluitingsTijd <= middag && specificevent.SluitingsTijd >= ochtend)//add nothing if there is no date
                 {
-                    string tijd = "Lunch";
-                    Dagdelen.Add(tijd);
+                    tijd = "Lunch";
                 }
                 else if (specificevent.SluitingsTijd <= ochtend)
                 {
-                    string tijd = "Ontbijt";
-                    Dagdelen.Add(tijd);
+                    tijd = "Ontbijt";
                 }
                 else
                 {
-                    string tijd = "Dinner";
-                    Dagdelen.Add(tijd);
+                    tijd = "Dinner";
                 }
+
+                Dagdelen.Add(tijd);
             }
             return Dagdelen;
-        }
-
-        //gets three random events from database
-        public IEnumerable<Event> GetRandomEvents()
-        {
-            IEnumerable<Event> RandomEvents = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
-            return RandomEvents;
         }
 
         public IEnumerable<Event> AlleRestaurants

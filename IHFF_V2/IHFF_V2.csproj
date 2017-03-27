@@ -189,12 +189,11 @@
     <Compile Include="Controllers\BackEndController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CultuurController.cs" />
-    <Compile Include="Controllers\FilmOverzichtController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="Controllers\SpecialController.cs" />
-    <Compile Include="Controllers\SpecialOverzichtController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -443,14 +442,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\FilmOverzicht\Index.cshtml" />
-    <Content Include="Views\FilmOverzicht\DagProgramma.cshtml" />
-    <Content Include="Views\FilmOverzicht\AddImage.cshtml" />
-    <Content Include="Views\FilmOverzicht\DetailFilmpage.cshtml" />
+    <Content Include="Views\Image\AddImage.cshtml" />
     <Content Include="Views\Restaurant\DetailRestaurantpage.cshtml" />
     <Content Include="Views\Special\DetailSpecialpage.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\SpecialOverzicht\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Cart\Error.cshtml" />
     <Content Include="Views\Cultuur\Index.cshtml" />
@@ -462,6 +457,11 @@
     <Content Include="Views\BackEnd\Add.cshtml" />
     <Content Include="Views\BackEnd\Edit.cshtml" />
     <Content Include="Views\BackEnd\LogIn.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Film\DagProgramma.cshtml" />
+    <Content Include="Views\Film\DetailFilmpage.cshtml" />
+    <Content Include="Views\Special\Index.cshtml" />
+    <Content Include="Views\Special\DagProgramma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

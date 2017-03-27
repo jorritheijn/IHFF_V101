@@ -99,46 +99,38 @@ namespace IHFF_V2.Repositories
             //get all the times from one movie
             DetailedFilmModel.Tijd = GetFilmTijd(DetailedFilmModel);
 
-            DetailedFilmModel.RandomEvent = GetRandomEvents();
+            DetailedFilmModel.RandomEvent = ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);
 
             //return a model with two models within it
             return DetailedFilmModel;
         }
 
-        //gives all datetimes converted in a string list
-        public List<string> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
+        //gives all datetimes converted in a string list //lijst met date times geven
+        public List<DateTime?> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
         {
             IEnumerable<Event> allspecificevents = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel);
 
-            List<string> tijden = new List<string>();
+            List<DateTime?> tijden = new List<DateTime?>();
 
             foreach (var specificevent in allspecificevents)
             {
                 if (specificevent.Tijd != null)//add nothing if there is no date
                 {
-                    string tijd = DateTimeToStringStime(specificevent.Tijd); // converts a time to a time/day string
-                    tijden.Add(tijd);
+                    //string tijd = DateTimeToStringStime(specificevent.Tijd); // converts a time to a time/day string
+                    tijden.Add(specificevent.Tijd);
                    
                 }
             }
             return tijden;
         }
 
-        //returns date converted to string time/day
-        public string DateTimeToStringStime(DateTime? tijd)
+        //returns date converted to string time/day //in presentatielogica //datetime format
+        /*public string DateTimeToStringStime(DateTime? tijd)
         {
             var shortStringTime = tijd.Value.ToShortTimeString();
             var shortStringDay = tijd.Value.DayOfWeek.ToString();
             string tijDag = shortStringTime + " " + shortStringDay;
             return tijDag;
-        }
-
-        //gets 3 random events from the database thats not a film
-        public IEnumerable<Event> GetRandomEvents()
-        {
-            IEnumerable<Event> RandomEvents =  ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);
-
-            return RandomEvents;
-        }
+        }*/
     }
 }

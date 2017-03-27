@@ -20,18 +20,10 @@ namespace IHFF_V2.Repositories
             DetailedSpecialModel.Special = ctx.Specials.SingleOrDefault(a => a.EventId == Id);
 
             //get RandomEvent
-            DetailedSpecialModel.RandomEvents = GetRandomEvents();
+            DetailedSpecialModel.RandomEvents = ctx.Events.Where(x => x.Type != "Special").OrderBy(r => Guid.NewGuid()).Take(3);
 
             //return a model with two models within it
             return DetailedSpecialModel;
-        }
-
-        //gets three random events from database
-        public IEnumerable<Event> GetRandomEvents()
-        {
-            IEnumerable<Event> RandomEvents = ctx.Events.Where(x => x.Type != "Special").OrderBy(r => Guid.NewGuid()).Take(3);
-
-            return RandomEvents;
         }
 
         public IEnumerable<Event> AlleSpecialsEnkel
