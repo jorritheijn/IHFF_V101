@@ -462,6 +462,7 @@
     <Content Include="Views\Film\DetailFilmpage.cshtml" />
     <Content Include="Views\Special\Index.cshtml" />
     <Content Include="Views\Special\DagProgramma.cshtml" />
+    <Content Include="Views\Shared\WrongIdError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

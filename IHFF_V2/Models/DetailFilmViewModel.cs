@@ -10,11 +10,11 @@ namespace IHFF_V2.Models
         //A model that combines two models, list and a Ienum for random events in one to pass it to one view.
         public Event Event { get; set; }
         public Film Film { get; set; }
-        public List<DateTime?> Tijd { get; set; } //List for all available movie times
+        public IEnumerable<DateTime?> Tijd { get; set; } //List for all available movie times
         public IEnumerable<Event> RandomEvent { get; set; } //List with random selected events
 
         //constructor
-        public DetailFilmViewModel(Event Event, Film Film, List<DateTime?> Tijd, IEnumerable<Event> RandomEvent)
+        public DetailFilmViewModel(Event Event, Film Film, IEnumerable<DateTime?> Tijd, IEnumerable<Event> RandomEvent)
         {
             this.Event = Event;
             this.Film = Film;

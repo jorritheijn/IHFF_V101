@@ -27,7 +27,15 @@ namespace IHFF_V2.Controllers
         public ActionResult DetailRestaurantpage(int Id)
         {
             DetailRestaurantViewModel RestaurantDetail = RestaurantRepository.GetSpecificRestaurant(Id);
-            return View(RestaurantDetail);
+
+            if (RestaurantDetail != null && RestaurantDetail.Event.Type == "Restaurant")
+            {
+                return View(RestaurantDetail);
+            }
+            else
+            {
+                return View("~/Views/Shared/WrongIdError.cshtml");
+            }
         }
               
         //gets event id and aantal, returns action to cartcontroller

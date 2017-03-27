@@ -23,7 +23,13 @@ namespace IHFF_V2.Controllers
         {
             Event SpecificEvent = cultuurRepository.GetSingleCultuurEvent(Id);
 
-            return View(SpecificEvent);
+            if (SpecificEvent != null && SpecificEvent.Type == "Cultuur") {
+                return View(SpecificEvent);
+            }
+            else {
+                return View("~/Views/Shared/WrongIdError.cshtml");
+            }
+            
         }
 
     }

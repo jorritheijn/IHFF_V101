@@ -54,7 +54,14 @@ namespace IHFF_V2.Controllers
         {
             DetailFilmViewModel FilmDetail = filmrepository.GetDetailedFilm(Id);
 
-            return View(FilmDetail);
+            if (FilmDetail.Event != null && FilmDetail.Event.Type == "Film") {
+                return View(FilmDetail);
+            }
+            else {
+                return View("~/Views/Shared/WrongIdError.cshtml");
+            }
+
+            
         }
 
         // gets event id and aantal from form, returns action to cartcontroller

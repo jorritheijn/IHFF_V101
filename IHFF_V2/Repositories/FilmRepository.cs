@@ -89,48 +89,21 @@ namespace IHFF_V2.Repositories
         public DetailFilmViewModel GetDetailedFilm(int Id)
         {
             DetailFilmViewModel DetailedFilmModel = new DetailFilmViewModel();
+            
+                //get a specific filmevent with given id from filmoverviewe
+                DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
-            //get a specific filmevent with given id from filmoverviewe
-            DetailedFilmModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
+                //get a specific film with eventid
+                DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
 
-            //get a specific film with eventid
-            DetailedFilmModel.Film = ctx.Films.SingleOrDefault(a => a.EventId == Id);
+                //get all the times from one movie
+                DetailedFilmModel.Tijd = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel).Select(a => a.Tijd);
 
-            //get all the times from one movie
-            DetailedFilmModel.Tijd = GetFilmTijd(DetailedFilmModel);
+                DetailedFilmModel.RandomEvent = ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);
 
-            DetailedFilmModel.RandomEvent = ctx.Events.Where(x => x.Type != "Film").OrderBy(r => Guid.NewGuid()).Take(3);
-
-            //return a model with two models within it
-            return DetailedFilmModel;
+                //return a model with two models within it
+                return DetailedFilmModel;
+            
         }
-
-        //gives all datetimes converted in a string list //lijst met date times geven
-        public List<DateTime?> GetFilmTijd(DetailFilmViewModel DetailedFilmModel)
-        {
-            IEnumerable<Event> allspecificevents = ctx.Events.Where(b => b.Titel == DetailedFilmModel.Event.Titel);
-
-            List<DateTime?> tijden = new List<DateTime?>();
-
-            foreach (var specificevent in allspecificevents)
-            {
-                if (specificevent.Tijd != null)//add nothing if there is no date
-                {
-                    //string tijd = DateTimeToStringStime(specificevent.Tijd); // converts a time to a time/day string
-                    tijden.Add(specificevent.Tijd);
-                   
-                }
-            }
-            return tijden;
-        }
-
-        //returns date converted to string time/day //in presentatielogica //datetime format
-        /*public string DateTimeToStringStime(DateTime? tijd)
-        {
-            var shortStringTime = tijd.Value.ToShortTimeString();
-            var shortStringDay = tijd.Value.DayOfWeek.ToString();
-            string tijDag = shortStringTime + " " + shortStringDay;
-            return tijDag;
-        }*/
     }
 }

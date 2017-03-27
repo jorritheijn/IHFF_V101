@@ -24,20 +24,29 @@ namespace IHFF_V2.Repositories
         {
             DetailRestaurantViewModel DetailedRestaurantModel = new DetailRestaurantViewModel();
 
-            //get a specific Restaurant with given id from Restaurantoverview
-            DetailedRestaurantModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
+            try
+            {
+                //get a specific Restaurant with given id from Restaurantoverview
+                DetailedRestaurantModel.Event = ctx.Events.SingleOrDefault(a => a.Id == Id);
 
-            //get a specific restaurant with eventid
-            DetailedRestaurantModel.Restaurant = ctx.Restaurants.First(a => a.EventId == Id);
+                //get a specific restaurant with eventid
+                DetailedRestaurantModel.Restaurant = ctx.Restaurants.First(a => a.EventId == Id);
 
-            //get time times
-            DetailedRestaurantModel.Dagdeel = GetRestaurantdagdeel(DetailedRestaurantModel);
+                //get time times
+                DetailedRestaurantModel.Dagdeel = GetRestaurantdagdeel(DetailedRestaurantModel);
 
-            //get RandomEvent
-            DetailedRestaurantModel.RandomEvent = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
+                //get RandomEvent
+                DetailedRestaurantModel.RandomEvent = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
 
-            //return a model with multiple models within it
-            return DetailedRestaurantModel;
+                //return a model with multiple models within it
+                return DetailedRestaurantModel;
+            }
+            catch
+            {
+                return null;
+            }
+
+            
         }
 
         //method that converts all timespans to a list string
