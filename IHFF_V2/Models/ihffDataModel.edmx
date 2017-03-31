@@ -25,13 +25,10 @@
           <Property Name="Achternaam" Type="varchar" MaxLength="50" />
           <Property Name="EmailAdres" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'iHFF1617S_B5.dbo.BestelRegel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BestelRegel">
           <Key>
             <PropertyRef Name="BestellingId" />
             <PropertyRef Name="EventId" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="BestellingId" Type="int" Nullable="false" />
           <Property Name="EventId" Type="int" Nullable="false" />
@@ -311,6 +308,7 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
         <EntityContainer Name="iHFF1617S_B5ModelStoreContainer">
           <EntitySet Name="Afbeelding" EntityType="Self.Afbeelding" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bestelling" EntityType="Self.Bestelling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BestelRegel" EntityType="Self.BestelRegel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CombiDeal" EntityType="Self.CombiDeal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cultuur" EntityType="Self.Cultuur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
@@ -320,13 +318,6 @@ warning 6002: The table/view 'iHFF1617S_B5.dbo.Highlight' does not have a primar
           <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BestelRegel" EntityType="Self.BestelRegel" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[BestelRegel].[BestellingId] AS [BestellingId], 
-[BestelRegel].[EventId] AS [EventId], 
-[BestelRegel].[Quantity] AS [Quantity]
-FROM [dbo].[BestelRegel] AS [BestelRegel]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Highlight" EntityType="Self.Highlight" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [Highlight].[Id] AS [Id], 
@@ -533,7 +524,6 @@ FROM [dbo].[Highlight] AS [Highlight]</DefiningQuery>
           <Key>
             <PropertyRef Name="BestellingId" />
             <PropertyRef Name="EventId" />
-            <PropertyRef Name="Quantity" />
           </Key>
           <Property Name="BestellingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EventId" Type="Int32" Nullable="false" />

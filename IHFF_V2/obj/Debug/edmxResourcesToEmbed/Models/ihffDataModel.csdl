@@ -135,7 +135,6 @@
     <Key>
       <PropertyRef Name="BestellingId" />
       <PropertyRef Name="EventId" />
-      <PropertyRef Name="Quantity" />
     </Key>
     <Property Name="BestellingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="EventId" Type="Int32" Nullable="false" />

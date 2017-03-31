@@ -5,166 +5,169 @@
   </assembly>
   <members>
     <member name="T:WebMatrix.Data.ConnectionEventArgs">
-      <summary>Stellt Daten für das <see cref="E:WebMatrix.Data.Database.ConnectionOpened" />-Ereignis der <see cref="T:WebMatrix.Data.Database" />-Klasse zur Verfügung.</summary>
+      <summary>Provides data for the <see cref="E:WebMatrix.Data.Database.ConnectionOpened" /> event of the <see cref="T:WebMatrix.Data.Database" /> class.</summary>
     </member>
     <member name="M:WebMatrix.Data.ConnectionEventArgs.#ctor(System.Data.Common.DbConnection)">
-      <summary>Initialisiert eine neue Instanz der Klasse <see cref="T:WebMatrix.Data.ConnectionEventArgs" />.</summary>
-      <param name="connection">Die Verbindung, die dem Ereignis zugeordnet ist.</param>
+      <summary>Initializes a new instance of the <see cref="T:WebMatrix.Data.ConnectionEventArgs" /> class.</summary>
+      <param name="connection">The connection that is associated with the event.</param>
     </member>
     <member name="P:WebMatrix.Data.ConnectionEventArgs.Connection">
-      <summary>Ruft die Verbindung ab, die dem Ereignis zugeordnet ist.</summary>
-      <returns>Die Verbindung, die geöffnet wurde.</returns>
+      <summary>Gets the connection that is associated with the event.</summary>
+      <returns>The connection that was opened.</returns>
     </member>
     <member name="T:WebMatrix.Data.Database">
-      <summary>Stellt Methoden und Eigenschaften zur Verfügung, die für den Zugriff auf die die Verwaltung von Daten verwendet werden, die in einer Datenbank gespeichert sind.</summary>
+      <summary>Provides methods and properties that are used to access and manage data that is stored in a database.</summary>
     </member>
     <member name="M:WebMatrix.Data.Database.Close">
-      <summary>Schließt eine geöffnete Datenbank.</summary>
+      <summary>Closes an open database.</summary>
     </member>
     <member name="P:WebMatrix.Data.Database.Connection">
-      <summary>Ruft die aktuelle Verbindung mit einer Datenbank ab.</summary>
-      <returns>Die Verbindung.</returns>
+      <summary>Gets the current connection to a database.</summary>
+      <returns>The connection.</returns>
     </member>
     <member name="E:WebMatrix.Data.Database.ConnectionOpened">
-      <summary>Tritt ein, wenn durch eine <see cref="T:WebMatrix.Data.Database" />-Instanz eine neue Datenbankverbindung geöffnet wird.</summary>
+      <summary>Occurs when a new database connection is opened by a <see cref="T:WebMatrix.Data.Database" /> instance.</summary>
     </member>
     <member name="M:WebMatrix.Data.Database.Dispose">
-      <summary>Gibt alle von einer <see cref="T:WebMatrix.Data.Database" />-Instanz verwendeten Ressourcen frei.</summary>
+      <summary>Releases all resources used by a <see cref="T:WebMatrix.Data.Database" /> instance.</summary>
     </member>
     <member name="M:WebMatrix.Data.Database.Dispose(System.Boolean)">
-      <summary>Gibt die von einer <see cref="T:WebMatrix.Data.Database" />-Instanz verwendeten nicht verwalteten Ressourcen und optional auch die verwalteten Ressourcen frei.</summary>
-      <param name="disposing">true, um sowohl verwaltete als auch nicht verwaltete Ressourcen freizugeben. false, um ausschließlich nicht verwaltete Ressourcen freizugeben.</param>
+      <summary>Releases the unmanaged resources used by a <see cref="T:WebMatrix.Data.Database" /> instance and optionally releases the managed resources.</summary>
+      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
     </member>
     <member name="M:WebMatrix.Data.Database.Execute(System.String,System.Object[])">
-      <summary>Führt eine SQL-Anweisung aus, die keine Abfrage ist.</summary>
-      <returns>Die Anzahl der Datensätze, die von der SQL-Anweisung betroffen sind.</returns>
-      <param name="commandText">Die auszuführende SQL-Anweisung.</param>
-      <param name="args">(Optional) Die Parameter, die an die SQL-Anweisung übergeben werden sollen.</param>
+      <summary>Executes a non-query SQL statement.</summary>
+      <returns>The count of records affected by the SQL statement.</returns>
+      <param name="commandText">The SQL statement to execute.</param>
+      <param name="args">(Optional) Parameters to pass to the SQL statement.</param>
       <exception cref="T:System.ArgumentException">
-        <paramref name="commandText" /> ist null oder leer.</exception>
+        <paramref name="commandText" /> is null or empty.</exception>
     </member>
     <member name="M:WebMatrix.Data.Database.GetLastInsertId">
-      <summary>Gibt die Identitätsspalte der zuletzt eingefügten Zeile zurück.</summary>
-      <returns>Die ID der zuletzt eingefügten Zeile.</returns>
+      <summary>Returns the identity column of the most recently inserted row.</summary>
+      <returns>The ID of the most recently inserted row.</returns>
     </member>
     <member name="M:WebMatrix.Data.Database.Open(System.String)">
-      <summary>Öffnet eine Verbindung mit einer Datenbank mithilfe des angegebenen Dateinamens oder mithilfe der benannten Verbindungszeichenfolge.</summary>
-      <returns>Die Datenbankinstanz.</returns>
-      <param name="name">Der Name, der der zu öffnenden Datenbank zugeordnet ist. <paramref name="name" /> kann eine SDF- oder MDF-Datenbankdatei angeben, die im Ordner App_Data gespeichert ist. (Geben Sie nicht die Dateinamenerweiterung an.) Alternativ <paramref name="name" /> können Sie den Namen einer Verbindungszeichenfolge in der Datei Web.config angeben.</param>
+      <summary>Opens a connection to a database using the specified file name or using the named connection string.</summary>
+      <returns>The database instance.</returns>
+      <param name="name">The name associated with the database to open. <paramref name="name" /> can specify an .sdf or .mdf database file that is in the App_Data folder. (Do not include the file-name extension.) Alternatively, <paramref name="name" /> can specify the name of a connection string in the Web.config file.</param>
     </member>
     <member name="M:WebMatrix.Data.Database.OpenConnectionString(System.String)">
-      <summary>Öffnet mithilfe der angegebenen Verbindungszeichenfolge eine Verbindung mit einer Datenbank.</summary>
-      <returns>Die Datenbankinstanz.</returns>
-      <param name="connectionString">Die Verbindungszeichenfolge, die Informationen enthält, die zum Herstellen einer Verbindung mit einer Datenbank verwendet werden.</param>
+      <summary>Opens a connection to a database using the specified connection string.</summary>
+      <returns>The database instance.</returns>
+      <param name="connectionString">The connection string that contains information that is used to connect to a database.</param>
       <exception cref="T:System.ArgumentException">
-        <paramref name="connectionString" /> ist null oder leer.</exception>
+        <paramref name="connectionString" /> is null or empty.</exception>
     </member>
     <member name="M:WebMatrix.Data.Database.OpenConnectionString(System.String,System.String)">
-      <summary>Öffnet mithilfe einer Verbindungszeichenfolge und dem angegebenen Anbieter eine Verbindung mit einer Datenbank.</summary>
-      <returns>Die Datenbankinstanz.</returns>
-      <param name="connectionString">Die Verbindungszeichenfolge, die Informationen enthält, die zum Herstellen einer Verbindung mit einer Datenbank verwendet werden.</param>
-      <param name="providerName">(Optional) Der Name des .NET Framework-Datenanbieters, der zum Herstellen einer Verbindung mit der Datenquelle verwendet werden soll.</param>
+      <summary>Opens a connection to a database using a connection string and the specified provider.</summary>
+      <returns>The database instance.</returns>
+      <param name="connectionString">The connection string that contains information that is used to connect to a database.</param>
+      <param name="providerName">(Optional) The name of the .NET Framework data provider to use to connect to the data source.</param>
       <exception cref="T:System.ArgumentException">
-        <paramref name="connectionString" /> ist null oder leer.</exception>
+        <paramref name="connectionString" /> is null or empty.</exception>
     </member>
     <member name="M:WebMatrix.Data.Database.Query(System.String,System.Object[])">
-      <summary>Führt eine SQL-Abfrage aus, die eine Liste von Zeilen als Ergebnis zurückgibt.</summary>
-      <returns>Die von der SQL-Abfrage zurückgegebenen Zeilen.</returns>
-      <param name="commandText">Die auszuführende SQL-Abfrage.</param>
-      <param name="parameters">(Optional) Die Parameter, die an die SQL-Abfrage übergeben werden sollen.</param>
+      <summary>Executes a SQL query that returns a list of rows as the result.</summary>
+      <returns>The rows returned by the SQL query.</returns>
+      <param name="commandText">The SQL query to execute.</param>
+      <param name="parameters">(Optional) Parameters to pass to the SQL query.</param>
     </member>
     <member name="M:WebMatrix.Data.Database.QuerySingle(System.String,System.Object[])">
-      <summary>Führt eine SQL-Abfrage aus, die eine einzelne Zeile als Ergebnis zurückgibt.</summary>
-      <returns>Die von der SQL-Abfrage zurückgegebene einzelne Zeile.</returns>
-      <param name="commandText">Die auszuführende SQL-Abfrage.</param>
-      <param name="args">(Optional) Die Parameter, die an die SQL-Abfrage übergeben werden sollen.</param>
+      <summary>Executes a SQL query that returns a single row as the result.</summary>
+      <returns>The single row returned by the SQL query.</returns>
+      <param name="commandText">The SQL query to execute.</param>
+      <param name="args">(Optional) Parameters to pass to the SQL query.</param>
     </member>
     <member name="M:WebMatrix.Data.Database.QueryValue(System.String,System.Object[])">
-      <summary>Führt eine SQL-Abfrage aus, die einen einzelnen Skalarwert als Ergebnis zurückgibt.</summary>
-      <returns>Der von der SQL-Abfrage zurückgegebene Skalarwert.</returns>
-      <param name="commandText">Die auszuführende SQL-Abfrage.</param>
-      <param name="args">(Optional) Die Parameter, die an die SQL-Abfrage übergeben werden sollen.</param>
+      <summary>Executes a SQL query that returns a single scalar value as the result.</summary>
+      <returns>The scalar value returned by the SQL query.</returns>
+      <param name="commandText">The SQL query to execute.</param>
+      <param name="args">(Optional) Parameters to pass to the SQL query.</param>
     </member>
     <member name="T:WebMatrix.Data.DynamicRecord">
-      <summary>Stellt einen Datensatz mithilfe eines benutzerdefinierten Typdeskriptors und den Funktionen der DLR (Dynamic Language Runtime) dar.</summary>
+      <summary>Represents a data record by using a custom type descriptor and the capabilities of the Dynamic Language Runtime (DLR).</summary>
     </member>
     <member name="P:WebMatrix.Data.DynamicRecord.Columns">
-      <summary>Gibt eine Liste zurück, die den Namen jeder Spalte in der <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz enthält.</summary>
-      <returns>Eine Liste, die den Namen jeder Spalte enthält.</returns>
+      <summary>Returns a list that contains the name of each column in the <see cref="T:WebMatrix.Data.DynamicRecord" /> instance.</summary>
+      <returns>A list that contains the name of each column.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.GetDynamicMemberNames">
-      <summary>Gibt eine Liste zurück, die den Namen aller dynamischen Elemente der <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz enthält.</summary>
-      <returns>Eine Liste, die den Namen jedes dynamischen Elements enthält.</returns>
+      <summary>Returns a list that contains the name of all dynamic members of the <see cref="T:WebMatrix.Data.DynamicRecord" /> instance.</summary>
+      <returns>A list that contains the name of every dynamic member.</returns>
     </member>
     <member name="P:WebMatrix.Data.DynamicRecord.Item(System.Int32)">
-      <summary>Gibt den Wert einer Spalte in der <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz mithilfe des angegebenen Indexes zurück.</summary>
-      <returns>Der Wert der angegebenen Spalte.</returns>
-      <param name="index">Der nullbasierte Index der Spalte, die den zurückzugebenden Wert enthält.</param>
+      <summary>Returns the value of a column in the <see cref="T:WebMatrix.Data.DynamicRecord" /> instance using the specified index.</summary>
+      <returns>The value of the specified column.</returns>
+      <param name="index">The zero-based index of the column that contains the value to return.</param>
     </member>
     <member name="P:WebMatrix.Data.DynamicRecord.Item(System.String)">
-      <summary>Gibt den Wert einer Spalte in der <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz mithilfe des angegebenen Namens zurück.</summary>
-      <returns>Der Wert der angegebenen Spalte.</returns>
-      <param name="name">Der Name der Spalte, die den zurückzugebenden Wert enthält. Für die Namenszuordnung wird keine Groß-/Kleinschreibung berücksichtigt.</param>
-      <exception cref="T:System.InvalidOperationException">Die <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz enthält keine Spalte, deren Name eine Übereinstimmung (ohne Berücksichtigung der Groß-/Kleinschreibung) mit dem angegebenen Namen darstellt.</exception>
+      <summary>Returns the value of a column in the <see cref="T:WebMatrix.Data.DynamicRecord" /> instance using the specified name.</summary>
+      <returns>The value of the specified column.</returns>
+      <param name="name">The name of the column that contains the value to return. Name matching is case-insensitive.</param>
+      <exception cref="T:System.InvalidOperationException">The <see cref="T:WebMatrix.Data.DynamicRecord" /> instance does not contain a column whose name is a case-insensitive match with the specified name.</exception>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetAttributes">
-      <summary>Gibt eine Liste der benutzerdefinierten Attribute für diese Instanz einer Komponente zurück.</summary>
-      <returns>In allen Fällen <see cref="P:System.ComponentModel.AttributeCollection.Empty" />.</returns>
+      <summary>Returns a list of custom attributes for this instance of a component.</summary>
+      <returns>
+        <see cref="P:System.ComponentModel.AttributeCollection.Empty" /> in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetClassName">
-      <summary>Gibt den Klassennamen für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
+      <summary>Returns the class name for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetComponentName">
-      <summary>Gibt den Namen für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
+      <summary>Returns the name for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetConverter">
-      <summary>Gibt den Typkonverter für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
+      <summary>Returns the type converter for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetDefaultEvent">
-      <summary>Gibt das Standardereignis für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
+      <summary>Returns the default event for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetDefaultProperty">
-      <summary>Gibt die Standardeigenschaft für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
+      <summary>Returns the default property for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetEditor(System.Type)">
-      <summary>Gibt den Editor des angegebenen Typs für diese Instanz einer Komponente zurück.</summary>
-      <returns>null in allen Fällen.</returns>
-      <param name="editorBaseType">Der Editor für dieses Objekt. Der Wert dieses Parameters wird von dieser Implementierung ignoriert und wirkt sich nicht auf das Ergebnis dieser Methode aus.</param>
+      <summary>Returns an editor of the specified type for this instance of a component.</summary>
+      <returns>null in all cases.</returns>
+      <param name="editorBaseType">The editor for this object. The value of this parameter is ignored by this implementation and does not affect the outcome of this method.</param>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetEvents">
-      <summary>Gibt die Ereignisse für diese Instanz einer Komponente zurück.</summary>
-      <returns>In allen Fällen <see cref="P:System.ComponentModel.EventDescriptorCollection.Empty" />.</returns>
+      <summary>Returns the events for this instance of a component.</summary>
+      <returns>
+        <see cref="P:System.ComponentModel.EventDescriptorCollection.Empty" /> in all cases.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetEvents(System.Attribute[])">
-      <summary>Gibt die Ereignisse für diese Instanz einer Komponente mithilfe des angegebenen Filters zurück.</summary>
-      <returns>In allen Fällen <see cref="P:System.ComponentModel.EventDescriptorCollection.Empty" />.</returns>
-      <param name="attributes">Ein Array, das als ein Filter verwendet wird. Der Wert dieses Parameters wird von dieser Implementierung ignoriert und wirkt sich nicht auf das Ergebnis dieser Methode aus.</param>
+      <summary>Returns the events for this instance of a component by using the specified filter.</summary>
+      <returns>
+        <see cref="P:System.ComponentModel.EventDescriptorCollection.Empty" /> in all cases.</returns>
+      <param name="attributes">An array that is used as a filter. The value of this parameter is ignored by this implementation and does not affect the outcome of this method.</param>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetProperties">
-      <summary>Gibt die Eigenschaften für diese Instanz einer Komponente zurück.</summary>
-      <returns>Eine Auflistung, die die Eigenschaften für diese Komponenteninstanz darstellt.</returns>
+      <summary>Returns the properties for this instance of a component.</summary>
+      <returns>A collection that represents the properties for this component instance.</returns>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetProperties(System.Attribute[])">
-      <summary>Gibt die Eigenschaften für diese Instanz einer Komponente mithilfe des angegebenen Filters zurück.</summary>
-      <returns>Eine Auflistung, die die Eigenschaften für diese Komponenteninstanz darstellt.</returns>
-      <param name="attributes">Ein Array, das als ein Filter verwendet wird. Der Wert dieses Parameters wird von dieser Implementierung ignoriert und wirkt sich nicht auf das Ergebnis dieser Methode aus.</param>
+      <summary>Returns the properties for this instance of a component by using the specified filter.</summary>
+      <returns>A collection that represents the properties for this component instance.</returns>
+      <param name="attributes">An array that is used as a filter. The value of this parameter is ignored by this implementation and does not affect the outcome of this method.</param>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.System#ComponentModel#ICustomTypeDescriptor#GetPropertyOwner(System.ComponentModel.PropertyDescriptor)">
-      <summary>Gibt das Objekt zurück, das die angegebene Eigenschaft enthält.</summary>
-      <returns>Die <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz.</returns>
-      <param name="pd">Die Eigenschaft, deren Besitzer abgerufen werden soll.</param>
+      <summary>Returns the object that contains the specified property.</summary>
+      <returns>This <see cref="T:WebMatrix.Data.DynamicRecord" /> instance.</returns>
+      <param name="pd">The property to get the owner of.</param>
     </member>
     <member name="M:WebMatrix.Data.DynamicRecord.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
-      <summary>Ruft den Wert eines <see cref="T:WebMatrix.Data.DynamicRecord" />-Elements mithilfe des angegebenen Namens ab.</summary>
-      <returns>true in allen Fällen.</returns>
-      <param name="binder">Stellt Informationen zum get-Vorgang zur Verfügung.</param>
-      <param name="result">Der Rückgabewert dieser Methode ist der Wert des Elements, der null sein kann. Dieser Parameter wird uninitialisiert übergeben.</param>
-      <exception cref="T:System.InvalidOperationException">Die <see cref="T:WebMatrix.Data.DynamicRecord" />-Instanz enthält kein Element, dessen Name eine Übereinstimmung (ohne Berücksichtigung der Groß-/Kleinschreibung) mit dem Namen darstellt, der durch den Parameter <paramref name="binder" /> angegeben wird.</exception>
+      <summary>Gets the value of a <see cref="T:WebMatrix.Data.DynamicRecord" /> member using the specified name.</summary>
+      <returns>true in all cases.</returns>
+      <param name="binder">Provides information about the get operation.</param>
+      <param name="result">When this method returns, contains the value of the member, which can be null. This parameter is passed uninitialized.</param>
+      <exception cref="T:System.InvalidOperationException">The <see cref="T:WebMatrix.Data.DynamicRecord" /> instance does not contain a member whose name is a case-insensitive match with the name that is specified by the <paramref name="binder" /> parameter.</exception>
     </member>
   </members>
 </doc>
