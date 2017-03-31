@@ -5,18 +5,12 @@ using System.Web;
 
 namespace IHFF_V2.Models
 {
-    //public partial class BestelRegel
-    //{
-    //    public BestelRegel()
-    //    {
-            
-    //    }
-
-    //    public BestelRegel(int bestellingId, int eventId, int quantity)
-    //    {
-    //        this.BestellingId = bestellingId;
-    //        this.EventId = eventId;
-    //        this.Quantity = quantity;
-    //    }
-    //}
+    public partial class BestelRegel
+    {
+        public BestelRegel(int eventId, int quantity)
+        {
+            this.EventId = eventId;
+            this.Quantity = quantity;
+        }
+    }
 }

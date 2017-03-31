@@ -17,43 +17,43 @@ namespace IHFF_V2.Repositories
 
         public void CreateOrder(List<CartItem> cart, Bestelling bestelling)
         {
-            bestelling.Code = GenerateCode();
-            int id = MaakBestelling(bestelling);
-            MaakBestelRegels(cart, id);
+            AddGeneratedCodeToBestelling(4, bestelling);
+            AddCartItemsToBestelling(cart, bestelling);
+            AddOrderToDb(bestelling);
         }
 
-        //Gooi de bestelling in de database en geef 't ID terug
-        private int MaakBestelling(Bestelling bestelling)
+        /// <summary>
+        /// Voegt het bestelling object toe aan de database, inclusief BestelRegels
+        /// </summary>
+        /// <param name="bestelling">De bestelling die in de database wordt gezet</param>
+        private void AddOrderToDb(Bestelling bestelling)
         {
             ctx.Bestellingen.Add(bestelling);
             ctx.SaveChanges();
-
-            return bestelling.Id;
         }
 
-        //Gooi de items een voor een in de database
-        private void MaakBestelRegels(List<CartItem> cart, int id)
+        /// <summary>
+        /// Voegt de items in de cart toe aan de bestelling als BestelRegels
+        /// </summary>
+        /// <param name="cart">Een lijst van items om te bestellen</param>
+        /// <param name="bestelling">De bestelling waar de items aan toegevoegt worden</param>
+        private void AddCartItemsToBestelling(List<CartItem> cart, Bestelling bestelling)
         {
             foreach (CartItem item in cart)
-            {
-                //BestelRegel bestelRegel = new BestelRegel(id, item.Id, item.Quantity);
-                BestelRegel bestelRegel = new BestelRegel();
-                bestelRegel.BestellingId = id;
-                bestelRegel.EventId = item.Id;
-                bestelRegel.Quantity = item.Quantity;
-
-                ctx.BestelRegels.Add(bestelRegel);
-                ctx.SaveChanges();
-            }
+                bestelling.BestelRegels.Add(new BestelRegel(item.Id, item.Quantity));
         }
 
-        //Generate a (default) 4 char code
-        private string GenerateCode(int length = 4)
+        /// <summary>
+        /// Pakt een gegeven hoeveelheid random chars uit een string en voegt dit toe aan bestelling als de code
+        /// </summary>
+        /// <param name="length">Lengte van de code</param>
+        /// <param name="bestelling">De bestelling waar de code aan toegevoegt wordt</param>
+        private void AddGeneratedCodeToBestelling(int length, Bestelling bestelling)
         {
             Random rnd = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-            return new string(Enumerable.Repeat(chars, length)
+            bestelling.Code = new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[rnd.Next(s.Length)]).ToArray());
         }
     }

@@ -19,17 +19,6 @@ namespace IHFF_V2.Controllers
             return View();
         }
         
-        ////Change the cart to one with two dummy items
-        //public ActionResult TestCart()
-        //{
-        //    //Test values for the cart (they work)
-        //    List<CartItem> cart = new List<CartItem>();
-        //    cart.Add(new Models.CartItem(1, "test", "here", DateTime.Now, 13.37F, 3));
-        //    cart.Add(new Models.CartItem(2, "testest", "there", DateTime.Now, 11F, 4));
-        //    Session["cart"] = cart;
-        //    return View("Index");
-        //}
-        
         /// <summary>
         /// Het aantal reserveringen voor een bepaald item wordt verhoogt met 1
         /// </summary>
@@ -138,16 +127,22 @@ namespace IHFF_V2.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Wordt geroepen wanneer er op de bestel order knop gedrukt wordt
+        /// </summary>
+        /// <param name="bestelling">Een bestelling object</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult EnterDetails(Bestelling bestelling)
         {
             bestelling.TotaalPrijs = CalculateCartValue();
             BestellingRepository repo = new BestellingRepository();
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            List<CartItem> cart = GetCartFromSession();
 
             if (ModelState.IsValid)
             {
                 repo.CreateOrder(cart, bestelling);
+                EmptyCart();
                 return View("OrderCompleted");
             }
 
@@ -163,6 +158,11 @@ namespace IHFF_V2.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        public void EmptyCart()
+        {
+            Session["cart"] = null;
         }
 
         public CartItem GetCartItem(int id)
