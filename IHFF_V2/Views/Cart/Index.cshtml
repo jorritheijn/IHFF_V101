@@ -1,4 +1,9 @@
-﻿@model IHFF_V2.Models.CartItem
+﻿@using IHFF_V2;
+@model IHFF_V2.Models.CartItem
+
+@section Styles {
+    <link href="@Url.Content("~/Content/ShoppingCart.css")" rel="stylesheet" />
+}
 
 @using IHFF_V2.Models
 
@@ -14,17 +19,23 @@
     foreach (CartItem ci in (List<CartItem>)Session["cart"])
     {
         //TODO: Proper formatting
-        <tr>
-            <td>@ci.Titel</td>
-            <td>@ci.Tijd</td>
-            <td>@ci.Locatie</td>
-            <td>€@(ci.Prijs * ci.Quantity)</td>
-            <td>@ci.Quantity</td>
-            <td>@Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)</td>
-            <td>@Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)</td>
-            <td>@Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)</td>
-        </tr>
-        <br />
+        <div class="cart-item">
+            <div class="cart-item-poster">
+                <img class="film-poster"src="@Blobmanager.ImageSource(ci.Poster)"/>
+            </div>
+            <div class="cart-item-information">
+                <p>@ci.Titel</p>
+                <p>Wanneer: @ci.Tijd</p>
+                <p>Locatie: @ci.Locatie</p>
+                <p>Prijs per ticket: €@ci.Prijs</p>
+                <p>
+                    Aantal: @ci.Quantity
+                    @Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)
+                    @Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)
+                    @Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)
+                </p>
+            </div>
+        </div>
     }
     @Html.ActionLink("Naar bestellen", "EnterDetails", "Cart")
 }
