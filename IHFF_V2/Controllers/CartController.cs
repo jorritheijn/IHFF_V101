@@ -192,7 +192,7 @@ namespace IHFF_V2.Controllers
 
             float totaal = 0;
             foreach (CartItem item in cart)
-                totaal += item.Price * item.Quantity;
+                totaal += (float)item.Prijs * item.Quantity;
 
             return totaal;
         }

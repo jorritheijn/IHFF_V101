@@ -15,10 +15,10 @@
     {
         //TODO: Proper formatting
         <tr>
-            <td>@ci.Name</td>
-            <td>@ci.Time</td>
-            <td>@ci.Location</td>
-            <td>€@(ci.Price * ci.Quantity)</td>
+            <td>@ci.Titel</td>
+            <td>@ci.Tijd</td>
+            <td>@ci.Locatie</td>
+            <td>€@(ci.Prijs * ci.Quantity)</td>
             <td>@ci.Quantity</td>
             <td>@Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)</td>
             <td>@Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)</td>
