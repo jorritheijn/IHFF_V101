@@ -11,7 +11,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Shopping Cart</h2>
+<h2>Winkelwagen</h2>
 
 <!--Display all items in the cart-->
 @if (Session["cart"] != null && ((List<CartItem>)Session["cart"]).Any())
@@ -34,6 +34,7 @@
                     @Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)
                     @Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)
                 </p>
+                <p class="total-price">Totaal: €@(ci.Prijs * ci.Quantity)</p>
             </div>
         </div>
     }

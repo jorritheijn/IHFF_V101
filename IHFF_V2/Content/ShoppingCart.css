@@ -4,6 +4,8 @@
 
 .cart-item {
     clear: both;
+    width: 600px;
+    margin: auto;
 }
 
 .cart-item-poster {
@@ -11,6 +13,7 @@
 }
 
 .cart-item-information {
+    position: relative;
 }
 
 .film-poster {
@@ -18,6 +21,19 @@
 	border: 1px solid #123456;
     width: 150px;
     height: 200px;
+}
+
+.total-price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 20px;
+}
+
+h2 {
+    margin: auto;
+    font-family: Arial;
+    color: white;
 }
 
 p {
