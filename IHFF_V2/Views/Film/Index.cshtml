@@ -21,50 +21,50 @@
 
     <nav id="Filters">
         @Html.ActionLink(linkText: "maandag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+    controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "maandag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "dinsdag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "dinsdag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "woensdag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "woensdag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "donderdag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "donderdag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "vrijdag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "vrijdag", }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "zaterdag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "zaterdag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "zondag",
-    actionName: "Index",
-    controllerName: "Film",
+     actionName: "DagProgramma",
+     controllerName: "SpecialOverzicht",
     routeValues: new
     { Dag = "zondag" }, htmlAttributes: null)
 
@@ -80,6 +80,7 @@
                 {
                     <img src="@Blobmanager.ImageSource(film.Poster)" width="170" height="242" />
                 }
+
                 else
                 {
                     <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" , width="170" , height="242" />
