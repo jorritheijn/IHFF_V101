@@ -105,5 +105,10 @@ namespace IHFF_V2.Repositories
                 return DetailedFilmModel;
             
         }
+        public void EditFilm(Film film)
+        {
+            ctx.Entry(film).State = EntityState.Modified;
+            ctx.SaveChanges();
+        }
     }
 }

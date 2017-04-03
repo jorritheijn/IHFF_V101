@@ -1,0 +1,21 @@
+﻿@model IHFF_V2.Models.DetailSpecialViewModel
+@{
+    ViewBag.Title = "BewerkSpecial";
+}
+
+<div class="backend">
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.Event.Titel)
+        @Html.TextBoxFor(m => m.Event.Titel)
+        @Html.ValidationMessageFor(m => m.Event.Titel)
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.Event.Titel)
+        @Html.TextBoxFor(m => m.Event.Titel)
+        @Html.ValidationMessageFor(m => m.Event.Titel)
+    }
+
+
+</div>

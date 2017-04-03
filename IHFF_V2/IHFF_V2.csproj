@@ -463,6 +463,10 @@
     <Content Include="Views\Special\Index.cshtml" />
     <Content Include="Views\Special\DagProgramma.cshtml" />
     <Content Include="Views\Shared\WrongIdError.cshtml" />
+    <Content Include="Views\BackEnd\BewerkFilm.cshtml" />
+    <Content Include="Views\BackEnd\BewerkRestaurant.cshtml" />
+    <Content Include="Views\BackEnd\BewerkSpecial.cshtml" />
+    <Content Include="Views\BackEnd\BewerkCultuur.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

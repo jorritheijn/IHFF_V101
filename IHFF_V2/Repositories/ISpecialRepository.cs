@@ -8,6 +8,6 @@ namespace IHFF_V2.Repositories
 {
     interface IspecialRepository
     {
-        DetailSpecialViewModel GetSpesificSpecial(int Id);
+        DetailSpecialViewModel GetSpecificSpecial(int Id);
     }
 }

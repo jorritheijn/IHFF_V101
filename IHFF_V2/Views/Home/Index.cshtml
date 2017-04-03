@@ -31,96 +31,68 @@
         <div class="genre">
             <div class="genre-header">Food</div>
             <img class="genre-icon" src="~/Images/icon-nutrition-hi.png" alt="food icon" height="75" width="75" />
-            <div class="event-titel">@Html.ActionLink(Model[0].Titel, "DetailRestaurantpage", "Restaurant", routeValues: new
-                                {
-                                    Id = Model[0].Id
-                                },
-            htmlAttributes: null)</div><br />
-            @if (Model[0].Poster != null)
-            {
-                <img src="@Blobmanager.ImageSource(Model[0].Poster)" width="170" height="242" />
+            @for (int i = 0; i < 2; i++){
+                <div class="event-titel">
+                    @Html.ActionLink(Model[i].Titel, "DetailRestaurantpage", "Restaurant", routeValues: new
+                                     {
+                                         Id = Model[0].Id
+                                     },
+            htmlAttributes: null)
+            </div><br />
+            if (Model[i].Poster != null){
+                <img src="@Blobmanager.ImageSource(Model[i].Poster)" width="170" height="242" />
             }
-            else
-            {
+            else{
                 <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
             }
-            <br /><br />
-            <div class="event-titel">@Html.ActionLink(Model[1].Titel, "DetailRestaurantpage", "Restaurant", routeValues: new
-                                {
-                                    Id = Model[1].Id
-                                },
-            htmlAttributes: null)</div><br />
-            @if (Model[1].Poster != null)
-            {
-                <img src="@Blobmanager.ImageSource(Model[1].Poster)" width="170" height="242" />
-            }
-            else
-            {
-                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
-            }
+           }
+            
             
         </div>
         <div class="genre">
             <div class="genre-header">Film</div>
             <img class="genre-icon" src="~/Images/film-128.png" alt="film icon" height="75" width="75"/>
-            <div class="event-titel">@Html.ActionLink(Model[2].Titel, "DetailFilmpage", "FilmOverzicht", routeValues: new
-                                {
-                                    Id = Model[2].Id
-                                },
-            htmlAttributes: null)</div><br />
-            @if (Model[2].Poster != null)
+            @for (int i = 2; i < 4; i++)
             {
-                <img src="@Blobmanager.ImageSource(Model[2].Poster)" width="170" height="242" />
+                <div class="event-titel">
+                    @Html.ActionLink(Model[i].Titel, "DetailFilmpage", "FilmOverzicht", routeValues: new
+                                     {
+                                         Id = Model[i].Id
+                                     },
+            htmlAttributes: null)
+            </div><br />
+            if (Model[i].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[i].Poster)" width="170" height="242" />
             }
             else
             {
                 <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
             }
-            <br /><br />
-            <div class="event-titel">@Html.ActionLink(Model[3].Titel, "DetailFilmpage", "FilmOverzicht", routeValues: new
-                                {
-                                    Id = Model[3].Id
-                                },
-            htmlAttributes: null)</div><br />
-            @if (Model[3].Poster != null)
-            {
-                <img src="@Blobmanager.ImageSource(Model[3].Poster)" width="170" height="242" />
             }
-            else
-            {
-                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170"  height="242" />
-            }
+           
         </div>
         <div class="genre">
             <div class="genre-header">Specials</div>
             <img class="genre-icon" src="~/Images/icon-arts.png" alt="culture icon" height="75" width="75" />
-            <div class="event-titel">@Html.ActionLink(Model[4].Titel, "DetailSpecialpage", "Special", routeValues: new
-                                {
-                                    Id = Model[4].Id
-                                },
-            htmlAttributes: null)</div><br />
-            @if (Model[4].Poster != null)
+            @for (int i = 4; i < 6; i++)
             {
-                <img src="@Blobmanager.ImageSource(Model[4].Poster)" width="170" height="242" />
+                <div class="event-titel">
+                    @Html.ActionLink(Model[i].Titel, "DetailSpecialpage", "Special", routeValues: new
+                                     {
+                                         Id = Model[i].Id
+                                     },
+            htmlAttributes: null)
+            </div><br />
+            if (Model[i].Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(Model[i].Poster)" width="170" height="242" />
             }
             else
             {
                 <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
             }
-            <br /><br />
-            <div class="event-titel">@Html.ActionLink(Model[5].Titel, "DetailSpecialpage", "Special", routeValues: new
-                                {
-                                    Id = Model[5].Id
-                                },
-                                htmlAttributes: null)</div><br />
-            @if (Model[5].Poster != null)
-            {
-                <img src="@Blobmanager.ImageSource(Model[5].Poster)" width="170" height="242" />
-            }
-            else
-            {
-                <img src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" width="170" height="242" />
-            }
+            }               
         </div>
     </div>
 </div>

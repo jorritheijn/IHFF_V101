@@ -11,8 +11,10 @@
     @foreach (var eventItem in Model)
     {
         @eventItem.Titel;<br />
+        string type = "Bewerk" + eventItem.Type;
+       
         @Html.ActionLink(linkText: "Bewerk evenement",
-                                 actionName: "Edit",
+                                 actionName: type,
                              controllerName: "Backend",
                             routeValues: new
                             {
@@ -28,7 +30,5 @@
                                 Id = eventItem.Id
                             },
             htmlAttributes: null)<br /><br />
-
-
     }
 </div>
