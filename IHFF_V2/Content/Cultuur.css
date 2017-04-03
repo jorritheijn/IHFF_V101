@@ -8,7 +8,7 @@
 
 #musea.row 
 {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 button {
@@ -65,6 +65,8 @@ p{
   font-size: 14px;
   text-decoration: none;
   padding: 2.5px 70px 2.5px 2px;
+  float: right;
+  margin-top: 240px;
 }
 
 .col-md-6 a:hover {
@@ -73,7 +75,15 @@ p{
   text-decoration: none;
 }
 
-h2.text-title {
-    background-color: #ffffff;;
+h2#titel {
+    background: #2b343a;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-align: center;
+}
+
+h2#text-titel{
     color: white;
 }
