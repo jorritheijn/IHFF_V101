@@ -14,8 +14,8 @@ namespace IHFF_V2.Repositories
         {
             get
             {
-                IEnumerable<Event> allefilms = ctx.Events.Where(film => film.Type.Equals("Restaurant"));
-                return allefilms;
+                IEnumerable<Event> alleRestuarants = ctx.Events.Where(c => c.Type.Equals("Restaurant"));
+                return alleRestuarants;
             }
         }
 

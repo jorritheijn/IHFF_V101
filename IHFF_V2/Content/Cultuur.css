@@ -1,5 +1,5 @@
 ﻿img.Poster {
-    float: left;
+    float: right;
     }
 
 .actionlink{
@@ -73,3 +73,7 @@ p{
   text-decoration: none;
 }
 
+h2.text-title {
+    background-color: #ffffff;;
+    color: white;
+}
