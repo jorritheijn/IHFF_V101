@@ -1,0 +1,42 @@
+﻿body {
+    background-color:#35434C;
+}
+
+.cart-item {
+    clear: both;
+    width: 600px;
+    margin: auto;
+}
+
+.cart-item-poster {
+    float: left;
+}
+
+.cart-item-information {
+    position: relative;
+}
+
+.film-poster {
+    border-radius: 10px;
+	border: 1px solid #123456;
+    width: 150px;
+    height: 200px;
+}
+
+.total-price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 20px;
+}
+
+h2 {
+    margin: auto;
+    font-family: Arial;
+    color: white;
+}
+
+p {
+    font-family: Arial;
+    color: white;
+}
