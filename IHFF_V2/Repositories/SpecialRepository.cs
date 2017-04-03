@@ -9,7 +9,7 @@ namespace IHFF_V2.Repositories
     public class SpecialRepository : IspecialRepository
     {
         private ihffContext ctx = new ihffContext();
-        public DetailSpecialViewModel GetSpesificSpecial(int Id)
+        public DetailSpecialViewModel GetSpecificSpecial(int Id)
         {
             DetailSpecialViewModel DetailedSpecialModel = new DetailSpecialViewModel();
 

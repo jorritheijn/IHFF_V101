@@ -16,7 +16,7 @@ namespace IHFF_V2.Controllers
             return View(getoondeEvents);
         }
 
-        private static List<Event> GetRandomEvents()
+        private List<Event> GetRandomEvents()
         {
             //get all events
             IEnumerable<Event> films = new FilmRepository().AlleFilms;

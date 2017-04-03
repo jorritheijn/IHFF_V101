@@ -187,7 +187,16 @@ footer{
     color:#b7b7b7;
     font-family:Calibri;
 }
+.backend label{
+    width:100px;
+    display:inline-block;
+}
+.backend form input{
+    width: 300px;
+}
+.backend input{
 
+}
 .login{
     height: 250px;
     width: 400px;

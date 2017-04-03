@@ -1,0 +1,67 @@
+﻿@model  IHFF_V2.Models.DetailFilmViewModel
+@{
+    ViewBag.Title = "BewerkFilm";
+}
+
+
+<div class="backend">
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(m => m.Event.Titel)
+        @Html.TextBoxFor(m => m.Event.Titel)
+        @Html.ValidationMessageFor(m => m.Event.Titel)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Locatie)
+        @Html.TextBoxFor(m => m.Event.Locatie)
+        @Html.ValidationMessageFor(m => m.Event.Locatie)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Beschrijving)
+        @Html.TextBoxFor(m => m.Event.Beschrijving)
+        @Html.ValidationMessageFor(m => m.Event.Beschrijving)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Tijd)
+        @Html.TextBoxFor(m => m.Event.Tijd)
+        @Html.ValidationMessageFor(m => m.Event.Tijd)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Prijs)
+        @Html.TextBoxFor(m => m.Event.Prijs)
+        @Html.ValidationMessageFor(m => m.Event.Prijs)
+        <br /><br />
+        @Html.LabelFor(m => m.Film.Regisseur)
+        @Html.TextBoxFor(m => m.Film.Regisseur)
+        @Html.ValidationMessageFor(m => m.Film.Regisseur)
+        <br /><br />
+        @Html.LabelFor(m => m.Film.Acteur)
+        @Html.TextBoxFor(m => m.Film.Acteur)
+        @Html.ValidationMessageFor(m => m.Film.Acteur)
+        <br /><br />
+        @Html.LabelFor(m => m.Film.Jaar)
+        @Html.TextBoxFor(m => m.Film.Jaar)
+        @Html.ValidationMessageFor(m => m.Film.Jaar)
+        <br /><br />
+        @Html.LabelFor(m => m.Film.Aantal)
+        @Html.TextBoxFor(m => m.Film.Aantal)
+        @Html.ValidationMessageFor(m => m.Film.Aantal)
+        <br /><br />
+        <div hidden>
+            @Html.LabelFor(m => m.Event.Id)
+            @Html.TextBoxFor(m => m.Event.Id)
+            @Html.ValidationMessageFor(m => m.Event.Id)
+
+            @Html.LabelFor(m => m.Film.Id)
+            @Html.TextBoxFor(m => m.Film.Id)
+            @Html.ValidationMessageFor(m => m.Film.Id)
+
+            @Html.LabelFor(m => m.Film.EventId)
+            @Html.TextBoxFor(m => m.Film.EventId)
+            @Html.ValidationMessageFor(m => m.Film.EventId)
+
+            @Html.LabelFor(m => m.Event.Type)
+            @Html.TextBoxFor(m => m.Event.Type)
+            @Html.ValidationMessageFor(m => m.Event.Type)
+
+        </div>
+        <input type="submit" value="Pas evenement aan" />
+    }
+
+</div>

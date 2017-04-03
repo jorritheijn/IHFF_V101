@@ -16,11 +16,23 @@ namespace IHFF_V2.Controllers
 
         private EventRepository repos = new EventRepository();
         private IBackEndRepository BackEndrepository = new BackEndRepository();
+        private RestaurantRepository restaurantRepos = new RestaurantRepository();
+        private FilmRepository filmRepos = new FilmRepository();
+        private CultuurRepository cultuurRepos = new CultuurRepository();
+        private SpecialRepository specialRepos = new SpecialRepository();
+        private byte[] poster;
 
         [Authorize]
         public ActionResult Index()
         {
-            IEnumerable<Event> events = repos.GetAllEvents();
+
+            IEnumerable<Event> films = repos.GetAllEventsOfType("Film");
+            IEnumerable<Event> restaurants = repos.GetAllEventsOfType("Restaurant");
+            IEnumerable<Event> specials = repos.GetAllEventsOfType("Special");
+            IEnumerable<Event> cultuur = repos.GetAllEventsOfType("Cultuur");
+
+            IEnumerable<Event> events = films.Concat(restaurants).Concat(specials).Concat(cultuur);
+
             return View(events);
         }
 
@@ -40,9 +52,38 @@ namespace IHFF_V2.Controllers
         {
             Event eventItem = new Event();
             eventItem = repos.GetEvent(id);
+            poster = eventItem.Poster;
             return View(eventItem);
         }
-
+        [Authorize]
+        public ActionResult BewerkFilm(int id)
+        {
+            DetailFilmViewModel eventItem = new DetailFilmViewModel();
+            eventItem = filmRepos.GetDetailedFilm(id);
+            poster = eventItem.Event.Poster;
+            return View(eventItem);
+        }
+        [Authorize]
+        public ActionResult BewerkRestaurant(int id)
+        {
+            DetailRestaurantViewModel eventItem = new DetailRestaurantViewModel();
+            eventItem = restaurantRepos.GetSpecificRestaurant(id);
+            return View(eventItem);
+        }
+        [Authorize]
+        public ActionResult BewerkSpecial(int id)
+        {
+            DetailSpecialViewModel eventItem = new DetailSpecialViewModel();
+            eventItem = specialRepos.GetSpecificSpecial(id);
+            return View(eventItem);
+        }
+        [Authorize]
+        public ActionResult BewerkCultuur(int id)
+        {
+            Event eventItem = new Event();
+            eventItem = cultuurRepos.GetSingleCultuurEvent(id);
+            return View(eventItem);
+        }
         [Authorize]
         [HttpPost]
         public ActionResult Add(Event eventItem)
@@ -61,6 +102,18 @@ namespace IHFF_V2.Controllers
             if (ModelState.IsValid)
             {
                 repos.EditEvent(eventItem);
+            }
+            return RedirectToAction("Index");
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult BewerkFilm(DetailFilmViewModel eventItem)
+        {
+            if(ModelState.IsValid)
+            {
+                eventItem.Event.Poster = poster;
+                repos.EditEvent(eventItem.Event);
+                filmRepos.EditFilm(eventItem.Film);
             }
             return RedirectToAction("Index");
         }

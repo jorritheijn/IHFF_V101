@@ -35,7 +35,10 @@ namespace IHFF_V2.Repositories
         {
                     return ctx.Events.Where(film => film.Type.Equals(type)).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
         }
-
+        public IEnumerable<Event> GetAllEventsOfType(string type)
+        {
+            return ctx.Events.Where(film => film.Type.Equals(type));
+        }
 
         internal void AddEvent(Event eventItem)
         {
