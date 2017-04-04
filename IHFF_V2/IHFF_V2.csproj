@@ -251,6 +251,7 @@
     <Compile Include="Models\Restaurant.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Slide.cs">
       <DependentUpon>ihffDataModel.tt</DependentUpon>
     </Compile>
