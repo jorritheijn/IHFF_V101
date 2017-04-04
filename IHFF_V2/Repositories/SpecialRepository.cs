@@ -1,6 +1,7 @@
 ﻿using IHFF_V2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -95,5 +96,10 @@ namespace IHFF_V2.Repositories
             return AlleSpecials.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
         }
 
+        internal void EditSpecial(Special special)
+        {
+            ctx.Entry(special).State = EntityState.Modified;
+            ctx.SaveChanges();
+        }
     }
 }

@@ -3,17 +3,28 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="backend">
+
+@{ 
+    string typeCheck = "";
+}
+<div class="backendindex">
     @Html.ActionLink(linkText: "Voeg evenement toe",
                                  actionName: "Add",
                              controllerName: "Backend")<br /><br />
+        @foreach (var eventItem in Model)
+        {
+            if (typeCheck != eventItem.Type)
+            {
+            <br /><br /><h2>@eventItem.Type</h2>
 
-    @foreach (var eventItem in Model)
-    {
-        @eventItem.Titel;<br />
-        string type = "Bewerk" + eventItem.Type;
-       
-        @Html.ActionLink(linkText: "Bewerk evenement",
+            }
+        <div class="BewerkDeel">
+            @eventItem.Titel<br />
+            @{
+            string type = "Bewerk" + eventItem.Type;
+            }
+
+            @Html.ActionLink(linkText: "Bewerk evenement",
                                  actionName: type,
                              controllerName: "Backend",
                             routeValues: new
@@ -21,8 +32,8 @@
                                 Id = eventItem.Id
                             },
             htmlAttributes: null)
-        <br />
-        @Html.ActionLink(linkText: "Verwijder evenement",
+            <br />
+            @Html.ActionLink(linkText: "Verwijder evenement",
                                  actionName: "Delete",
                              controllerName: "Backend",
                             routeValues: new
@@ -30,5 +41,8 @@
                                 Id = eventItem.Id
                             },
             htmlAttributes: null)<br /><br />
+
+        </div>
+        typeCheck = eventItem.Type;
     }
 </div>

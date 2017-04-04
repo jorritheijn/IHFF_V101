@@ -9,13 +9,51 @@
         @Html.LabelFor(m => m.Event.Titel)
         @Html.TextBoxFor(m => m.Event.Titel)
         @Html.ValidationMessageFor(m => m.Event.Titel)
-    }
-    @using (Html.BeginForm())
-    {
-        @Html.LabelFor(m => m.Event.Titel)
-        @Html.TextBoxFor(m => m.Event.Titel)
-        @Html.ValidationMessageFor(m => m.Event.Titel)
-    }
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Locatie)
+        @Html.TextBoxFor(m => m.Event.Locatie)
+        @Html.ValidationMessageFor(m => m.Event.Locatie)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Beschrijving)
+        @Html.TextBoxFor(m => m.Event.Beschrijving)
+        @Html.ValidationMessageFor(m => m.Event.Beschrijving)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Tijd)
+        @Html.TextBoxFor(m => m.Event.Tijd)
+        @Html.ValidationMessageFor(m => m.Event.Tijd)
+        <br /><br />
+        @Html.LabelFor(m => m.Event.Prijs)
+        @Html.TextBoxFor(m => m.Event.Prijs)
+        @Html.ValidationMessageFor(m => m.Event.Prijs)
+        <br /><br />
+        @Html.LabelFor(m => m.Special.Spreker)
+        @Html.TextBoxFor(m => m.Special.Spreker)
+        @Html.ValidationMessageFor(m => m.Special.Spreker)
+        <br /><br />
+        @Html.LabelFor(m => m.Special.Aantal)
+        @Html.TextBoxFor(m => m.Special.Aantal)
+        @Html.ValidationMessageFor(m => m.Special.Aantal)
+        <br /><br />
+        <div hidden>
+            @Html.LabelFor(m => m.Event.Id)
+            @Html.TextBoxFor(m => m.Event.Id)
+            @Html.ValidationMessageFor(m => m.Event.Id)
 
+            @Html.LabelFor(m => m.Special.Id)
+            @Html.TextBoxFor(m => m.Special.Id)
+            @Html.ValidationMessageFor(m => m.Special.Id)
+
+            @Html.LabelFor(m => m.Special.EventId)
+            @Html.TextBoxFor(m => m.Special.EventId)
+            @Html.ValidationMessageFor(m => m.Special.EventId)
+
+            @Html.LabelFor(m => m.Event.Type)
+            @Html.TextBoxFor(m => m.Event.Type)
+            @Html.ValidationMessageFor(m => m.Event.Type)
+
+        </div>
+        <input type="submit" value="Pas evenement aan" />
+    }
 
 </div>
+

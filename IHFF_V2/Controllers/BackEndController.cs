@@ -45,7 +45,7 @@ namespace IHFF_V2.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult Edit(int id)
+        public ActionResult BewerkCultuur(int id)
         {
             Event eventItem = new Event();
             eventItem = repos.GetEvent(id);
@@ -73,13 +73,6 @@ namespace IHFF_V2.Controllers
             return View(eventItem);
         }
         [Authorize]
-        public ActionResult BewerkCultuur(int id)
-        {
-            Event eventItem = new Event();
-            eventItem = cultuurRepos.GetSingleCultuurEvent(id);
-            return View(eventItem);
-        }
-        [Authorize]
         [HttpPost]
         public ActionResult Add(Event eventItem)
         {
@@ -91,7 +84,7 @@ namespace IHFF_V2.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Edit(Event eventItem)
+        public ActionResult BewerkCultuur(Event eventItem)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +109,40 @@ namespace IHFF_V2.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [Authorize]
+        [HttpPost]
+        public ActionResult BewerkSpecial(DetailSpecialViewModel eventItem)
+        {
+            if (ModelState.IsValid)
+            {
+                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
+                eventmodel.Titel = eventItem.Event.Titel;
+                eventmodel.Locatie = eventItem.Event.Locatie;
+                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
+                eventmodel.Tijd = eventItem.Event.Tijd;
+                eventmodel.Prijs = eventItem.Event.Prijs;
+                repos.EditEvent(eventmodel);
+                specialRepos.EditSpecial(eventItem.Special);
+            }
+            return RedirectToAction("Index");
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult BewerkRestaurant(DetailRestaurantViewModel eventItem)
+        {
+            if (ModelState.IsValid)
+            {
+                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
+                eventmodel.Titel = eventItem.Event.Titel;
+                eventmodel.Locatie = eventItem.Event.Locatie;
+                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
+                eventmodel.Tijd = eventItem.Event.Tijd;
+                eventmodel.Prijs = eventItem.Event.Prijs;
+                repos.EditEvent(eventmodel);
+                restaurantRepos.EditRestaurant(eventItem.Restaurant);
+            }
+            return RedirectToAction("Index");
+        }
         public ActionResult LogIn()
         {
             return View();

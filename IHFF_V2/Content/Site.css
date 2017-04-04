@@ -181,7 +181,15 @@ footer{
 .backend{
     color:white;
     font-family:Calibri;
-    margin-left:900px;
+}
+.backendindex{
+    color:white;
+    font-family:Calibri;
+    height:1500px;
+}
+.backendindex a{
+    color:#b7b7b7;
+    font-family:Calibri;
 }
 .backend a{
     color:#b7b7b7;
@@ -194,8 +202,13 @@ footer{
 .backend form input{
     width: 300px;
 }
-.backend input{
-
+.backendindex h2{
+    width:100px;
+}
+.BewerkDeel{
+    float:left; 
+    width:200px;
+    height:100px;
 }
 .login{
     height: 250px;

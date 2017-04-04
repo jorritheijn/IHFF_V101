@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using IHFF_V2.Models;
-
+using System.Data;
 
 namespace IHFF_V2.Repositories
 {
@@ -88,6 +88,12 @@ namespace IHFF_V2.Repositories
                 IEnumerable<Event> allerestaurants = ctx.Events.Where(restaurant => restaurant.Type.Equals("Restaurant"));
                 return allerestaurants;
             }
+        }
+
+        internal void EditRestaurant(Restaurant restaurant)
+        {
+            ctx.Entry(restaurant).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }
