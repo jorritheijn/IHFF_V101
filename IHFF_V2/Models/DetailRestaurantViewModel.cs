@@ -11,11 +11,11 @@ namespace IHFF_V2.Models
         public Event Event { get; set; }
         public Restaurant Restaurant { get; set; }
 
-        public List<string> Dagdeel { get; set; }
+        public IEnumerable<DateTime?> Dagdeel { get; set; }
 
         public IEnumerable<Event> RandomEvent { get; set; } 
 
-        public DetailRestaurantViewModel(Event Event, Restaurant Restaurant, List<string> Dagdeel, IEnumerable<Event> RandomEvent)
+        public DetailRestaurantViewModel(Event Event, Restaurant Restaurant, IEnumerable<DateTime?> Dagdeel, IEnumerable<Event> RandomEvent)
         {
             this.Event = Event;
             this.Restaurant = Restaurant;
