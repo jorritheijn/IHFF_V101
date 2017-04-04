@@ -20,7 +20,6 @@ namespace IHFF_V2.Controllers
         private FilmRepository filmRepos = new FilmRepository();
         private CultuurRepository cultuurRepos = new CultuurRepository();
         private SpecialRepository specialRepos = new SpecialRepository();
-        private byte[] poster;
 
         [Authorize]
         public ActionResult Index()
@@ -30,9 +29,7 @@ namespace IHFF_V2.Controllers
             IEnumerable<Event> restaurants = repos.GetAllEventsOfType("Restaurant");
             IEnumerable<Event> specials = repos.GetAllEventsOfType("Special");
             IEnumerable<Event> cultuur = repos.GetAllEventsOfType("Cultuur");
-
             IEnumerable<Event> events = films.Concat(restaurants).Concat(specials).Concat(cultuur);
-
             return View(events);
         }
 
@@ -52,7 +49,6 @@ namespace IHFF_V2.Controllers
         {
             Event eventItem = new Event();
             eventItem = repos.GetEvent(id);
-            poster = eventItem.Poster;
             return View(eventItem);
         }
         [Authorize]
@@ -60,7 +56,6 @@ namespace IHFF_V2.Controllers
         {
             DetailFilmViewModel eventItem = new DetailFilmViewModel();
             eventItem = filmRepos.GetDetailedFilm(id);
-            poster = eventItem.Event.Poster;
             return View(eventItem);
         }
         [Authorize]
@@ -94,7 +89,6 @@ namespace IHFF_V2.Controllers
             }           
             return RedirectToAction("Index");
         }
-
         [Authorize]
         [HttpPost]
         public ActionResult Edit(Event eventItem)
@@ -111,8 +105,13 @@ namespace IHFF_V2.Controllers
         {
             if(ModelState.IsValid)
             {
-                eventItem.Event.Poster = poster;
-                repos.EditEvent(eventItem.Event);
+                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
+                eventmodel.Titel = eventItem.Event.Titel;
+                eventmodel.Locatie = eventItem.Event.Locatie;
+                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
+                eventmodel.Tijd = eventItem.Event.Tijd;
+                eventmodel.Prijs = eventItem.Event.Prijs;
+                repos.EditEvent(eventmodel);
                 filmRepos.EditFilm(eventItem.Film);
             }
             return RedirectToAction("Index");
