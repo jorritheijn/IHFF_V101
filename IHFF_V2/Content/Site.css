@@ -217,7 +217,8 @@ footer{
     border-color: white;
     color: white;
     background-color: #35434D;
-    margin-left: 550px;
+    margin-left: 500px;
+    padding-top: 30px;
 }
 
 .login h2{

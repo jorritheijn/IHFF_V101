@@ -91,7 +91,7 @@ namespace IHFF_V2.Controllers
         /// <param name="id">Het id van een CartItem</param>
         /// <param name="quantity">Het aantal reserveringen dat wordt geplaatst (of toegevoegt)</param>
         /// <returns>Terug naar het overzicht van de winkelwagen wanneer succesvol. Naar de error-page wanneer niet succesvol</returns>
-        public ActionResult Order(int id, int quantity)
+        public ActionResult Order(int id, DateTime? time ,int quantity)
         {
             try
             {

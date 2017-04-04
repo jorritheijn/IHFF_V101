@@ -56,7 +56,7 @@
             <select class="selectbox">
                 @foreach (var tijd in Model.Dagdeel)
                 {
-                    <option value="@tijd">@tijd</option>
+                    <option> Vanaf: @tijd.Value.ToString("HH:mm") </option>
                 }
             </select>
         </div>

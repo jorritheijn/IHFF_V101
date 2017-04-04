@@ -33,7 +33,7 @@ namespace IHFF_V2.Repositories
                 DetailedRestaurantModel.Restaurant = ctx.Restaurants.First(a => a.EventId == Id);
 
                 //get time times
-                DetailedRestaurantModel.Dagdeel = GetRestaurantdagdeel(DetailedRestaurantModel);
+                DetailedRestaurantModel.Dagdeel = ctx.Events.Where(a => a.Id == Id).Select( a => a.Tijd);
 
                 //get RandomEvent
                 DetailedRestaurantModel.RandomEvent = ctx.Events.Where(x => x.Type != "Restaurant").OrderBy(r => Guid.NewGuid()).Take(3);
@@ -50,7 +50,7 @@ namespace IHFF_V2.Repositories
         }
 
         //method that converts all timespans to a list string
-        public List<string> GetRestaurantdagdeel(DetailRestaurantViewModel DetailedRestaurantModel)
+        /*public List<string> GetRestaurantdagdeel(DetailRestaurantViewModel DetailedRestaurantModel)
         {
             IEnumerable<Restaurant> allspecificRestaurants = ctx.Restaurants.Where(b => b.EventId == DetailedRestaurantModel.Event.Id); //get all restaurant times
             List<string> Dagdelen = new List<string>();
@@ -79,7 +79,7 @@ namespace IHFF_V2.Repositories
                 Dagdelen.Add(tijd);
             }
             return Dagdelen;
-        }
+        }*/
 
         public IEnumerable<Event> AlleRestaurants
         {

@@ -94,11 +94,11 @@ namespace IHFF_V2.Controllers
 
         // gets event id and aantal from form, returns action to cartcontroller
         [HttpPost]
-        public ActionResult DetailFilmpage(int id, int aantal)
+        public ActionResult DetailFilmpage(int id, DateTime? tijd ,int aantal)
         {
             if (aantal > 0)
             {
-                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+                return RedirectToAction("Order", "Cart", new { id = id, time = tijd,quantity = aantal });
             }
 
             return View("ErrorInvoerOnjuist");
