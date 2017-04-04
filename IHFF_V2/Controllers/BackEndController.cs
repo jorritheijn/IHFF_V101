@@ -77,6 +77,7 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult Add(Event eventItem, HttpPostedFileBase uploadedImage)
         {
+            //als er een afbeelding is geupload, wordt deze opgeslagen als blob
             if (uploadedImage != null)
             {
                 byte[] imageData = null;
@@ -86,29 +87,30 @@ namespace IHFF_V2.Controllers
                     eventItem.Poster = imageData;
                 }
             }
-
+            //als er geen afbeelding is geupload, zoekt het systeem naar een eerder poster.
             else 
             {
                 eventItem.Poster = ZoekEerderPoster(eventItem);
             }
-
+            //dit slaat upload de eventgegevens naar de database
             if (ModelState.IsValid)
             {
                 repos.AddEvent(eventItem);
-            }           
+            }         
+            //gebruiker keert terug naar indexpagina
             return RedirectToAction("Index");
         }
 
-        //methode die altijd null returned waarom?? 
+        //zoekt een event met dezelfde naam en returned het bijbehorende poster
         public byte[] ZoekEerderPoster(Event eventItem) 
         {
-            IEnumerable<Event> selectie = repos.GetAllEvents().Where(x => x.Titel.Equals(eventItem.Titel)); //dit zou een collectie moeten zijn met alle titels die gelijk zijn aan het eventitem
+            IEnumerable<Event> selectie = repos.KrijgEvents().Where(x => x.Titel.Equals(eventItem.Titel)); //dit is een collectie van events met dezelfde titel
             
-             foreach (Event e in selectie) //dit zou door de collectie moeten loopen 
+             foreach (Event e in selectie) //dit loopt door de events
                 {
-                    if(e.Poster != null) //dit zou moeten checken of er een poster aanwezig is
+                    if(e.Poster != null) //dit checkt of er een poster aanwezig is
                     {
-                        return e.Poster; // dit zou de code methode moeten beeindigen en een poster moeten returnen 
+                        return e.Poster; // dit returnt het poster en beindigd de methode 
                     }
                 }
              return null; // dit returnt null als er niks gevonden is

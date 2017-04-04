@@ -40,6 +40,11 @@ namespace IHFF_V2.Repositories
             return ctx.Events.Where(film => film.Type.Equals(type));
         }
 
+        public IEnumerable<Event> KrijgEvents() 
+        {
+            return ctx.Events;
+        }
+
         internal void AddEvent(Event eventItem)
         {
             ctx.Events.Add(eventItem);
