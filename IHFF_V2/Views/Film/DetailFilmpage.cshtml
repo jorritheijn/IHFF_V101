@@ -45,7 +45,7 @@
 
         @using (Html.BeginForm())
         {
-            <select class="selectbox">
+            <select class="selectbox" id="tijd" name="tijd">
                 @foreach (var tijd in Model.Tijd)
                 {
                     <option value="@tijd">@tijd.Value.ToString("dddd, HH:mm")</option>
@@ -54,6 +54,9 @@
 
             <script src="~/Content/Js/PlusMinus.js"></script>
             <div id=field1>
+
+
+
                 <button type="button" id="sub" class=sub>-</button>
                 <input type="number" id="aantal" value=0 class=field name="aantal">
                 <button type="button" id="add" class=add>+</button>

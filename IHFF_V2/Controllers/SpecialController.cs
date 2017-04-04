@@ -99,7 +99,7 @@ namespace IHFF_V2.Controllers
         {
             if (aantal > 0)
             {
-                return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
+                return RedirectToAction("Order", "Cart", new { id = id, time = 0, quantity = aantal });
             }
 
             return View("ErrorInvoerOnjuist");
