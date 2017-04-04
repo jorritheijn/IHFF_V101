@@ -77,7 +77,7 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult Add(Event eventItem, HttpPostedFileBase uploadedImage)
         {
-            if (uploadedImage != null) 
+            if (uploadedImage != null)
             {
                 byte[] imageData = null;
                 using (var binaryReader = new BinaryReader(uploadedImage.InputStream))
@@ -87,12 +87,33 @@ namespace IHFF_V2.Controllers
                 }
             }
 
+            else 
+            {
+                eventItem.Poster = ZoekEerderPoster(eventItem);
+            }
+
             if (ModelState.IsValid)
             {
                 repos.AddEvent(eventItem);
             }           
             return RedirectToAction("Index");
         }
+
+        //methode die altijd null returned waarom?? 
+        public byte[] ZoekEerderPoster(Event eventItem) 
+        {
+            IEnumerable<Event> selectie = repos.GetAllEvents().Where(x => x.Titel.Equals(eventItem.Titel)); //dit zou een collectie moeten zijn met alle titels die gelijk zijn aan het eventitem
+            
+             foreach (Event e in selectie) //dit zou door de collectie moeten loopen 
+                {
+                    if(e.Poster != null) //dit zou moeten checken of er een poster aanwezig is
+                    {
+                        return e.Poster; // dit zou de code methode moeten beeindigen en een poster moeten returnen 
+                    }
+                }
+             return null; // dit returnt null als er niks gevonden is
+        }
+
         [Authorize]
         [HttpPost]
         public ActionResult BewerkCultuur(Event eventItem)
