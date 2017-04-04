@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.IO;
 
 namespace IHFF_V2.Controllers
 {
@@ -74,8 +75,18 @@ namespace IHFF_V2.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Add(Event eventItem)
+        public ActionResult Add(Event eventItem, HttpPostedFileBase uploadedImage)
         {
+            if (uploadedImage != null) 
+            {
+                byte[] imageData = null;
+                using (var binaryReader = new BinaryReader(uploadedImage.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(uploadedImage.ContentLength);
+                    eventItem.Poster = imageData;
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 repos.AddEvent(eventItem);
