@@ -1,18 +1,30 @@
 ﻿body {
-    margin: 0 auto;
-    width: 1000px;
+    background-color:#2b343a;
+    
+
     }
+
+.Filminfo:nth-child(5n-4)::before 
+{
+    display: block;
+    background-color:green;
+    height:200px;
+    width:200px;
+
+    
+}
 
 .Filminfo {
     display: block;
     float: left;
     margin-right: 20px;
     border-style: solid;
-    border-color:#35434C;
+    border-color: white;
     margin-bottom: 10px;  
     height: 400px;
     overflow:hidden; 
     border-radius:10px;
+    color:white;
     }
 
 .Filminfo a 
@@ -67,9 +79,11 @@ h2 {
     }
 }
 
-#Catalogus
+.catalogus
 {
-    float:right;
+    margin: 0 auto;
+    width: 1000px;
+    background-color: red
 }
 
 #Filters a

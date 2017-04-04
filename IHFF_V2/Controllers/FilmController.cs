@@ -12,32 +12,39 @@ namespace IHFF_V2.Controllers
 {
     public class FilmController : Controller
     {
-        private IFilmRepository filmrepository = new FilmRepository();
-        private EventRepository eventrepository = new EventRepository();
+        private IFilmRepository filmrepository = new FilmRepository();      
         private IEnumerable<Event> films = new EventRepository().GetEventsOfType("film");
-
-        public ActionResult Index(string searchString, string dag)
+ 
+        public ActionResult Index(string searchString)
         {
             // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
-                films = films.Where(s => s.Titel.Contains(searchString));
+                Zoek(searchString);
             }
             return View(films);
         }
+
 
         //Als er op een DagProgramma is gelklikt
         public ActionResult DagProgramma(string dag, string searchString)
         {
             films = FilmsOpDag(dag, films);
-
+            // als er gebruik is gemaakt van het searchfilter
             if (!String.IsNullOrEmpty(searchString))
             {
-                films = films.Where(s => s.Titel.Contains(searchString));
+                Zoek(searchString);
             }
+
             ViewBag.Dag = dag;
             return View(films);
+        }
+
+        //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
+        private void Zoek(string searchString)
+        {
+            films = films.Where(s => s.Titel.Contains(searchString));
         }
 
         public IEnumerable<Event> FilmsOpDag(string dag, IEnumerable<Event> film)
@@ -72,9 +79,8 @@ namespace IHFF_V2.Controllers
                 case "zondag":
                     AangeklikteDag = DayOfWeek.Sunday;
                     break;
-
             }
-            return film.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
+            return film.Where(s => s.Tijd.GetValueOrDefault().DayOfWeek.Equals(AangeklikteDag));
         }
 
         //Haalt detailpagina op 
@@ -82,14 +88,14 @@ namespace IHFF_V2.Controllers
         {
             DetailFilmViewModel FilmDetail = filmrepository.GetDetailedFilm(Id);
 
-            if (FilmDetail.Event != null && FilmDetail.Event.Type == "Film") {
+            if (FilmDetail.Event != null && FilmDetail.Event.Type == "Film") 
+            {
                 return View(FilmDetail);
             }
-            else {
+            else 
+            {
                 return View("~/Views/Shared/WrongIdError.cshtml");
-            }
-
-            
+            }           
         }
 
         // gets event id and aantal from form, returns action to cartcontroller
@@ -100,7 +106,6 @@ namespace IHFF_V2.Controllers
             {
                 return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
             }
-
             return View("ErrorInvoerOnjuist");
         }
     }

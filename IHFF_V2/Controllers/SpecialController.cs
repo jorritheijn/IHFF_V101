@@ -11,11 +11,8 @@ namespace IHFF_V2.Controllers
 {
     public class SpecialController : Controller
     {
-        //
-        // GET: /SpecialOverzicht/
 
         private IspecialRepository SpecialRepository = new SpecialRepository();
-        private EventRepository events = new EventRepository();
         private IEnumerable<Event> specials = new EventRepository().GetEventsOfType("Special");
 
         public ActionResult Index(string searchString, string dag)
@@ -29,9 +26,7 @@ namespace IHFF_V2.Controllers
             return View(specials);
         }
 
-
         //Als er op een DagProgramma
-
         public ActionResult DagProgramma(string dag, string searchString)
         {
             specials = SpecialsOpDag(dag, specials);
@@ -80,12 +75,7 @@ namespace IHFF_V2.Controllers
             return specials.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
         }
 
-
         //brian's code below
-        //
-        //
-
-
         public ActionResult DetailSpecialpage(int Id)
         {
             DetailSpecialViewModel SpecialDetail = SpecialRepository.GetSpecificSpecial(Id);
@@ -101,9 +91,7 @@ namespace IHFF_V2.Controllers
             {
                 return RedirectToAction("Order", "Cart", new { id = id, quantity = aantal });
             }
-
             return View("ErrorInvoerOnjuist");
         }
-
     }
 }

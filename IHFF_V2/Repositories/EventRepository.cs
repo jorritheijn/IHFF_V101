@@ -31,10 +31,13 @@ namespace IHFF_V2.Repositories
             return events;
         }
 
+        //Haalt events op van het type dat is meegeven in de parameter. Haalt niet meer dan een event op met dezelde titel.
         public IEnumerable<Event> GetEventsOfType(string type)
         {
                     return ctx.Events.Where(film => film.Type.Equals(type)).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
         }
+
+        //Haalt alle events op van het type dat is meegegeven in de parameter.
         public IEnumerable<Event> GetAllEventsOfType(string type)
         {
             return ctx.Events.Where(film => film.Type.Equals(type));

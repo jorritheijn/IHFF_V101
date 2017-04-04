@@ -26,6 +26,50 @@
     </p>
 }
 
+<nav id="Filters">
+    @Html.ActionLink(linkText: "maandag",
+     actionName: "DagProgramma",
+    controllerName: "Film",
+    routeValues: new { Dag = "maandag" }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "dinsdag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "dinsdag" }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "woensdag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "woensdag" }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "donderdag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "donderdag" }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "vrijdag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "vrijdag", }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "zaterdag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "zaterdag" }, htmlAttributes: null)
+
+
+    @Html.ActionLink(linkText: "zondag",
+     actionName: "DagProgramma",
+     controllerName: "Film",
+    routeValues: new { Dag = "zondag" }, htmlAttributes: null)
+
+</nav>
+
 @foreach (var film in Model)
 {
     <section id="filminfo">
@@ -46,43 +90,5 @@
 
 
 
-<&nbsp;> </&nbsp;>
 
-@Html.ActionLink(linkText: "Terug",
-        actionName: "index",
-    controllerName: "FilmOverzicht")
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "woensdag",
-        actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
-    routeValues: new { Dag = "woensdag" }, htmlAttributes: null)
-
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "donderdag",
-        actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
-    routeValues: new { Dag = "donderdag" }, htmlAttributes: null)
-
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "vrijdag",
-        actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
-    routeValues: new { Dag = "vrijdag", }, htmlAttributes: null)
-
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "zaterdag",
-        actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
-    routeValues: new { Dag = "zaterdag" }, htmlAttributes: null)
-
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "zondag",
-        actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
-    routeValues: new { Dag = "zondag" }, htmlAttributes: null)
