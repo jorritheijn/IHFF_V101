@@ -21,6 +21,13 @@ namespace IHFF_V2.Repositories
             return ctx.Events.First(e => e.Id == id);
         }
 
+        public Event GetCorrectEventForCart(int id, DateTime? tijd) {
+
+            string titel = ctx.Events.Where(a => a.Id == id).Select(a => a.Titel).SingleOrDefault();
+
+            return ctx.Events.Where(a => a.Titel == titel && a.Tijd == tijd).SingleOrDefault();
+        }
+
         public IEnumerable<Event> GetAllEvents()
         {
             IEnumerable<Event> films = ctx.Events.Where(film => film.Type.Equals("Film")).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
