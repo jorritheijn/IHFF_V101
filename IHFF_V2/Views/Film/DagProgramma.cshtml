@@ -27,14 +27,10 @@
 }
 
 <nav id="Filters">
-    @Html.ActionLink(linkText: "maandag",
-     actionName: "DagProgramma",
-    controllerName: "Film",
-    routeValues: new { Dag = "maandag" }, htmlAttributes: null)
 
 
-    @Html.ActionLink(linkText: "dinsdag",
-     actionName: "DagProgramma",
+    @Html.ActionLink(linkText: "Terug",
+     actionName: "Index",
      controllerName: "Film",
     routeValues: new { Dag = "dinsdag" }, htmlAttributes: null)
 
@@ -83,6 +79,16 @@
         <p class="locatie">@film.Locatie</p>
         <p class="tijd">@film.Tijd</p>
         <p class="beschrijving">  @film.Beschrijving </p>
+
+        @Html.ActionLink(linkText: "Meer Info",
+                                 actionName: "DetailFilmpage",
+                             controllerName: "Film",
+                            routeValues: new
+                            {
+                                Id = film.Id
+                            },
+            htmlAttributes: null)
+    
     </section>
 }
 
