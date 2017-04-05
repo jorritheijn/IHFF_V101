@@ -9,12 +9,11 @@
     <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" />
 }
 
-<h2>Index</h2>
 @model  IEnumerable<Event>
 @using (Html.BeginForm())
 {
     <p>
-        Find by name: @Html.TextBox("SearchString")
+       @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }
