@@ -227,7 +227,7 @@ namespace IHFF_V2.Controllers
                 //get account with credentials
                 Medewerker medewerkeraccount = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
 
-                if (medewerker != null && medewerker.Id != 0)
+                if (medewerkeraccount != null && medewerkeraccount.Id != 0)
                 {
                     FormsAuthentication.SetAuthCookie(medewerkeraccount.Gebruikersnaam, false);
 
