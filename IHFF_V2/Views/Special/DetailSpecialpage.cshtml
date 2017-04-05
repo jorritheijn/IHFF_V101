@@ -54,7 +54,7 @@
     </div>
 
     <div class="col-xs-6 col-md-4">
-
+        @if(s != null){
         <ul id="filminfo">
             <li>Spreker : @s.Spreker</li>
             <li>Locatie: @e.Locatie</li>
@@ -62,7 +62,7 @@
             <li>Prijs: @e.Prijs</li>
             <li>Beschikbare Tickets: @s.Aantal</li>
         </ul>
-
+        }
     </div>
 </div>
 

@@ -70,13 +70,15 @@
 
     <div class="col-xs-6 col-md-4">
 
+        @if (f != null)
+        {
         <ul id="filminfo">
             <li>Acteurs : @f.Acteur</li>
             <li>Regisseur: @f.Regisseur</li>
             <li>Gemaakt in: @f.Jaar</li>
             <li>Locatie: @e.Locatie</li>
         </ul>
-
+        }
     </div>
 </div>
 

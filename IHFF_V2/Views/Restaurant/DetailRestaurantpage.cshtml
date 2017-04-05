@@ -43,12 +43,13 @@
     </div>
 
     <div class="col-xs-6 col-md-4">
-
+        @if (r != null) {
         <ul id="Restaurantinfo">
             <li>Soort : @r.Soort</li>
             <li>OpeningsTijd: @r.OpeningsTijd - @r.SluitingsTijd</li>
             <li>Locatie: @e.Locatie</li>
         </ul>
+        }
 @using (Html.BeginForm())
 {
         <div>
