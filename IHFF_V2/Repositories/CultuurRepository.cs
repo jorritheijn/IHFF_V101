@@ -21,5 +21,13 @@ namespace IHFF_V2.Repositories
 
             return GetSpecificCultuur;
         }
+
+        internal void AddCultuur(Event eventItem)
+        {
+            Cultuur cult = new Cultuur();
+            cult.EventId = eventItem.Id;
+            ctx.Cultuur.Add(cult);
+            ctx.SaveChanges();
+        }
     }
 }

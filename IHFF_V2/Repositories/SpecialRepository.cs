@@ -101,5 +101,13 @@ namespace IHFF_V2.Repositories
             ctx.Entry(special).State = EntityState.Modified;
             ctx.SaveChanges();
         }
+
+        internal void AddSpecial(Event eventItem)
+        {
+            Special special = new Special();
+            special.EventId = eventItem.Id;
+            ctx.Specials.Add(special);
+            ctx.SaveChanges();
+        }
     }
 }
