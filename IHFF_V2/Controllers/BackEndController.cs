@@ -35,6 +35,22 @@ namespace IHFF_V2.Controllers
         [Authorize]
         public ActionResult Delete(int id = 0)
         {
+            Event eventItem = repos.GetEvent(id);
+            if (eventItem.Type == "Film")
+            {
+                DetailFilmViewModel film = filmRepos.GetDetailedFilm(id);
+                filmRepos.Delete(film.Film.Id);
+            }
+            else if (eventItem.Type == "Special")
+            {
+                DetailSpecialViewModel special = specialRepos.GetSpecificSpecial(id);
+                specialRepos.Delete(special.Special.Id);
+            }
+            else if(eventItem.Type == "Restaurant")
+            {
+                DetailRestaurantViewModel restaurant = restaurantRepos.GetSpecificRestaurant(id);
+                restaurantRepos.Delete(restaurant.Restaurant.Id);
+            }
             repos.DeleteEvent(id);
             return RedirectToAction("Index");
         }
@@ -107,11 +123,8 @@ namespace IHFF_V2.Controllers
                 return RedirectToAction("BewerkSpecial", eventItem);
             }
 
-            return RedirectToAction("Index");
-          
-            
+            return RedirectToAction("Index");      
         }
-
         private Event VerwerkAfbeelding(Event eventItem, HttpPostedFileBase uploadedImage)
         {
             //als er een afbeelding is geupload, wordt deze opgeslagen als blob

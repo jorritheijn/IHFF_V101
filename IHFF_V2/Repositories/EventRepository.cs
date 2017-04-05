@@ -53,7 +53,7 @@ namespace IHFF_V2.Repositories
             ctx.SaveChanges();
         }
         public void DeleteEvent(int id)
-        {
+        {           
             Event eventItem = new Event();
             eventItem = ctx.Events.Find(id);
             ctx.Events.Remove(eventItem);

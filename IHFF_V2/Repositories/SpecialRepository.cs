@@ -52,6 +52,14 @@ namespace IHFF_V2.Repositories
             return SpecialsOpZoekWoord;
         }
 
+        public void Delete(int id)
+        {
+            Special eventItem = new Special();
+            eventItem = ctx.Specials.Find(id);
+            ctx.Specials.Remove(eventItem);
+            ctx.SaveChanges();
+        }
+
         public IEnumerable<Event> SpecailsOpZoekWoord(string zoekwoord, IEnumerable<Event> HuidgeSelectie)
         {
             IEnumerable<Event> SpecialsOpZoekWoord = HuidgeSelectie.Where(s => s.Titel.Contains(zoekwoord));
@@ -96,13 +104,13 @@ namespace IHFF_V2.Repositories
             return AlleSpecials.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
         }
 
-        internal void EditSpecial(Special special)
+        public void EditSpecial(Special special)
         {
             ctx.Entry(special).State = EntityState.Modified;
             ctx.SaveChanges();
         }
 
-        internal void AddSpecial(Event eventItem)
+        public void AddSpecial(Event eventItem)
         {
             Special special = new Special();
             special.EventId = eventItem.Id;

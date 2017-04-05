@@ -58,13 +58,21 @@ namespace IHFF_V2.Repositories
             }
         }
 
-        internal void EditRestaurant(Restaurant restaurant)
+        public void EditRestaurant(Restaurant restaurant)
         {
             ctx.Entry(restaurant).State = EntityState.Modified;
             ctx.SaveChanges();
         }
 
-        internal void AddRestaurant(Event eventItem)
+        public void Delete(int id)
+        {
+            Restaurant eventItem = new Restaurant();
+            eventItem = ctx.Restaurants.Find(id);
+            ctx.Restaurants.Remove(eventItem);
+            ctx.SaveChanges();
+        }
+
+        public void AddRestaurant(Event eventItem)
         {
             Restaurant restaurant = new Restaurant();
             restaurant.EventId = eventItem.Id;

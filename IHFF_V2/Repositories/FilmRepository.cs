@@ -23,7 +23,6 @@ namespace IHFF_V2.Repositories
                 return allefilms;
             }
         }
-
         public IEnumerable<Event> AlleFilmsEnkel
         {
             get
@@ -31,8 +30,6 @@ namespace IHFF_V2.Repositories
                 return ctx.Events.Where(film => film.Type.Equals("Film")).GroupBy(x => x.Titel).Select(x => x.FirstOrDefault());
             }
         }
-
-
         /*returned alle events van het type film die een zoekwoord bevatten*/ 
         public IEnumerable<Event> FilmsOpZoekWoord(string zoekwoord) 
         {
@@ -46,11 +43,19 @@ namespace IHFF_V2.Repositories
             return FilmsOpZoekWoord;
         }
 
-        internal void AddFilm(Event eventItem)
+        public void AddFilm(Event eventItem)
         {
             Film film = new Film();
             film.EventId = eventItem.Id;
             ctx.Films.Add(film);
+            ctx.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            Film eventItem = new Film();
+            eventItem = ctx.Films.Find(id);
+            ctx.Films.Remove(eventItem);
             ctx.SaveChanges();
         }
 
