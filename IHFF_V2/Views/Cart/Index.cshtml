@@ -20,7 +20,14 @@
     {
         <div class="cart-item">
             <div class="cart-item-poster">
-                <img class="film-poster" src="@Blobmanager.ImageSource(ci.Poster)" />
+                @if (ci.Poster != null)
+                {
+                    <img class="film-poster" src="@Blobmanager.ImageSource(ci.Poster)" />
+                }
+                else
+                {
+                    <img class="film-poster" src="http://www.freeiconspng.com/uploads/no-image-icon-10.png" />
+                }
             </div>
             <div class="cart-item-information">
                 <p>@ci.Titel</p>
