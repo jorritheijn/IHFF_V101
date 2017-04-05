@@ -15,7 +15,6 @@ namespace IHFF_V2.Controllers
             List<Event> getoondeEvents = GetRandomEvents();
             return View(getoondeEvents);
         }
-
         private List<Event> GetRandomEvents()
         {
             //get all events
@@ -50,22 +49,7 @@ namespace IHFF_V2.Controllers
             {
                 getoondeEvents[5] = allespecials[rnd.Next(0, allespecials.Count)];
             }
-
             return getoondeEvents;
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-            //test
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

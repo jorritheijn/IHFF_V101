@@ -55,21 +55,20 @@ namespace IHFF_V2.Repositories
             return ctx.Events;
         }
 
-        internal void AddEvent(Event eventItem)
+        public void AddEvent(Event eventItem)
         {
             ctx.Events.Add(eventItem);
             ctx.SaveChanges();
         }
 
-        internal void DeleteEvent(int id)
+        public void DeleteEvent(int id)
         {
             Event eventItem = new Event();
             eventItem = ctx.Events.Find(id);
             ctx.Events.Remove(eventItem);
             ctx.SaveChanges();
         }
-
-        internal void EditEvent(Event eventItem)
+        public void EditEvent(Event eventItem)
         {
             ctx.Entry(eventItem).State = EntityState.Modified;
             ctx.SaveChanges();
