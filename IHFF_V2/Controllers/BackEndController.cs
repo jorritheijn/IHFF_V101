@@ -75,6 +75,45 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult Add(Event eventItem, HttpPostedFileBase uploadedImage)
         {
+            eventItem = VerwerkAfbeelding(eventItem, uploadedImage);
+            //dit slaat upload de eventgegevens naar de database
+            if (ModelState.IsValid)
+            {
+                repos.AddEvent(eventItem);
+                
+            }         
+            //gebruiker keert terug naar indexpagina
+            if(eventItem.Type == "Film")
+            {
+                filmRepos.AddFilm(eventItem);
+                return RedirectToAction("BewerkFilm", eventItem);
+            }
+
+            else if(eventItem.Type == "Restaurant")
+            {
+                restaurantRepos.AddRestaurant(eventItem);
+                return RedirectToAction("BewerkRestaurant", eventItem);
+            }
+
+            else if (eventItem.Type == "Cultuur") 
+            {
+                cultuurRepos.AddCultuur(eventItem);
+                return RedirectToAction("BewerkCultuur", eventItem);
+            }
+
+            else if (eventItem.Type == "Special") 
+            {
+                specialRepos.AddSpecial(eventItem);
+                return RedirectToAction("BewerkSpecial", eventItem);
+            }
+
+            return RedirectToAction("Index");
+          
+            
+        }
+
+        private Event VerwerkAfbeelding(Event eventItem, HttpPostedFileBase uploadedImage)
+        {
             //als er een afbeelding is geupload, wordt deze opgeslagen als blob
             if (uploadedImage != null)
             {
@@ -86,18 +125,11 @@ namespace IHFF_V2.Controllers
                 }
             }
             //als er geen afbeelding is geupload, zoekt het systeem naar een eerder poster.
-            else 
+            else
             {
                 eventItem.Poster = ZoekEerderPoster(eventItem);
             }
-            //dit slaat upload de eventgegevens naar de database
-            if (ModelState.IsValid)
-            {
-                repos.AddEvent(eventItem);
-                filmRepos.AddFilm(eventItem);
-            }         
-            //gebruiker keert terug naar indexpagina
-            return RedirectToAction("Index");
+            return eventItem;
         }
 
         //zoekt een event met dezelfde naam en returned het bijbehorende poster
