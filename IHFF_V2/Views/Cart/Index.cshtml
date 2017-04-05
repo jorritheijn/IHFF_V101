@@ -11,37 +11,48 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Winkelwagen</h2>
+<p id="page-title">Winkelwagen</p>
 
 <!--Display all items in the cart-->
-@if (Session["cart"] != null && ((List<CartItem>)Session["cart"]).Any())
+@if (Session["cart"] != null && ((ShoppingCart)Session["cart"]).GetCart().Any())
 {
-    foreach (CartItem ci in (List<CartItem>)Session["cart"])
+    foreach (CartItem ci in ((ShoppingCart)Session["cart"]).GetCart())
     {
-        //TODO: Proper formatting
         <div class="cart-item">
             <div class="cart-item-poster">
-                <img class="film-poster"src="@Blobmanager.ImageSource(ci.Poster)"/>
+                <img class="film-poster" src="@Blobmanager.ImageSource(ci.Poster)" />
             </div>
             <div class="cart-item-information">
                 <p>@ci.Titel</p>
                 <p>Wanneer: @ci.Tijd</p>
                 <p>Locatie: @ci.Locatie</p>
-                <p>Prijs per ticket: €@ci.Prijs</p>
+                @if (ci.Type == "Restaurant")
+                {
+                    <p>Reserveringskosten: €10 </p>
+                    <p class="ticket-total-price">Totaal event: €10</p>
+                }
+                else
+                {
+                    <p>Prijs per ticket: €@ci.Prijs</p>
+                    <p class="ticket-total-price">Totaal event: €@(ci.Prijs * ci.Quantity)</p>
+                }
                 <p>
                     Aantal: @ci.Quantity
                     @Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)
                     @Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)
                     @Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)
                 </p>
-                <p class="total-price">Totaal: €@(ci.Prijs * ci.Quantity)</p>
             </div>
         </div>
+        <hr />
     }
-    @Html.ActionLink("Naar bestellen", "EnterDetails", "Cart")
+    <div id="to-payment">
+        @Html.ActionLink("Naar bestellen", "EnterDetails", "Cart")
+        Totaal bestelling: €@(((ShoppingCart)Session["cart"]).CalculateCartValue())
+    </div>
 }
 else
 {
-    if (Session["cart"] == null) { Session["cart"] = new List<CartItem>(); }
+    if (Session["cart"] == null) { Session["cart"] = new ShoppingCart(); }
     <h2>Uw winkelwagen is leeg.</h2>
 }

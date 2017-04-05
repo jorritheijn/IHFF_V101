@@ -9,6 +9,7 @@
 }
 
 .cart-item-poster {
+    margin-right: 15px;
     float: left;
 }
 
@@ -23,20 +24,62 @@
     height: 200px;
 }
 
-.total-price {
+.ticket-total-price {
     position: absolute;
     bottom: 0;
     right: 0;
     font-size: 20px;
 }
 
-h2 {
+#page-title {
     margin: auto;
-    font-family: Arial;
-    color: white;
+    display: block;
+    clear: both;
 }
 
 p {
     font-family: Arial;
     color: white;
+}
+
+a.plusbtn {
+    color: white;
+}
+
+a.plusbtn:link{
+    color: white;
+}
+
+a.plusbtn:visited{
+    color: white;
+}
+
+a.plusbtn:hover{
+    color: white;
+}
+
+a.plusbtn:active{
+    color: white;
+}
+
+a.edit-btns, a:visited.edit-btns {
+    color: white;
+
+}
+
+#to-payment{
+    clear: both;
+    margin: auto;
+}
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    clear: both;
+    width: 400px;
 }

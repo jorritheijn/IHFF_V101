@@ -358,6 +358,7 @@
     <Content Include="Images\icon-arts.png" />
     <Content Include="Images\icon-nutrition-hi.png" />
     <Content Include="Images\Movie_icon.svg.png" />
+    <Content Include="Images\red_square.png" />
     <Content Include="Images\shopping-basket-xxl.png" />
     <Content Include="Images\logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -469,6 +470,7 @@
     <Content Include="Views\BackEnd\BewerkRestaurant.cshtml" />
     <Content Include="Views\BackEnd\BewerkSpecial.cshtml" />
     <Content Include="Views\BackEnd\BewerkCultuur.cshtml" />
+    <Content Include="Views\Cart\OrderCompleted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

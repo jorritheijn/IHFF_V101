@@ -10,8 +10,6 @@ namespace IHFF_V2.Controllers
 {
     public class CartController : Controller
     {
-        private EventRepository eventRepos = new EventRepository();
-
         /// <summary>
         /// Een overzicht van alle items aanwezig in de winkelwagen
         /// </summary>
@@ -30,8 +28,8 @@ namespace IHFF_V2.Controllers
         {
             try
             {
-                CartItem ci = GetCartItem(id);
-                ci.Quantity++;
+                ShoppingCart cart = GetCartFromSession();
+                cart.IncrementItemQuantity(id);
             }
             catch(Exception e)
             {
@@ -50,13 +48,8 @@ namespace IHFF_V2.Controllers
         {
             try
             {
-                //List<CartItem> cart = GetCartFromSession();
-                //CartItem ci = cart.First(c => c.Id == id);
-                CartItem ci = GetCartItem(id);
-                if (ci.Quantity > 1)
-                    ci.Quantity--;
-                else
-                    Delete(id);
+                ShoppingCart cart = GetCartFromSession();
+                cart.DecrementItemQuantity(id);
             }
             catch(Exception e)
             {
@@ -74,12 +67,11 @@ namespace IHFF_V2.Controllers
         {
             try
             {
-                List<CartItem> cart = GetCartFromSession();
-                cart.Remove(cart.First(c => c.Id == id));
+                ShoppingCart cart = GetCartFromSession();
+                cart.RemoveItem(id);
             }
             catch(Exception e)
             {
-                //TODO: Replace error screen with a little popup message
                 return View("Error");
             }
             //Session["cart"] = cart; //Is niet nodig?
@@ -100,19 +92,14 @@ namespace IHFF_V2.Controllers
                 //Controlleer of er al een winkelwagen is
                 if (Session["cart"] == null)
                 {
-                    List<CartItem> cart = new List<CartItem>();
-                    cart.Add(new CartItem(id, quantity));
+                    ShoppingCart cart = new ShoppingCart();
+                    cart.AddItem(id, quantity);
                     Session["cart"] = cart;
                 }
                 else
                 {
-                    List<CartItem> cart = (List<CartItem>) Session["cart"];
-                    CartItem ci = cart.FirstOrDefault(c => c.Id == id);
-                    //Controlleer of het gegeven item al aanwezig is
-                    if (ci == null)
-                        cart.Add(new CartItem(id, quantity));
-                    else
-                        ci.Quantity += quantity;
+                    ShoppingCart cart = GetCartFromSession();
+                    cart.AddItem(id, quantity);
                     Session["cart"] = cart;
                 }
             }
@@ -139,11 +126,13 @@ namespace IHFF_V2.Controllers
         {
             bestelling.TotaalPrijs = CalculateCartValue();
             BestellingRepository repo = new BestellingRepository();
-            List<CartItem> cart = GetCartFromSession();
+
+            ShoppingCart cart = GetCartFromSession();
+            List<CartItem> cartItems = cart.GetCart();
 
             if (ModelState.IsValid)
             {
-                repo.CreateOrder(cart, bestelling);
+                repo.CreateOrder(cartItems, bestelling);
                 EmptyCart();
                 return View("OrderCompleted");
             }
@@ -167,19 +156,13 @@ namespace IHFF_V2.Controllers
             Session["cart"] = null;
         }
 
-        public CartItem GetCartItem(int id)
-        {
-            List<CartItem> cart = GetCartFromSession();
-            return cart.First(c => c.Id == id);
-        }
-
         /// <summary>
         /// Zet de sessionvariabele om in een bruikbare lijst van CartItems
         /// </summary>
         /// <returns>Een lijst van CartItems</returns>
-        private List<CartItem> GetCartFromSession()
+        private ShoppingCart GetCartFromSession()
         {
-            return (List<CartItem>)Session["cart"];
+            return (ShoppingCart)Session["cart"];
         }
         
         /// <summary>
@@ -188,15 +171,8 @@ namespace IHFF_V2.Controllers
         /// <returns>De totaalprijs van de winkelwagen</returns>
         private float CalculateCartValue()
         {
-            //TODO: Houdt rekening met restaurantreserveringen!
-
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
-
-            float totaal = 0;
-            foreach (CartItem item in cart)
-                totaal += (float)item.Prijs * item.Quantity;
-
-            return totaal;
+            ShoppingCart cart = GetCartFromSession();
+            return cart.CalculateCartValue();
         }
     }
 }
