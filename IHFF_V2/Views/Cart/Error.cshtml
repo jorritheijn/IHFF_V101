@@ -2,5 +2,9 @@
     ViewBag.Title = "Error";
 }
 
+@section Styles {
+    <link href="@Url.Content("~/Content/ShoppingCart.css")" rel="stylesheet" />
+}
+
 <h2>Oops, something seems to have gone wrong!</h2>
 <h3>@Html.ActionLink("Click here to return to the homepage", "Index", "Home")</h3>
