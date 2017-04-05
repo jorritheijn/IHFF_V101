@@ -89,9 +89,9 @@
                 </div>
                 <!--if state to choose wich actionlink there should be-->
                 <div class="actionlink">
-                    @if (r.Type == "Special")
+                    @if (r.Type == "Film")
                 {
-                        @Html.ActionLink(r.Titel, "DetailSpecialpage", "Special", routeValues: new { Id = r.Id }, htmlAttributes: null)
+                        @Html.ActionLink(r.Titel, "DetailFilmpage", "Film", routeValues: new { Id = r.Id }, htmlAttributes: null)
                     }
                 </div>
 
