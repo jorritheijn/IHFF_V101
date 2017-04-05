@@ -115,7 +115,7 @@ namespace IHFF_V2.Controllers
             }
            
 
-            if (aantal > 0)
+            if (aantal > 0 && correctevent != null)
             {
                 return RedirectToAction("Order", "Cart", new { id = correctevent.Id ,quantity = aantal });
             }

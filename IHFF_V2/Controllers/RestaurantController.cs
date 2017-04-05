@@ -50,7 +50,7 @@ namespace IHFF_V2.Controllers
                 return View("~/Views/Shared/ErrorNoDate.cshtml");
             }
 
-            if (aantal > 0)
+            if (aantal > 0 && correctEvent != null)
             {
                 return RedirectToAction("Order", "Cart", new { id = correctEvent.Id, quantity = aantal });
             }
