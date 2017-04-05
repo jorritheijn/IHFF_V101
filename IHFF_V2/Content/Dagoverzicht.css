@@ -7,9 +7,28 @@
     color:white;
     width:1000px; 
     margin: 0 auto;
+
     
 
 }
+
+    #filminfo a 
+    {
+        display:inline-block;
+        margin-top:10px;
+        text-decoration:none;
+        background-color:#2B343A;
+        color: white;
+        width:200px;
+        height:25px;
+            text-align:center;
+            border-radius:20px;
+    }
+
+        #filminfo a:hover
+    {
+            background-color: #8D0104;
+    }
 
 #filminfo img {
     float:left;
@@ -29,9 +48,7 @@
     font-family:Calibri;
     width:800px;
     position:relative;
-    top:20px;
-    
-    
+    top:20px;    
 }
 
 h2 
