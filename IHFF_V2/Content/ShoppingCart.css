@@ -1,5 +1,7 @@
 ﻿body {
     background-color:#35434C;
+    color: white;
+    font-family:Arial;
 }
 
 .cart-item {
@@ -82,4 +84,16 @@ hr {
     border-width: 1px;
     clear: both;
     width: 400px;
+}
+
+.rbtn-label {
+    color: white;
+}
+
+#textfields {
+    color: white;
+}
+
+a {
+    color: white;
 }

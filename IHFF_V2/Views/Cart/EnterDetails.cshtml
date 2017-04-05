@@ -1,4 +1,9 @@
 ﻿@model IHFF_V2.Models.Bestelling
+    
+@section Styles {
+    <link href="@Url.Content("~/Content/ShoppingCart.css")" rel="stylesheet" />
+}
+
 @{
     ViewBag.Title = "EnterDetails";
 }
@@ -7,7 +12,7 @@
 @using (Html.BeginForm())
 {
     <h2>Persoonsgegevens</h2>
-
+    <div id="textfields">
     @Html.LabelFor(m => m.Voornaam)
     <br/>
     @Html.TextBoxFor(m => m.Voornaam)
@@ -25,17 +30,18 @@
     @Html.TextBoxFor(m => m.EmailAdres)
     @Html.ValidationMessageFor(m => m.EmailAdres)
     <br /><br />
+    </div>
 
     <h2>Betaalwijze</h2>
-    <label>@Html.RadioButtonFor(m => m.Betaald, 0)Contant</label>
-    <label>@Html.RadioButtonFor(m => m.Betaald, 1)iDeal</label>
-    <label>@Html.RadioButtonFor(m => m.Betaald, 1)PayPal</label>
-    <label>@Html.RadioButtonFor(m => m.Betaald, 1)Creditcard</label>
+    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 0)Contant</label>
+    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)iDeal</label>
+    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)PayPal</label>
+    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)Creditcard</label>
     <br /><br />
 
     <h2>Verzendwijze</h2>
-    <label><%=@Html.RadioButton("Verzend", 0)%>Ophalen</label>
-    <label><%=@Html.RadioButton("Verzend", 1)%>E-mail</label>
+    <label>@Html.RadioButton("Verzend", 0)Ophalen</label>
+    <label>@Html.RadioButton("Verzend", 1)E-mail</label>
     <br /><br />
 
     <h2>Totaal: €@ViewBag.Total</h2>
