@@ -21,7 +21,7 @@ namespace IHFF_V2.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 //pas geselecteerdeEvents aan naar naar enkel de resultaten die het zoekwoord bevatten
-                specials = specials.Where(s => s.Titel.Contains(searchString));
+                Zoek(searchString);
             }
             return View(specials);
         }
@@ -33,10 +33,15 @@ namespace IHFF_V2.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                specials = specials.Where(s => s.Titel.Contains(searchString));
+                Zoek(searchString);
             }
             ViewBag.Dag = dag;
             return View(specials);
+        }
+
+        private void Zoek(string searchString)
+        {
+            specials = specials.Where(s => s.Titel.Contains(searchString));
         }
 
         public IEnumerable<Event> SpecialsOpDag(string dag, IEnumerable<Event> specials)

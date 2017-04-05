@@ -43,12 +43,13 @@
     </div>
 
     <div class="col-xs-6 col-md-4">
-
+        @if (r != null) {
         <ul id="Restaurantinfo">
             <li>Soort : @r.Soort</li>
             <li>OpeningsTijd: @r.OpeningsTijd - @r.SluitingsTijd</li>
             <li>Locatie: @e.Locatie</li>
         </ul>
+        }
 @using (Html.BeginForm())
 {
         <div>
@@ -98,21 +99,21 @@
                 <div class="actionlink">
                     @if (rndEvent.Type == "Film")
                     {
-                        @Html.ActionLink(rndEvent.Titel, "DetailFilmpage", "FilmOverzicht", routeValues: new { Id = r.Id }, htmlAttributes: null)
+                        @Html.ActionLink(rndEvent.Titel, "DetailFilmpage", "Film", routeValues: new { Id = rndEvent.Id }, htmlAttributes: null)
                     }
                 </div>
 
                 <div class="actionlink">
                     @if (rndEvent.Type == "Special")
                 {
-                        @Html.ActionLink(rndEvent.Titel, "DetailSpecialpage", "Special", routeValues: new { Id = r.Id }, htmlAttributes: null)
+                        @Html.ActionLink(rndEvent.Titel, "DetailSpecialpage", "Special", routeValues: new { Id = rndEvent.Id }, htmlAttributes: null)
                     }
                 </div>
 
                 <div class="actionlink">
                     @if (rndEvent.Type == "Cultuur")
                 {
-                        @Html.ActionLink(rndEvent.Titel, "DetailedCultuurPage", "Cultuur", routeValues: new { Id = r.Id }, htmlAttributes: null)
+                        @Html.ActionLink(rndEvent.Titel, "DetailedCultuurPage", "Cultuur", routeValues: new { Id = rndEvent.Id }, htmlAttributes: null)
                     }
                 </div>
 
