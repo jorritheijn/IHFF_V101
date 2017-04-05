@@ -49,38 +49,6 @@ namespace IHFF_V2.Repositories
             
         }
 
-        //method that converts all timespans to a list string
-        /*public List<string> GetRestaurantdagdeel(DetailRestaurantViewModel DetailedRestaurantModel)
-        {
-            IEnumerable<Restaurant> allspecificRestaurants = ctx.Restaurants.Where(b => b.EventId == DetailedRestaurantModel.Event.Id); //get all restaurant times
-            List<string> Dagdelen = new List<string>();
-
-            TimeSpan? ochtend = new TimeSpan(11,0,0);
-            TimeSpan? middag = new TimeSpan(18, 0, 0);
-
-
-            foreach (var specificevent in allspecificRestaurants)
-            {
-                string tijd;
-
-                if (specificevent.SluitingsTijd <= middag && specificevent.SluitingsTijd >= ochtend)//add nothing if there is no date
-                {
-                    tijd = "Lunch";
-                }
-                else if (specificevent.SluitingsTijd <= ochtend)
-                {
-                    tijd = "Ontbijt";
-                }
-                else
-                {
-                    tijd = "Dinner";
-                }
-
-                Dagdelen.Add(tijd);
-            }
-            return Dagdelen;
-        }*/
-
         public IEnumerable<Event> AlleRestaurants
         {
             get
