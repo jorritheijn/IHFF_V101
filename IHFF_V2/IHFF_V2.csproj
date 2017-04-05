@@ -472,6 +472,7 @@
     <Content Include="Views\BackEnd\BewerkCultuur.cshtml" />
     <Content Include="Views\Cart\OrderCompleted.cshtml" />
     <Content Include="Views\Cart\EnterDetails.cshtml" />
+    <Content Include="Views\Shared\ErrorNoDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
