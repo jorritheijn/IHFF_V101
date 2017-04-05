@@ -270,3 +270,7 @@ section.overallError {
     padding-top: 80px;
     padding-bottom: 195px;
 }
+.addeventbutton{
+    width:100%;
+    text-align:center;
+}

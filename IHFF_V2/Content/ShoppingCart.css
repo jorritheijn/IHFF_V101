@@ -2,6 +2,7 @@
     background-color:#35434C;
     color: white;
     font-family:Arial;
+    margin:0;
 }
 
 .cart-item {
@@ -69,10 +70,28 @@ a.edit-btns, a:visited.edit-btns {
 
 }
 
-#to-payment{
+#to-payment {
     clear: both;
     margin: auto;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
 }
+    #to-payment a {
+        background: #a30000;
+        border-color: white;
+        border-radius: 5px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 2.5px 10px 2.5px 10px;
+        text-decoration: none;
+    }
+        #to-payment a:hover {
+            background: #ffffff;
+            color: #a30000;
+            text-decoration: none;
+        }
 
 hr { 
     display: block;
@@ -96,4 +115,29 @@ hr {
 
 a {
     color: white;
+}
+.buttons a {
+    background: #a30000;
+    border-color: white;
+    border-radius: 5px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 2.5px 10px 2.5px 10px;
+    text-decoration: none;
+}
+    .buttons a:hover {
+        background: #ffffff;
+        color: #a30000;
+        text-decoration: none;
+    }
+    .containertitle{
+        width:100%;
+        text-align:center;
+        padding-top: 10px;
+        font-size:200%;
+    }
+.containerdetail {
+    width: 100%;
+    text-align: center;
 }

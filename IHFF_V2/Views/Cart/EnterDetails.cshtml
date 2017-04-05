@@ -8,42 +8,45 @@
     ViewBag.Title = "EnterDetails";
 }
 
-<h2>EnterDetails</h2>
-@using (Html.BeginForm())
-{
-    <h2>Persoonsgegevens</h2>
-    <div id="textfields">
-    @Html.LabelFor(m => m.Voornaam)
-    <br/>
-    @Html.TextBoxFor(m => m.Voornaam)
-    @Html.ValidationMessageFor(m => m.Voornaam)
-    <br/><br/>
-    
-    @Html.LabelFor(m => m.Achternaam)
-    <br />
-    @Html.TextBoxFor(m => m.Achternaam)
-    @Html.ValidationMessageFor(m => m.Achternaam)
-    <br /><br />
-    
-    @Html.LabelFor(m => m.EmailAdres)
-    <br />
-    @Html.TextBoxFor(m => m.EmailAdres)
-    @Html.ValidationMessageFor(m => m.EmailAdres)
-    <br /><br />
-    </div>
 
-    <h2>Betaalwijze</h2>
-    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 0)Contant</label>
-    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)iDeal</label>
-    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)PayPal</label>
-    <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)Creditcard</label>
-    <br /><br />
+<div class="containerdetail">
+    <h2>EnterDetails</h2>
+    @using (Html.BeginForm())
+    {
+        <h2>Persoonsgegevens</h2>
+        <div id="textfields">
+            @Html.LabelFor(m => m.Voornaam)
+            <br />
+            @Html.TextBoxFor(m => m.Voornaam)
+            @Html.ValidationMessageFor(m => m.Voornaam)
+            <br /><br />
 
-    <h2>Verzendwijze</h2>
-    <label>@Html.RadioButton("Verzend", 0)Ophalen</label>
-    <label>@Html.RadioButton("Verzend", 1)E-mail</label>
-    <br /><br />
+            @Html.LabelFor(m => m.Achternaam)
+            <br />
+            @Html.TextBoxFor(m => m.Achternaam)
+            @Html.ValidationMessageFor(m => m.Achternaam)
+            <br /><br />
 
-    <h2>Totaal: €@ViewBag.Total</h2>
-    <input type="submit" value="Betalen"/>
-}
+            @Html.LabelFor(m => m.EmailAdres)
+            <br />
+            @Html.TextBoxFor(m => m.EmailAdres)
+            @Html.ValidationMessageFor(m => m.EmailAdres)
+            <br /><br />
+        </div>
+
+        <h2>Betaalwijze</h2>
+        <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 0)Contant</label>
+        <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)iDeal</label>
+        <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)PayPal</label>
+        <label class="rbtn-label">@Html.RadioButtonFor(m => m.Betaald, 1)Creditcard</label>
+        <br /><br />
+
+        <h2>Verzendwijze</h2>
+        <label>@Html.RadioButton("Verzend", 0)Ophalen</label>
+        <label>@Html.RadioButton("Verzend", 1)E-mail</label>
+        <br /><br />
+
+        <h2>Totaal: €@ViewBag.Total</h2>
+        <input type="submit" value="Betalen" />
+    }
+</div>

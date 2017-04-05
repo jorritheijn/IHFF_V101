@@ -8,14 +8,15 @@
     string typeCheck = "";
 }
 <div class="backendindex">
-    @Html.ActionLink(linkText: "Voeg evenement toe",
+    <div class"addeventbutton">
+        @Html.ActionLink(linkText: "Voeg evenement toe",
                                  actionName: "Add",
                              controllerName: "Backend")<br /><br />
+    </div>
         @foreach (var eventItem in Model)
         {
             if (typeCheck != eventItem.Type)
-            {
-            <br /><br /><h2>@eventItem.Type</h2>
+            {<h2>@eventItem.Type</h2>
 
             }
         <div class="BewerkDeel">

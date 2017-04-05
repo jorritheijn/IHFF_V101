@@ -10,8 +10,8 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="containertitle"><p id="page-title">Winkelwagen</p></div>
 
-<p id="page-title">Winkelwagen</p>
 
 <!--Display all items in the cart-->
 @if (Session["cart"] != null && ((ShoppingCart)Session["cart"]).GetCart().Any())
@@ -44,18 +44,20 @@
                     <p class="ticket-total-price">Totaal event: €@(ci.Prijs * ci.Quantity)</p>
                 }
                 <p>
-                    Aantal: @ci.Quantity
-                    @Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)
-                    @Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)
-                    @Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)
+                    <div class="buttons">
+                        Aantal: @ci.Quantity
+                        @Html.ActionLink("+", "Increment", "Cart", new { id = ci.Id }, null)
+                        @Html.ActionLink("-", "Decrement", "Cart", new { id = ci.Id }, null)
+                        @Html.ActionLink("Del", "Delete", "Cart", new { id = ci.Id }, null)
+                    </div>
                 </p>
             </div>
         </div>
         <hr />
     }
     <div id="to-payment">
+        Totaal bestelling: €@(((ShoppingCart)Session["cart"]).CalculateCartValue())<br /><br />
         @Html.ActionLink("Naar bestellen", "EnterDetails", "Cart")
-        Totaal bestelling: €@(((ShoppingCart)Session["cart"]).CalculateCartValue())
     </div>
 }
 else
