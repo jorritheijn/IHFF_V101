@@ -72,7 +72,7 @@ namespace IHFF_V2.Controllers
                     AangeklikteDag = DayOfWeek.Sunday;
                     break;
             }
-            return specials.Where(s => s.Tijd.Value.DayOfWeek.Equals(AangeklikteDag));
+            return specials.Where(s => s.Tijd.GetValueOrDefault().DayOfWeek.Equals(AangeklikteDag));
         }
 
         //brian's code below

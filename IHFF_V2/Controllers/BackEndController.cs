@@ -21,7 +21,6 @@ namespace IHFF_V2.Controllers
         private FilmRepository filmRepos = new FilmRepository();
         private CultuurRepository cultuurRepos = new CultuurRepository();
         private SpecialRepository specialRepos = new SpecialRepository();
-
         [Authorize]
         public ActionResult Index()
         {
@@ -33,7 +32,6 @@ namespace IHFF_V2.Controllers
             IEnumerable<Event> events = films.Concat(restaurants).Concat(specials).Concat(cultuur);
             return View(events);
         }
-
         [Authorize]
         public ActionResult Delete(int id = 0)
         {
@@ -116,7 +114,6 @@ namespace IHFF_V2.Controllers
                 }
              return null; // dit returnt null als er niks gevonden is
         }
-
         [Authorize]
         [HttpPost]
         public ActionResult BewerkCultuur(Event eventItem)
@@ -133,12 +130,7 @@ namespace IHFF_V2.Controllers
         {
             if(ModelState.IsValid)
             {
-                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
-                eventmodel.Titel = eventItem.Event.Titel;
-                eventmodel.Locatie = eventItem.Event.Locatie;
-                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
-                eventmodel.Tijd = eventItem.Event.Tijd;
-                eventmodel.Prijs = eventItem.Event.Prijs;
+                Event eventmodel = EventAanmaken(eventItem.Event);
                 repos.EditEvent(eventmodel);
                 filmRepos.EditFilm(eventItem.Film);
             }
@@ -150,12 +142,7 @@ namespace IHFF_V2.Controllers
         {
             if (ModelState.IsValid)
             {
-                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
-                eventmodel.Titel = eventItem.Event.Titel;
-                eventmodel.Locatie = eventItem.Event.Locatie;
-                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
-                eventmodel.Tijd = eventItem.Event.Tijd;
-                eventmodel.Prijs = eventItem.Event.Prijs;
+                Event eventmodel = EventAanmaken(eventItem.Event);
                 repos.EditEvent(eventmodel);
                 specialRepos.EditSpecial(eventItem.Special);
             }
@@ -167,22 +154,26 @@ namespace IHFF_V2.Controllers
         {
             if (ModelState.IsValid)
             {
-                Event eventmodel = repos.GetEvent(eventItem.Event.Id);
-                eventmodel.Titel = eventItem.Event.Titel;
-                eventmodel.Locatie = eventItem.Event.Locatie;
-                eventmodel.Beschrijving = eventItem.Event.Beschrijving;
-                eventmodel.Tijd = eventItem.Event.Tijd;
-                eventmodel.Prijs = eventItem.Event.Prijs;
+                Event eventmodel = EventAanmaken(eventItem.Event);
                 repos.EditEvent(eventmodel);
                 restaurantRepos.EditRestaurant(eventItem.Restaurant);
             }
             return RedirectToAction("Index");
         }
+        private Event EventAanmaken(Event eventItem)
+        {
+            Event eventmodel = repos.GetEvent(eventItem.Id);
+            eventmodel.Titel = eventItem.Titel;
+            eventmodel.Locatie = eventItem.Locatie;
+            eventmodel.Beschrijving = eventItem.Beschrijving;
+            eventmodel.Tijd = eventItem.Tijd;
+            eventmodel.Prijs = eventItem.Prijs;
+            return eventmodel;
+        }
         public ActionResult LogIn()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult LogIn(Medewerker medewerker)
         {
@@ -191,7 +182,7 @@ namespace IHFF_V2.Controllers
                 //get account with credentials
                 Medewerker medewerkeraccount = BackEndrepository.GetAccount(medewerker.Gebruikersnaam, medewerker.Wachtwoord);
 
-                if (medewerker != null)
+                if (medewerker != null && medewerker.Id != 0)
                 {
                     FormsAuthentication.SetAuthCookie(medewerkeraccount.Gebruikersnaam, false);
 
@@ -206,10 +197,7 @@ namespace IHFF_V2.Controllers
             {
                 ModelState.AddModelError("login-error","De gebruikersnaaam of wachtwoord is incorrect ingevoerd");
             }
-
-
-            return View(medewerker);//there was a error, go back to login page
-            
+            return View(medewerker);//there was a error, go back to login page           
         }
 
     }

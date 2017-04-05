@@ -1,15 +1,10 @@
 ﻿@using IHFF_V2.Models;
 @using IHFF_V2;
 
-@{
-    ViewBag.Title = "Index";
-}
-
 @section Styles {
     <link href="@Url.Content("~/Content/Index.css")" rel="stylesheet" />
 }
 
-<h2>Index</h2>
 @model  IEnumerable<Event>
 @using (Html.BeginForm())
 {
@@ -19,18 +14,7 @@
     </p>
 
     <nav id="Filters">
-        @Html.ActionLink(linkText: "maandag",
-     actionName: "DagProgramma",
-    controllerName: "Film",
-    routeValues: new
-    { Dag = "maandag" }, htmlAttributes: null)
 
-
-        @Html.ActionLink(linkText: "dinsdag",
-     actionName: "DagProgramma",
-     controllerName: "Film",
-    routeValues: new
-    { Dag = "dinsdag" }, htmlAttributes: null)
 
 
         @Html.ActionLink(linkText: "woensdag",

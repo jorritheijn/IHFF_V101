@@ -16,6 +16,8 @@
 
 
 
+
+
 @model  IEnumerable<Event>
 @using (Html.BeginForm())
 {
@@ -25,64 +27,66 @@
         <input type="submit" value="Search" />
     </p>
 }
-
-@foreach (var film in Model)
-{
-    <section id="filminfo">
-
-
-        @if (film.Poster != null)
-        {
-            <img src="@Blobmanager.ImageSource(film.Poster)" height="240" width="163" />
-        }
-        <p class="titel">@film.Titel</p>
-        <p class="locatie">@film.Locatie</p>
-        <p class="tijd">@film.Tijd</p>
-        <p class="beschrijving">  @film.Beschrijving </p>
-    </section>
-}
-
-
-
-
-
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "Terug",
+<nav id="Filters">
+    @Html.ActionLink(linkText: "Terug",
         actionName: "index",
-    controllerName: "FilmOverzicht")
+    controllerName: "Special")
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "woensdag",
+    @Html.ActionLink(linkText: "woensdag",
         actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
+        controllerName: "Special",
     routeValues: new { Dag = "woensdag" }, htmlAttributes: null)
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "donderdag",
+    @Html.ActionLink(linkText: "donderdag",
         actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
+        controllerName: "Special",
     routeValues: new { Dag = "donderdag" }, htmlAttributes: null)
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "vrijdag",
+    @Html.ActionLink(linkText: "vrijdag",
         actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
+        controllerName: "Special",
     routeValues: new { Dag = "vrijdag", }, htmlAttributes: null)
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "zaterdag",
+    @Html.ActionLink(linkText: "zaterdag",
         actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
+        controllerName: "Special",
     routeValues: new { Dag = "zaterdag" }, htmlAttributes: null)
 
-<&nbsp;> </&nbsp;>
-
-@Html.ActionLink(linkText: "zondag",
+    @Html.ActionLink(linkText: "zondag",
         actionName: "DagProgramma",
-    controllerName: "FilmOverzicht",
+        controllerName: "Special",
     routeValues: new { Dag = "zondag" }, htmlAttributes: null)
+</nav>
+
+
+    @foreach (var special in Model)
+    {
+        <section id="filminfo">
+
+
+            @if (special.Poster != null)
+            {
+                <img src="@Blobmanager.ImageSource(special.Poster)" height="240" width="163" />
+            }
+            <p class="titel">@special.Titel</p>
+            <p class="locatie">@special.Locatie</p>
+            <p class="tijd">@special.Tijd</p>
+            <p class="beschrijving">  @special.Beschrijving </p>
+        </section>
+        
+                @Html.ActionLink(linkText: "Meer Info",
+                              actionName: "DetailSpecialpage",
+                             controllerName: "Special",
+                            routeValues: new
+                            {
+                                Id = special.Id
+                            },
+            htmlAttributes: null)
+    }
+
+
+
+
+
+
+
