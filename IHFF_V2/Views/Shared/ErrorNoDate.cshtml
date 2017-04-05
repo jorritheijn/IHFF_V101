@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "ErrorNoDate";
+}
+
+<hgroup class="title">
+    <h1 class="error" id="error-text">Error. Datum niet beschikbaar</h1>
+    <h2 class="error" id="error-text">De film die u probeert te reserveren is niet langer beschikbaar. </h2>
+</hgroup>
+
+<button onclick="goBack()">Probeer Opnieuw</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

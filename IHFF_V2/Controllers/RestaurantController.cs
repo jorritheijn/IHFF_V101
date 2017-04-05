@@ -12,6 +12,7 @@ namespace IHFF_V2.Controllers
     {
 
         private RestaurantRepository RestaurantRepository = new RestaurantRepository();
+        private EventRepository EventRepository = new EventRepository();
         private IEnumerable<Event> restaurants = new EventRepository().GetEventsOfType("Restaurant"); 
 
         //restaurantoverzicht
@@ -39,9 +40,19 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult DetailRestaurantpage(int id, DateTime? time ,int aantal)
         {
+            Event correctEvent;
+
+            if (time != null)
+            {
+                correctEvent = EventRepository.GetCorrectEventForCart(id, time);
+            }
+            else {
+                return View("~/Views/Shared/ErrorNoDate.cshtml");
+            }
+
             if (aantal > 0)
             {
-                return RedirectToAction("Order", "Cart", new { id = id, time = time,quantity = aantal });
+                return RedirectToAction("Order", "Cart", new { id = correctEvent.Id, quantity = aantal });
             }
             return View("ErrorInvoerOnjuist");
         }

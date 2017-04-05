@@ -12,7 +12,8 @@ namespace IHFF_V2.Controllers
 {
     public class FilmController : Controller
     {
-        private IFilmRepository filmrepository = new FilmRepository();      
+        private IFilmRepository filmrepository = new FilmRepository();
+        private EventRepository eventrepository = new EventRepository();
         private IEnumerable<Event> films = new EventRepository().GetEventsOfType("film");
  
         public ActionResult Index(string searchString)
@@ -102,10 +103,23 @@ namespace IHFF_V2.Controllers
         [HttpPost]
         public ActionResult DetailFilmpage(int id, DateTime? tijd ,int aantal)
         {
+            Event correctevent;
+
+            if (tijd != null)
+            {
+                correctevent = eventrepository.GetCorrectEventForCart(id, tijd);
+            }
+            else
+            {
+                return View("~/Views/Shared/ErrorNoDate.cshtml");
+            }
+           
+
             if (aantal > 0)
             {
-                return RedirectToAction("Order", "Cart", new { id = id, time = tijd,quantity = aantal });
+                return RedirectToAction("Order", "Cart", new { id = correctevent.Id ,quantity = aantal });
             }
+
             return View("ErrorInvoerOnjuist");
         }
     }

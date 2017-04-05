@@ -251,3 +251,10 @@ input#submit:hover{
   color: #a30000;
   text-decoration: none;
 }
+
+h2#error-text.error{
+    color:white;
+}
+h1#error-text.error{
+    color:white;
+}
