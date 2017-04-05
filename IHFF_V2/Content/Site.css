@@ -40,6 +40,8 @@ header{
 body{
     margin:0;
 }
+
+
 footer{
     background-color:#2b343a;
     color:white;
@@ -257,4 +259,14 @@ h2#error-text.error{
 }
 h1#error-text.error{
     color:white;
+}
+
+section.overallError {
+    background-color: black;
+}
+
+.loginbackground {
+    background-color: #2b343a;
+    padding-top: 80px;
+    padding-bottom: 195px;
 }

@@ -38,19 +38,19 @@ namespace IHFF_V2.Controllers
               
         //gets event id and aantal, returns action to cartcontroller
         [HttpPost]
-        public ActionResult DetailRestaurantpage(int id, DateTime? time ,int aantal)
+        public ActionResult DetailRestaurantpage(int id, DateTime? tijd ,int aantal)
         {
             Event correctEvent;
 
-            if (time != null)
+            if (tijd != null)
             {
-                correctEvent = EventRepository.GetCorrectEventForCart(id, time);
+                correctEvent = EventRepository.GetCorrectEventForCart(id, tijd);
             }
             else {
                 return View("~/Views/Shared/ErrorNoDate.cshtml");
             }
 
-            if (aantal > 0)
+            if (aantal > 0 && correctEvent != null)
             {
                 return RedirectToAction("Order", "Cart", new { id = correctEvent.Id, quantity = aantal });
             }
