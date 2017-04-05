@@ -96,6 +96,7 @@ namespace IHFF_V2.Controllers
             if (ModelState.IsValid)
             {
                 repos.AddEvent(eventItem);
+                filmRepos.AddFilm(eventItem);
             }         
             //gebruiker keert terug naar indexpagina
             return RedirectToAction("Index");

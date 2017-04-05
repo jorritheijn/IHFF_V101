@@ -46,6 +46,14 @@ namespace IHFF_V2.Repositories
             return FilmsOpZoekWoord;
         }
 
+        internal void AddFilm(Event eventItem)
+        {
+            Film film = new Film();
+            film.EventId = eventItem.Id;
+            ctx.Films.Add(film);
+            ctx.SaveChanges();
+        }
+
         /*returned alleen de films die af worden gespeeld op een speciafieke dag*/
         public IEnumerable<Event> FilmsOpDag(string dag)
         {
